@@ -1,0 +1,180 @@
+\documentclass[a4paper,12pt,twoside,openany]{memoir}
+\setheadfoot{28pt}{1cm}
+
+%%% DIVERSE PAKKER %%%
+
+% Listings til kode
+\usepackage{listings}
+\lstloadlanguages{PHP}
+\renewcommand\lstlistingname{Code Example}
+
+\lstset{ %
+language=PHP,              % the language of the code
+%basicstyle=\footnotesize,      % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+%numberstyle=\footnotesize,     % the size of the fonts that are used for the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it's 1, each line 
+                                % will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+%backgroundcolor=\color{white}, % choose the background color. You must add \usepackage{color}
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding particular underscores
+frame=single,                   % adds a frame around the code
+tabsize=2,                      % sets default tabsize to 2 spaces
+captionpos=t,                   % sets the caption-position to top
+breaklines=true,                % sets automatic line breaking
+breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+%title=\lstname,                % show the filename of files included with \lstinputlisting;
+                                % also try caption instead of title
+%escapeinside={\%*}{*)},        % if you want to add a comment within your code
+%morekeywords={*,...}           % if you want to add more keywords to the set
+}
+
+% Dansk orddeling
+\usepackage[english]{babel}
+
+%Floats og [H]
+\usepackage{float}
+
+% Nummering af eksempler og s?tninger
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{example}{Example}
+\newtheorem{theorem}{Theorem}
+
+% Giver mulighed for at bruge ?, ? og ? i .tex-filer
+\usepackage[latin1]{inputenc}
+
+% Hj?lper med orddeling ved ?, ? og ?. S?tter fontene til at
+% v?re ps-fonte, i stedet for bmp
+\usepackage[T1]{fontenc}
+
+% Pakke, der g?r det muligt at anvende grafikfiler
+\usepackage[pdftex]{graphicx}
+
+% Pakker, der kan udelades, hvis man ikke g?r megen brug af matematik
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Pakke, der kan inds?tte n?dvendige mellemrum efter
+% makro-anvendelser.
+\usepackage{xspace}
+
+% Retter forskellige bugs i LaTeX-kernen
+\usepackage{fixltx2e}
+
+% Inds?t rettelser og lignende med \fixme{...} med "final"
+% i stedet for "draft" udl?ses en error for hver fixme,
+% n?r der compiles.
+\usepackage[footnote,draft,english,silent,nomargin]{fixme}
+
+% G?r det muligt at definere farver.
+% Se en.wikibooks.org/wiki/LaTeX/Colors for mere info.
+\usepackage{color}
+\usepackage[usenames,dvipsnames]{xcolor}
+\definecolor{aaublue}{RGB}{33,26,82}% dark blue
+
+% wallpaper package for front page design
+\usepackage{wallpaper}
+%\usepackage{uarial}
+
+%Hyperlinks i indholdsfortegnelse
+\usepackage{hyperref}
+
+\hypersetup{
+	bookmarks=true,  % Vis 'bookmark'-ramme.
+	colorlinks=true, % True = links har farver, False = links har rammer
+	citecolor=blue,  % Linkfarve for referencer.
+	linkcolor=blue,  % Linkfarve i indholdsfortegnelse
+	urlcolor=blue,   % Linkfarve for eksterne URL'er.
+}
+
+%%% LITTERATURLISTE %%%
+\usepackage[authoryear]{natbib}
+\usepackage{url}
+
+%%% MARGINER %%%
+\setlrmarginsandblock{3.5cm}{2.5cm}{*}	% \setlrmarginsandblock{Indbinding}{Kant}{Ratio}
+\setulmarginsandblock{2.5cm}{3.0cm}{*}	% \setulmarginsandblock{Top}{Bund}{Ratio}
+\checkandfixthelayout 			% Laver forskellige beregninger og s?tter de almindelige l?ngder op til brug ikke memoir pakker
+
+
+%%% OTHER STUFF %%%
+\input{indstillinger/makroer}
+
+
+% Valg a kapiteludseende
+\definecolor{numbercolor}{gray}{0.7}			% Definerer en farve til brug til kapiteludseende
+\newif\ifchapternonum
+
+\makechapterstyle{jenor}{									% Definerer kapiteludseende -->
+  \renewcommand\printchaptername{}
+  \renewcommand\printchapternum{}
+  \renewcommand\printchapternonum{\chapternonumtrue}
+  \renewcommand\chaptitlefont{\fontfamily{pbk}\fontseries{db}\fontshape{n}\fontsize{25}{35}\selectfont\raggedleft}
+  \renewcommand\chapnumfont{\fontfamily{pbk}\fontseries{m}\fontshape{n}\fontsize{1in}{0in}\selectfont\color{numbercolor}}
+  \renewcommand\printchaptertitle[1]{%
+    \noindent
+    \ifchapternonum
+    \begin{tabularx}{\textwidth}{X}
+    {\let\\\newline\chaptitlefont ##1\par} 
+    \end{tabularx}
+    \par\vskip-2.5mm\hrule
+    \else
+    \begin{tabularx}{\textwidth}{Xl}
+    {\parbox[b]{\linewidth}{\chaptitlefont ##1}} & \raisebox{-15pt}{\chapnumfont \thechapter}
+    \end{tabularx}
+    \par\vskip2mm\hrule
+    \fi
+  }
+}																						% <--
+
+%\chapterstyle{jenor}
+\usepackage{calc,color}
+\newif\ifNoChapNumber
+\newcommand\Vlines{%
+\def\VL{\rule[-2cm]{1pt}{5cm}\hspace{1mm}\relax}
+\VL\VL\VL\VL\VL\VL\VL}
+\makeatletter
+\setlength\midchapskip{0pt}
+\makechapterstyle{VZ43}{
+\renewcommand\chapternamenum{}
+\renewcommand\printchaptername{}
+\renewcommand\printchapternum{}
+\renewcommand\chapnumfont{\Huge\bfseries\centering}
+\renewcommand\chaptitlefont{\Huge\bfseries\raggedright}
+\renewcommand\printchaptertitle[1]{%
+\Vlines\hspace*{-2em}%
+\begin{tabular}{@{}p{1cm} p{\textwidth-3cm}}%
+\ifNoChapNumber\relax\else%
+\colorbox{black}{\color{white}%
+\makebox[.8cm]{\chapnumfont\strut \thechapter}}
+\fi
+& \chaptitlefont ##1
+\end{tabular}
+\NoChapNumberfalse
+}
+\renewcommand\printchapternonum{\NoChapNumbertrue}
+}
+\makeatother
+\chapterstyle{VZ43}
+
+
+
+\setsecnumdepth{subsection}		 					% Dybden af nummerede overkrifter (part/chapter/section/subsection)
+\maxsecnumdepth{subsection}							% ?ndring af dokumentklassens gr?nse for nummereringsdybde
+\settocdepth{subsection} 								% Dybden af indholdsfortegnelsen
+
+
+%%% FORSIDE %%%
+%\title{Dette er rapportens titel}
+%\author{Forfatter 1 \\ Forfatter 2}
+%\date{November 2011}
+
+% S?rger for LaTeX ikke str?kker teksten ved at forhindre
+% der bliver tilf?jet linieskift, hvis siden ikke er
+% fyldt helt ud.
+\raggedbottom 
+
+

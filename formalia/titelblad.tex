@@ -1,0 +1,94 @@
+% Dette er LaTeX-versionen af titelbladet for tek-nat-basis-rapporter 2004 efter?r
+% Filen kr?ver:
+% Universitetets logo:  aau-logo.png (for LaTeX) eller aau-logo.ps (for LaTeX)
+% Synopsis: En fil ved navn synopsis.tex
+
+% Udarbejdet af: Hans H?ttel (hans@cs.auc.dk) 21. maj 2003
+% Rettet af Morten Christophersen (mortench@tnb.aau.dk) 30. nov 2004(?ndret til nyt design 2004 efter?r)
+
+%\documentclass[11pt]{article}
+%\ifx\pdfoutput\undefined 
+%\usepackage[dvips]{graphicx}
+%\else
+%\usepackage[pdftex]{graphicx} 
+%\usepackage{type1cm} \fi
+%    \usepackage[ansinew]{inputenc}
+%    \usepackage{a4}
+
+%\begin{document} 
+\thispagestyle{empty}
+%\begin{titlepage}
+\begin{nopagebreak}
+{\samepage 
+
+\begin{tabular}{r}
+\parbox{\textwidth}{  \raisebox{-10mm}{\includegraphics[width=120px]{billeder/aau_new_logo}}
+\hfill \hspace{2cm} \parbox{8cm}{\begin{tabular}{l} %4.90
+{\small \textbf{\textcolor{aaublue}{\fontfamily{ua1}\selectfont 3rd Semester - Software Engineering}}}\\
+{\small \textbf{\textcolor{aaublue}{\fontfamily{ua1}\selectfont Department of Computer Science}}}\\ 
+{\small \textcolor{aaublue}{{\fontfamily{ua1}\selectfont Selma Lagerløfs Vej 300}}} \\
+{\small \textcolor{aaublue}{{\fontfamily{ua1}\selectfont 9220 Aalborg ?}}} \\
+\end{tabular}}}
+\end{tabular}
+
+\begin{tabular}{cc}
+\parbox{7cm}{
+\begin{description}
+
+\item { Title:} 
+
+Gift Coordination\\
+  
+\item { Theme:} 
+
+From users to data, algorithms and tests - and back again
+
+\end{description}
+
+\parbox{8cm}{
+
+\begin{description}
+\item { Project period:}\\
+   P3, fall semester 2012\\
+   September 3rd 2012 \\
+   to December 20th 2012
+  \hspace{4cm}
+\item { Project group:}\\
+  SW411F13
+  \hspace{4cm}
+\item { Participants:}\\
+Andreas Abildgaard \\
+Jonas Steen Hansen \\
+Mathias Nielsen \\
+Michel Laden \\
+Morten Fjelsted Baagøe \\
+Morten Møller Jacobsen \\
+\hspace{2cm}
+\item { Supervisor:}\\
+Radu Mardare
+  
+\end{description}
+}
+\begin{description}
+\item { Prints: 9 }
+\item { Pages: 84 } 
+\item { Appendices: 1} 
+\item { Concluded 20/12-2012} 
+\end{description}
+\vfill } &
+\parbox{7cm}{
+  \vspace{.15cm}
+  \hfill 
+  \begin{tabular}{l}
+  { Abstract}\bigskip \\
+  \fbox{
+    \parbox{6.5cm}{\bigskip
+     {\vfill{\small \input{formalia/synopsis}
+     \bigskip}}
+     }}
+   \end{tabular}}
+\end{tabular}} \vspace{1.3cm}
+\\ \\ 
+\end{nopagebreak}
+%\end{titlepage}
+%\end{document}

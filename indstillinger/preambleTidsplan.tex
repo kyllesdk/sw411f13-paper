@@ -1,0 +1,90 @@
+\documentclass[a4paper,11pt,oneside,openany]{memoir}
+
+%%% DIVERSE PAKKER %%%
+
+% Dansk orddeling
+\usepackage[danish]{babel}
+
+% Giver mulighed for at bruge æ, ø og å i .tex-filer
+\usepackage[latin1]{inputenc}
+
+% Hjælper med orddeling ved æ, ø og å. Sætter fontene til at
+% være ps-fonte, i stedet for bmp
+\usepackage[T1]{fontenc}
+
+% Pakke, der gør det muligt at anvende grafikfiler
+\usepackage{graphicx}
+
+% Pakker, der kan udelades, hvis man ikke gør megen brug af matematik
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Pakke, der kan indsætte nødvendige mellemrum efter
+% makro-anvendelser.
+\usepackage{xspace}
+
+% Retter forskellige bugs i LaTeX-kernen
+\usepackage{fixltx2e}
+
+% Indsæt rettelser og lignende med \fixme{...} med "final"
+% i stedet for "draft" udløses en error for hver fixme,
+% når der compiles.
+\usepackage[footnote,draft,english,silent,nomargin]{fixme}
+
+% Gør det muligt at definere farver.
+% Se en.wikibooks.org/wiki/LaTeX/Colors for mere info.
+\usepackage{color}
+
+
+%%% LITTERATURLISTE %%%
+\usepackage[authoryear]{natbib}
+
+%%% MARGINER %%%
+\setlrmarginsandblock{2cm}{2cm}{*}	% \setlrmarginsandblock{Indbinding}{Kant}{Ratio}
+\setulmarginsandblock{2cm}{2cm}{*}	% \setulmarginsandblock{Top}{Bund}{Ratio}
+\checkandfixthelayout 			% Laver forskellige beregninger og sætter de almindelige længder op til brug ikke memoir pakker
+
+
+%%% OTHER STUFF %%%
+\input{indstillinger/makroer}
+
+
+% Valg a kapiteludseende
+\definecolor{numbercolor}{gray}{0.7}			% Definerer en farve til brug til kapiteludseende
+\newif\ifchapternonum
+
+\makechapterstyle{jenor}{									% Definerer kapiteludseende -->
+  \renewcommand\printchaptername{}
+  \renewcommand\printchapternum{}
+  \renewcommand\printchapternonum{\chapternonumtrue}
+  \renewcommand\chaptitlefont{\fontfamily{pbk}\fontseries{db}\fontshape{n}\fontsize{25}{35}\selectfont\raggedleft}
+  \renewcommand\chapnumfont{\fontfamily{pbk}\fontseries{m}\fontshape{n}\fontsize{1in}{0in}\selectfont\color{numbercolor}}
+  \renewcommand\printchaptertitle[1]{%
+    \noindent
+    \ifchapternonum
+    \begin{tabularx}{\textwidth}{X}
+    {\let\\\newline\chaptitlefont ##1\par} 
+    \end{tabularx}
+    \par\vskip-2.5mm\hrule
+    \else
+    \begin{tabularx}{\textwidth}{Xl}
+    {\parbox[b]{\linewidth}{\chaptitlefont ##1}} & \raisebox{-15pt}{\chapnumfont \thechapter}
+    \end{tabularx}
+    \par\vskip2mm\hrule
+    \fi
+  }
+}																						% <--
+
+\chapterstyle{jenor}
+
+%%% FORSIDE %%%
+%\title{Dette er rapportens titel}
+%\author{Forfatter 1 \\ Forfatter 2}
+%\date{November 2011}
+
+% Sørger for LaTeX ikke strækker teksten ved at forhindre
+% der bliver tilføjet linieskift, hvis siden ikke er
+% fyldt helt ud.
+\raggedbottom 
+
+

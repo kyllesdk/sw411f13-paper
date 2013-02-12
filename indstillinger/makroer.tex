@@ -1,0 +1,37 @@
+\newcommand{\pdf}{PDF}
+
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}\xspace}
+
+% Kommando, der sikrer ensartede referencer til figurer
+
+\newcommand{\figref}[1]{Figure \ref{#1}}
+
+\newcommand{\mgd}[2]{\ensuremath{\{ #1 \mid #2 \}}}
+
+%\newtheorem{saetning}{Sætning}
+\newtheorem{definition}{Definition}
+
+
+%\def\mypart#1#2{%
+%  \par\break % Page break
+%  \vskip .3\vsize % Vertical shift
+%  \refstepcounter{part}% Next part
+%  {\centering\Large Part \thepart.\par}% 
+%  \vskip .1\vsize % Vertical shift 
+%  % Some text
+%  #2
+%  \vfill\break % Fill the end of page and page break
+%}
+
+\renewcommand{\afterpartskip}{\vfil} % The part will now not clear page
+\def\mypart#1#2{% \mypart{title}{description}
+\cleardoublepage
+\part{#1}% Create part with 'title'
+\vspace{-8cm}% Vertical shift
+\begin{center}%
+\begin{tabular}{p{12cm}}% Use tabular to create bigger 'margins'
+\noindent #2% description
+\end{tabular}%
+\end{center}%
+\cleardoublepage% clear page after part
+}

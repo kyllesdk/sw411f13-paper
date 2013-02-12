@@ -1,0 +1,58 @@
+%  A simple AAU report template.
+%  2012-04-20 v. 0.2.0
+%  Copyright 2010-2012 by Jesper Kjær Nielsen <jkn@es.aau.dk>
+%
+%  This is free software: you can redistribute it and/or modify
+%  it under the terms of the GNU General Public License as published by
+%  the Free Software Foundation, either version 3 of the License, or
+%  (at your option) any later version.
+%
+%  This is distributed in the hope that it will be useful,
+%  but WITHOUT ANY WARRANTY; without even the implied warranty of
+%  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%  GNU General Public License for more details.
+%
+%  You can find the GNU General Public License at <http://www.gnu.org/licenses/>.
+%
+%\pdfbookmark[0]{Front page}{label:frontpage}%
+%\begin{titlepage}
+	%\addtolength{\hoffset}{0.5\evensidemargin-0.5\oddsidemargin} % set equal margins on the frontpage - remove this line if you want default margins
+	\thispagestyle{empty}
+	\ThisTileWallPaper{\paperwidth}{\paperheight}{billeder/aau_cover.png}
+
+	\vspace*{\fill}
+
+	\noindent \colorbox{aaublue}{
+		\parbox{\textwidth}{%
+			\color{white}%
+			\begin{center}
+				\Huge{{\fontfamily{ua1}\selectfont Gift Coordination}} % insert your title here
+			\end{center}
+			\begin{center}
+			\Large{\textsf{Group SW310e12}} % insert your subtitle here
+			\end{center}
+		}}
+
+	\vfill
+
+	\noindent \colorbox{white}{
+		\begin{minipage}[b]{6.5cm}
+		\begin{center}
+			\includegraphics[width=150px]{billeder/aau_new_logo}
+			\end{center}
+			\vspace*{-20px}
+			%{\small \textcolor{aaublue}{Department of Computer Science}}  \\
+			%{\small \textcolor{aaublue}{Software Engineering}}
+		\end{minipage}
+	} 
+	\hfill  
+	\colorbox{white}{ 
+		\begin{minipage}[b]{3.5cm}	 
+			\flushright
+			{\large Autumn 2012} \\
+			%{\small Group SW310e12}\\
+		\end{minipage}
+	}
+
+%\end{titlepage}
+\clearpage
