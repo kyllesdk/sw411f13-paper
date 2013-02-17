@@ -11,3 +11,8 @@ report.out
 report.pdf
 report.synctex.gz
 report.toc
+report.tdo
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
