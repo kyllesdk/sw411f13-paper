@@ -2,11 +2,16 @@
 A compiler is actually a set of programs with various purposes, ultimately compiling some language into another, with the most common task probably being compiling from some kind of high-level programming language into the lowest level code, machine code. This project is slightly different as the goal is to compile a high-level language to another high-level language - Namely from our invented language to Wiring, the language of the Arduino.
 \subsection{Parts of a compiler}
 Compiling is not as simple as just translating from one language to another. Several things need to happen before the written code is fully compiled.\\
-The first program in a compiler is the scanner which goes through the entire program to do things like placing everything into the correct groupings (int, float, string, etc.) and removing unneded code (empty space, comments). This is to prepare the code properly for further treatment.\\
-The second program is the parser which basically groups info together and verifies that the syntax is correct. As example the parser might find that the code states $a + b = c$ rather than $c = a + b$, therefore returning an error because the syntax is incorrect.\\
-Third comes the type checker which checks the semantics. This program ensures that all operations performed in the program is legal with regard to the source language.\\
-Fourth is the translation into the target language. Now that that the code is correct in both syntax and semantics and is all set up, it can be translated correctly.\\
 
-Also used in compiling is a symbol table. When identifiers are used in a program the symbol table keeps track of the related information. This table is accessible from the entire compiler.
+\begin{itemize}
+\item The first program in a compiler is the scanner which goes through the entire program to do things like placing everything into the correct groupings (int, float, string, etc.) and removing unneded code (empty space, comments). This is to prepare the code properly for further treatment.
+\item The second program is the parser which basically groups info together and verifies that the syntax is correct. As example the parser might find that the code states $a + b = c$ rather than $c = a + b$, therefore returning an error because the syntax is incorrect.\\
+
+\item Third comes the type checker which checks the semantics. This program ensures that all operations performed in the program is legal with regard to the source language.
+
+\item Fourth is the translation into the target language. Now that that the code is correct in both syntax and semantics and is all set up, it can be translated correctly.
+
+\item Also used in compiling is a symbol table. When identifiers are used in a program the symbol table keeps track of the related information. This table is accessible from the entire compiler.
+\end{itemize}
 
 More steps can be(and almost always is) used to enhance the compiling process such as an optimization phase to create a smoother output and intermediate code generation (IR) which further checks semantics.
