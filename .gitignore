@@ -11,3 +11,5 @@ report.pdf
 *.blg
 *.tdo
 *.lof
+*.fls
+*.fdb_latexmk
