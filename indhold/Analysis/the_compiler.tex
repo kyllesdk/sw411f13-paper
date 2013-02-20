@@ -1,14 +1,8 @@
-<<<<<<< HEAD
-\section{The compiler}
-A compiler is actually a set of programs with various purposes, ultimately compiling some language into another, with the most common task probably being compiling from some kind of high-level programming language into the lowest level code, machine code. This project is slightly different as the goal is to compile a high-level language to another high-level language - Namely from our invented language to Wiring, the language of the Arduino.
-\subsection{Structure of a compiler}
-Compiling is not as simple as just translating from one language to another. Several things need to happen before the written code is fully compiled.\cite{compiler:structure}\\
-=======
 \section{The general compiler}
 A compiler is a program which compiles one language into another. When writing a program to run on a PC, the programmer writes a program in a source language such as Java or C. The PC however only understand the language of binary, also called machine code. Binary is in this case the target language accomplished by translating the source language into the target language. Writing the program in binary code is however not optimal for the programmer as the alphabet of binary consisting of 0 and 1 is hard to keep track of. There are no abstractions as opposed to higher level (abstract) languages where for example sensible names for variables can be used for easier reading. Specific for this project the goal is to translate a high-level language to another high-level language - Namely from our language to Wiring. The task of translating a programming language to another can be done with a compiler which is basically a translator. The compiler frees the programmer of having to translate the program or write entirely in the target language. The compiler is therefore responsible for always producing a correct representation of source language in the target language.
+
 \subsection{The structure of a compiler}
 The task of compiling a source language into a target language is not a one step process. The compiler goes through several steps to produce the target language. Some steps are optional to the task of compiling one language into another.\cite{compiler:structure}\\
->>>>>>> 0433660... Redigeret hårdt og brutalt og tilføjet good stuff
 
 \begin{itemize}
 	\item The first step a compiler performs is the scanner which prepares the source code\todo{Morten: Syntax and semantics should be explained before this}. for further treatment. This is done by running through the entire program one character at a time. Although optional for most translations, it is common\todo{Morten: Need source} source code are always removed.  Every other part of the code is placed in groupings (int, float, ;, =, etc). Any user defined elements is furthermore put into a symbol tree which is accessible throughout the process of compilation. If the user for example defined POWER to always be the number 9001, this would be put into the symbol tree. The result is that whenever POWER is found in the code, it can be replaced with 9001. After the source program has been run through, the output from the scanner is passed on to the parser.
@@ -20,7 +14,7 @@ The task of compiling a source language into a target language is not a one step
 	\item The preparation of the source code is now complete and the translation into the target language can be performed correctly. This is done by a translator\todo{Morten: Will be elaborated on as the course progresses}. The output from the translator is the compiled product of the source code.
 \end{itemize}
 
-While this covers the direct compiling process, more optional steps can be used to enhance the compiling process for different purposes.
+While this covers the direct compiling process, more optional steps can be used to enhance the compiling process for different purposes.\\
 
 \begin{itemize}
 \item An optimizer can be used produce more effective code in the target language. While a piece of code can be optimal in the source language, the target language might have a more efficient formulation for describing the same action than the direct translation would produce. The optimizer locates code which can be optimized and replaces the code with the more efficient model.
