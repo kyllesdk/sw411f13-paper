@@ -1,0 +1,99 @@
+\begin{lstlisting}
+  // Declaration of Variables
+  int ledPins [] = { 2,3,4,5,6,7,8,9 };    // Array of 8 leds mounted in a circle
+  int ledVerde = 13;
+  int espera = 40;                 // Time you should wait for turning on the leds
+  int joyPin1 = 0;                 // slider variable connecetd to analog pin 0
+  int joyPin2 = 1;                 // slider variable connecetd to analog pin 1
+  int coordX = 0;                  // variable to read the value from the analog pin 0
+  int coordY = 0;                  // variable to read the value from the analog pin 1
+  int centerX = 500;               // we measured the value for the center of the joystick
+  int centerY = 500;
+  int actualZone = 0;
+  int previousZone = 0;
+  // Asignment of the pins
+  void setup()
+  {
+    int i;
+    beginSerial(9600);
+    pinMode (ledVerde, OUTPUT);
+    for (i=0; i< 8; i++)
+    {
+      pinMode(ledPins[i], OUTPUT);
+    } 
+  }
+  // function that calculates the slope of the line that passes through the points
+  // x1, y1 and x2, y2
+  int calculateSlope(int x1, int y1, int x2, int y2)
+  {
+    return ((y1-y2) / (x1-x2));
+  }
+  // function that calculates in which of the 8 possible zones is the coordinate x y, given the center cx, cy
+  int calculateZone (int x, int y, int cx, int cy)
+  {
+    int alpha = calculateSlope(x,y, cx,cy); // slope of the segment betweent the point and the center
+    if (x > cx)
+    {
+      if (y > cy) // first cuadrant
+      {
+        if (alpha > 1) // The slope is > 1, thus higher part of the first quadrant
+          return 0;
+        else
+          return 1;    // Otherwise the point is in the lower part of the first quadrant
+      }
+      else // second cuadrant
+      {
+        if (alpha > -1)
+          return 2;
+        else
+          return 3;
+      }
+    }
+    else
+    {
+      if (y < cy) // third cuadrant
+      {
+        if (alpha > 1)
+          return 4;
+        else
+          return 5;
+      }
+      else // fourth cuadrant
+      {
+        if (alpha > -1)
+          return 6;
+        else
+          return 7;
+      }
+    }
+  } 
+   void loop() {
+    digitalWrite(ledVerde, HIGH); // flag to know we entered the loop, you can erase this if you want
+    // reads the value of the variable resistors 
+    coordX = analogRead(joyPin1);   
+    coordY = analogRead(joyPin2);   
+    // We calculate in which x
+    actualZone = calculateZone(coordX, coordY, centerX, centerY); 
+    digitalWrite (ledPins[actualZone], HIGH);     
+    if (actualZone != previousZone)
+      digitalWrite (ledPins[previousZone], LOW);
+   // we print int the terminal, the cartesian value of the coordinate, and the zone where it belongs. 
+  //This is not necesary for a standalone version
+    serialWrite('C');
+    serialWrite(32); // print space
+    printInteger(coordX);
+    serialWrite(32); // print space
+    printInteger(coordY);
+    serialWrite(10);
+    serialWrite(13);
+    serialWrite('Z');
+    serialWrite(32); // print space
+    printInteger(actualZone);
+    serialWrite(10);
+    serialWrite(13);
+  // But this is necesary so, don't delete it!
+    previousZone = actualZone;
+   // delay (500);
+ }
+\end{lstlisting}
+\todo{insert the refsource http://arduino.cc/en/Tutorial/ControleLEDcircleWithJoystick}

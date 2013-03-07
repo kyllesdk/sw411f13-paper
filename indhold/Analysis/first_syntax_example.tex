@@ -1,0 +1,21 @@
+\section{The first syntax example}
+This is the first example based on the new language for Arduino looks like. The code written in the Arduino language can be seen in Appendix \todo{Put appendix ref here to first_syntax_example_original}, which, if they are compared, shows the difference between the new language and the original one.
+\begin{lstlisting}
+void setup() begin
+    lcd.begin(16,2);
+    
+end
+
+void loop() begin
+    lcd.setCursor(0,1);
+    lcd.print(millis()/1000);
+    
+    int i = 0;
+    while(i < 10) do
+        lcd.print("Hello World: " + i);
+        delay(1000);
+        clearLCD();
+        i = i+1;
+    end
+end
+\end{lstlisting}
