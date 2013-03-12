@@ -15,5 +15,22 @@ EXAMPLE: \\
 			| <var>
 \end{lstlisting}
 
+\textbf{IF-statement}
+\begin{lstlisting}
+<if_stmt> -> if(<expression>) then <statement> end
+				| if(<expr>) then <stmt> elseif <stmt> else <stmt> end
+				| if(<expr>) then <statement> else <statement> end
+\end{lstlisting}
+
+\textbf{While loop}
+\begin{lstlisting}
+<while_stmt> -> while (<expr>) do <stmt> end
+\end{lstlisting}
+
+\texfbf{Function}
+\begin{lstlisting}
+<function> -> function (<expr>) do <stmt> end
+\end{lstlisting}
+
 \subsection{Semantics}
 The semantics of a language is the description of what happens when a program is executed.
