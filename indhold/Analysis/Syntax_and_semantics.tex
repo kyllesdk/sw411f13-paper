@@ -1,36 +1,61 @@
-\section{Syntax and Semantics}
+\section{Syntax and Semantics}\label{analysis:syntax-and-semantics}
 In this section a small description of the meaning of syntax and semantics are described.
 
 \subsection{Syntax}
 When describing a programming language the syntax of the language is the set of rules which define the character combinations allowed when writing a program in that language. To define the syntax of a language regular expressions are being used, which specifies what strings are recognized in the language. The syntax of the language is also described via Backus-Naur Form, short BNF, that describes the context free grammar of the language with nonterminal and terminal symbols.
 EXAMPLE: \\
 \begin{lstlisting}
-<program> -> begin <stmt_list> end
-<stmt_list> -> <stmt>
-			| <stmt> ; <stmt_list>
-<stmt> -> <var> = <expression>
-<var> -> A | B | C
-<expression> -> <var> + <var>
-			| <var> - <var>
-			| <var>
+<program> -> begin <statement_list> end
+<statement_list> -> <statement>
+			| <statement> ; <statement_list>
+<statement> -> <variable> = <expression>
+<variable> -> A | B | C
+<expression> -> <variable> + <variable>
+			| <variable> - <variable>
+			| <variable>
 \end{lstlisting}
 
-\textbf{IF-statement}
-\begin{lstlisting}
-<if_stmt> -> if(<expression>) then <statement> end
-				| if(<expr>) then <stmt> elseif <stmt> else <stmt> end
-				| if(<expr>) then <statement> else <statement> end
+In this report an extended version of BNF, also called EBNF(Extended Backus-Naur Form), is used. EBNF is used because it can be used to describe the same set of rules, but in fewer lines. EBNF  do not enhance the descriptive power of BNF, it only increases the readability and writability.
+
+\subsubsection*{Program}
+\begin{lstlisting}[captionpos=b, caption{EBNF of how a program needs to be structured.}]
+<program> -> void setup() begin <statement_list> end void loop() begin <statement_list> end
+<statement_list> -> (<statement> | <statement> ; <statement_list>
 \end{lstlisting}
 
-\textbf{While loop}
-\begin{lstlisting}
-<while_stmt> -> while (<expr>) do <stmt> end
+\subsubsection*{IF-statement}
+The following EBNF describes how IF-statements can be used in the source language. It describes that the if-statement can be used in one of the three different ways:
+\begin{itemize}
+	\item if(EXPRESSION) then STATEMENT end
+	\item if(EXPRESSION) then STATEMENT elseif STATEMENT else STATEMENT end. The elseif statement can be used an infinite amount of times.
+	\item If(EXPRESSION) then STATEMENT else STATEMENT end
+\end{itemize}
+\begin{lstlisting}[captionpos=b, caption={EBNF of the IF-statement in the source language}]
+<if_statement> -> if(<expression>) then <statement> [{elseif <statement>} else <statement> | else <statement>] end
 \end{lstlisting}
 
-\texfbf{Function}
-\begin{lstlisting}
-<function> -> function (<expr>) do <stmt> end
+
+\subsubsection*{While loop}
+The following EBNF describes how the while loop is allowed to be used in the source language. Note that only a while loop is described, because no other loops than the while loop is a part of the source language.
+\begin{lstlisting}[captionpos=b, caption={EBNF of a while loop.}]
+<while_stmt> -> while (<expression>) do <statement> end
 \end{lstlisting}
+
+\subsubsection*{Function}
+\begin{lstlisting}[captionpos=b, caption={EBNF of a function.}]
+<function> -> function (<expression>) do <statement> end
+\end{lstlisting}
+
+\subsubsection*{Assign}
+\begin{lstlisting}[captionpos=b, caption{EBNF of how assignment work.}]
+<assign> -> <variable> = <expression>;
+\end{lstlisting}
+
+\subsubsection*{Variables}[captionpos=b, caption{EBNF of how a variable can be declared.}]
+<variable> -> (<expression> | $\lambda$);
+
+\subsubsection*{Expression}
+<expression> -> <variable> (+ | - | *) <variable>;
 
 \subsection{Semantics}
 The semantics of a language is the description of what happens when a program is executed.
