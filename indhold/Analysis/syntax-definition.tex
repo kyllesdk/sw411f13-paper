@@ -1,0 +1,19 @@
+\section{Syntax definition}\label{sec::anlysis::syntax-definition}
+\begin{lstlisting}[mathescape]
+x - var
+S - statements
+a - expressions
+B - booleans
+n - numerals
+$S_b$ - Subexpression
+str - string
+
+S ::= ``x = a'' | if B then S end $S_b$ | while B do S end
+B ::= ``$a_1 == a_2$'' | ``$a_1 > a_2$'' | ``$a_1 > a_2$'' | ``$a_1 <= a_2$'' | ``$a_1 >= a_2$'' | ``$a_1 != a_2$'' | !B | B && B | B || B
+a ::= n | x | $a_1 + a_2$ | $a_1 - a_2$ | $a_1 * a_2$ | $a_1 / a_2$ | sqrt(a) | $a_1$^$a_2$ | $a_1$ \% $a_2$ | (a)
+
+$S_b$ ::= $\lambda$ | elseif S end $S_b$ | else S end
+\end{lstlisting}
+
+
+
