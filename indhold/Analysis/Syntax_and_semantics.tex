@@ -67,9 +67,13 @@ The semantics of a language is the description of what happens when a program is
 \begin{table}[h]
 	\begin{tabular}{|l|l|l|}
 		\hline
-		\emph{Name}			& \emph{Semantics}													& \emph{Notes} \\ \hline
-		$[NUM_{BSS}]$		& $S \vdash n \rightarrow_{a}  if \mathcal{N}[\underline{n}] = v$	& ~ \\
-			~  				&		~										   					& ~ \\ 
+		\emph{Name}			& \emph{Rule}																												& \emph{Notes} \\ \hline
+		$[PLUS_{BSS}]$		& $s \vdash a_{1} \rightarrow_{a} v_{1}  s \vdash a_{2} \rightarrow_{a} v_{2} \over s \vdash a_{1}+a_{2} \rightarrow_{a} v$ & $where v = v_{1}+v_{2}$ \\
+		$[MINUS_{BSS}]$		& $s \vdash a_{1} \rightarrow_{a} v_{1}  s \vdash a_{2} \rightarrow_{a} v_{2} \over s \vdash a_{1}-a_{2} \rightarrow_{a} v$ & $where v = v_{1}-v_{2}$ \\
+		$[MULT_{BSS}]$		& $s \vdash a_{1} \rightarrow_{a} v_{1}  s \vdash a_{2} \rightarrow_{a} v_{2} \over s \vdash a_{1}*a_{2} \rightarrow_{a} v$ & $where v = v_{1}*v_{2}$ \\
+		$[PARENT_{BSS}]$	& $s \vdash a_{1} \rightarrow_{a} v_{1} \over s \vdash (a_{1}) \rightarrow_{a} v_{1}$										& ~ \\
+		$[NUM_{BSS}]$		& $s \vdash n \rightarrow_{a} v  if  \mathcal{N}\llbracket n \rrbracket = v$												& ~ \\
+		$[VAR_{BSS}]$		& $s \vdash x \rightarrow_{a} v  if  sx = v$														   						& ~ \\ 
 		\hline
 	\end{tabular}
 \end{table}
