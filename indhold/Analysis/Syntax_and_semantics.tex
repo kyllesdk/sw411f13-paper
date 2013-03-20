@@ -17,13 +17,13 @@ EXAMPLE: \\
 
 In this report an extended version of BNF, also called EBNF(Extended Backus-Naur Form), is used. EBNF is used because it can be used to describe the same set of rules, but in fewer lines. EBNF  do not enhance the descriptive power of BNF, it only increases the readability and writability.
 
-\subsection*{Program}
+\subsection{Program}
 \begin{lstlisting}[captionpos=b, caption{EBNF of how a program needs to be structured.}]
 <program> -> void setup() begin <statement_list> end void loop() begin <statement_list> end
 <statement_list> -> (<statement> | <statement> ; <statement_list>
 \end{lstlisting}
 
-\subsection*{IF-statement}
+\subsection{IF-statement}
 The following EBNF describes how IF-statements can be used in the source language. It describes that the if-statement can be used in one of the three different ways:
 \begin{itemize}
 	\item if(EXPRESSION) then STATEMENT end
@@ -35,27 +35,31 @@ The following EBNF describes how IF-statements can be used in the source languag
 \end{lstlisting}
 
 
-\subsection*{While loop}
+\subsection{While loop}
 The following EBNF describes how the while loop is allowed to be used in the source language. Note that only a while loop is described, because no other loops than the while loop is a part of the source language.
 \begin{lstlisting}[captionpos=b, caption={EBNF of a while loop.}]
 <while_stmt> -> while (<expression>) do <statement> end
 \end{lstlisting}
 
-\subsection*{Function}
+\subsection{Function}
 \begin{lstlisting}[captionpos=b, caption={EBNF of a function.}]
 <function> -> function (<expression>) do <statement> end
 \end{lstlisting}
 
-\subsection*{Assign}
+\subsection{Assign}
 \begin{lstlisting}[captionpos=b, caption{EBNF of how assignment work.}]
 <assign> -> <variable> = <expression>;
 \end{lstlisting}
 
-\subsection*{Variables}[captionpos=b, caption{EBNF of how a variable can be declared.}]
+\subsection{Variables}
+\begin{lstlisting}[captionpos=b, caption{EBNF of how a variable can be declared.}]
 <variable> -> (<expression> | $\lambda$);
+\end{lstlisting}
 
-\subsection*{Expression}
+\subsection{Expression}
+\begin{lstlisting}[captionpos=b, caption{EBNF of expressions.}]
 <expression> -> <variable> (+ | - | *) <variable>;
+\end{lstlisting}
 
 \section{Semantics}
 The semantics of a language is the description of what happens when a program is executed.
