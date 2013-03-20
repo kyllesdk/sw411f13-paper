@@ -1,23 +1,51 @@
-\section{Syntax definition}\label{sec::anlysis::syntax-definition}
-\begin{lstlisting}[mathescape, captionpos=b, caption={Syntax formation rules}]
+\section{Syntax definition}\label{sec:anlysis:syntax-definition}
+\begin{lstlisting}[mathescape, captionpos=b, caption={Syntax formation rules}, label={lst:syntax-formation}]
 $n$ $\in$ Num - Numerals
 $x$ $\in$ Var - Variables
 $a$ $\in$ Aexp - Arithmetic expressions
 $b$ $\in$ Bexp - Boolean expressions
 $S$ $\in$ Stm - Statements
 $DV \in$ DecV - Variable declarations
-$S_b$ $\in$ Subexpression
+$S_b$ $\in$ Substatement
 
 $a$ ::= $n$ | $x$ | $a_1 + a_2$ | $a_1 - a_2$ | $a_1 * a_2$ | $a_1 / a_2$ | sqrt($a$) | $a_1$^$a_2$ | $a_1$ % $a_2$ | ($a$)
 
-$b$ ::= "$a_1 == a_2$" | "$a_1 > a_2$" | "$a_1 > a_2$" | "$a_1 <= a_2$" | "$a_1 >= a_2$" | "$a_1 != a_2$" | !$b$ | $b$ && $b$ | $b$ || $b$
+$b$ ::= "$a_1 == a_2$" | "$a_1 > a_2$" | "$a_1 > a_2$" | "$a_1 <= a_2$" | "$a_1 >= a_2$" | "$a_1  != a_2$" | !$b$ | $b$ && $b$ | $b$ || $b$
 
-$S$ ::= "$x$ = $a$;" | if $b$ then $S$ end $S_b$ | while $b$ do $S$ end
+$S$ ::= "$x$ = $a$;" | if $b$ do $S$ end $S_b$ | while $b$ do $S$ end
 
-$S_b$ ::= {elseif $S$ then $S_b$ end} | else $S$ end | $\lambda$
+$S_b$ ::= {elseif $b$ do $S_b$ end} | else do $S$ end | $\lambda$
 
 $Dv$ ::= $x$ = $a$; Dv | $\lambda$
 \end{lstlisting}
 
+\subsection{Numerals}
+
+\subsection{Variables}
+%Variables has not been specified in the syntax formation rules, listing \ref{lst:syntax-formaton}, because variables is considered to be everything that is not specified in the rules above.
+
+\subsubsection{Variable declarations}
+%Though variables has not specified in the rules the rule for declaration of a variable has been specified.
+
+\subsection{Arithmetic expressions}
+The rules listed in listing \ref{lst:syntax-formation} states that arithmetic expressions in the source language can consist of the following operations:
+\begin{itemize}
+	\item X - Variable
+	\item N - Numeral
+	\item Plus (+) - Addition between two numbers.
+	\item Minus (-) - Subtraction between two numbers.
+	\item Multiply (*) - Multiplication between two numbers.
+	\item Division (/) - Division between two numbers.
+	\item Square root ($\sqrt{x}$) - Finds the square root of a number.
+	\item Power (${a_1}^{a_2}$) - Allows a number to be powered by another number.
+	\item Modulus (\%) - Allows modulus to be used, which gives the opportunity to find the reminder between two numbers.
+	\item Parenthesis ((a)) - Specifies that an expression can be surrounded by parenthesis.
+\end{itemize}
+
+\subsection{Boolean expressions}
+
+\subsection{Statements}
+
+\subsubsection{Substatements}
 
 
