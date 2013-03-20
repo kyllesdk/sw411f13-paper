@@ -1,18 +1,22 @@
 \section{Syntax definition}\label{sec::anlysis::syntax-definition}
-\begin{lstlisting}[mathescape]
-x - var
-S - statements
-a - expressions
-B - booleans
-n - numerals
-$S_b$ - Subexpression
-str - string
+\begin{lstlisting}[mathescape, captionpos=b, caption={Syntax formation rules}]
+$n$ $\in$ Num - Numerals
+$x$ $\in$ Var - Variables
+$a$ $\in$ Aexp - Arithmetic expressions
+$b$ $\in$ Bexp - Boolean expressions
+$S$ $\in$ Stm - Statements
+$DV \in$ DecV - Variable declarations
+$S_b$ $\in$ Subexpression
 
-S ::= ``x = a'' | if B then S end $S_b$ | while B do S end
-B ::= ``$a_1 == a_2$'' | ``$a_1 > a_2$'' | ``$a_1 > a_2$'' | ``$a_1 <= a_2$'' | ``$a_1 >= a_2$'' | ``$a_1 != a_2$'' | !B | B && B | B || B
-a ::= n | x | $a_1 + a_2$ | $a_1 - a_2$ | $a_1 * a_2$ | $a_1 / a_2$ | sqrt(a) | $a_1$^$a_2$ | $a_1$ \% $a_2$ | (a)
+$a$ ::= $n$ | $x$ | $a_1 + a_2$ | $a_1 - a_2$ | $a_1 * a_2$ | $a_1 / a_2$ | sqrt($a$) | $a_1$^$a_2$ | $a_1$ % $a_2$ | ($a$)
 
-$S_b$ ::= $\lambda$ | elseif S end $S_b$ | else S end
+$b$ ::= "$a_1 == a_2$" | "$a_1 > a_2$" | "$a_1 > a_2$" | "$a_1 <= a_2$" | "$a_1 >= a_2$" | "$a_1 != a_2$" | !$b$ | $b$ && $b$ | $b$ || $b$
+
+$S$ ::= "$x$ = $a$;" | if $b$ then $S$ end $S_b$ | while $b$ do $S$ end
+
+$S_b$ ::= {elseif $S$ then $S_b$ end} | else $S$ end | $\lambda$
+
+$Dv$ ::= $x$ = $a$; Dv | $\lambda$
 \end{lstlisting}
 
 
