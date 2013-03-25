@@ -64,6 +64,17 @@ The following EBNF describes how the while loop is allowed to be used in the sou
 \section{Semantics}
 The semantics of a language is the description of what happens when a program is executed.
 
+Greater than 1 and 2 \\
+and 1 and 2 \\
+Parent \\
+\\
+Ass\\
+Skip\\
+Comp\\
+If true and false \\
+While true and false \\
+
+
 \begin{table}[h]
 	\begin{tabular}{|l|l|l|}
 	\hline
@@ -89,6 +100,26 @@ The semantics of a language is the description of what happens when a program is
 			~			&															~																			& ~ \\
 	$[VAR_{BSS}]$		& $s \vdash x \rightarrow_{a} v$  if  $sx = v$														   									& ~ \\
 	
-		\hline
+	\hline
 	\end{tabular}
+	\label{tab:semantics_aritmethic}
+	\caption{The semantics of arithmetic operations}
+\end{table}
+
+\begin{table}[h]
+	\begin{tabular}{|l|l|l|}
+	\hline
+	\emph{Name}			& \emph{Rule}																															& \emph{Notes} \\ \hline
+			~			&															~																			& ~ \\
+	$[NOT1_{BSS}]$		& $s \vdash B_{1} \rightarrow_{b} tt \over s \vdash not B_{1} \rightarrow_{b} ff$														& ~ \\
+			~			&															~																			& ~ \\
+	$[NOT2_{BSS}]$		& $s \vdash B_{1} \rightarrow_{b} ff \over s \vdash not B_{1} \rightarrow_{b} tt$														& ~ \\
+			~			&															~																			& ~ \\
+	$[EQUAL_{BSS}]$		& $s \vdash a_{1} \rightarrow_{a} v_{1}  s \vdash a_{2} \rightarrow_{a} v_{2} \over s \vdash a_{1} equals a_{2} \rightarrow_{b} tt$		& ~ \\
+			~			&															~																			& ~ \\
+	$[EQUAL2_{BSS}]$	& $s \vdash a_{1} \rightarrow_{a} v_{1}  s \vdash a_{2} \rightarrow_{a} v_{2} \over s \vdash a_{1} equals a_{2} \rightarrow_{b} ff$		& ~ \\
+	\hline
+	\end{tabular}
+	\label{tab:semantics_boolean}
+	\caption{The semantics of boolean operations}
 \end{table}
