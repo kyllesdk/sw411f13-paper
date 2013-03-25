@@ -64,17 +64,6 @@ The following EBNF describes how the while loop is allowed to be used in the sou
 \section{Semantics}
 The semantics of a language is the description of what happens when a program is executed.
 
-Greater than 1 and 2 \\
-and 1 and 2 \\
-Parent \\
-\\
-Ass\\
-Skip\\
-Comp\\
-If true and false \\
-While true and false \\
-
-
 \begin{table}[h]
 	\begin{tabular}{|l|l|l|}
 	\hline
@@ -99,7 +88,7 @@ While true and false \\
 	$[NUM_{BSS}]$		& $s \vdash n \rightarrow_{a} v$  if  $\mathcal{N}\llbracket n \rrbracket = v$															& ~ \\
 			~			&															~																			& ~ \\
 	$[VAR_{BSS}]$		& $s \vdash x \rightarrow_{a} v$  if  $sx = v$														   									& ~ \\
-	
+			~			&															~																			& ~ \\
 	\hline
 	\end{tabular}
 	\label{tab:semantics_aritmethic}
@@ -111,15 +100,50 @@ While true and false \\
 	\hline
 	\emph{Name}			& \emph{Rule}																															& \emph{Notes} \\ \hline
 			~			&															~																			& ~ \\
-	$[NOT1_{BSS}]$		& $s \vdash B_{1} \rightarrow_{b} tt \over s \vdash not B_{1} \rightarrow_{b} ff$														& ~ \\
+	$[NOT1_{BSS}]$		& $s \vdash b_{1} \rightarrow_{b} tt \over s \vdash not b_{1} \rightarrow_{b} ff$														& ~ \\
 			~			&															~																			& ~ \\
-	$[NOT2_{BSS}]$		& $s \vdash B_{1} \rightarrow_{b} ff \over s \vdash not B_{1} \rightarrow_{b} tt$														& ~ \\
+	$[NOT2_{BSS}]$		& $s \vdash b_{1} \rightarrow_{b} ff \over s \vdash not b_{1} \rightarrow_{b} tt$														& ~ \\
 			~			&															~																			& ~ \\
-	$[EQUAL_{BSS}]$		& $s \vdash a_{1} \rightarrow_{a} v_{1}  s \vdash a_{2} \rightarrow_{a} v_{2} \over s \vdash a_{1} equals a_{2} \rightarrow_{b} tt$		& ~ \\
+	$[EQUAL1_{BSS}]$	& $s \vdash a_{1} \rightarrow_{a} v_{1}  s \vdash a_{2} \rightarrow_{a} v_{2} \over s \vdash a_{1} equals a_{2} \rightarrow_{b} tt$		& if $v_{1} equals v_{2}$ \\
 			~			&															~																			& ~ \\
-	$[EQUAL2_{BSS}]$	& $s \vdash a_{1} \rightarrow_{a} v_{1}  s \vdash a_{2} \rightarrow_{a} v_{2} \over s \vdash a_{1} equals a_{2} \rightarrow_{b} ff$		& ~ \\
+	$[EQUAL2_{BSS}]$	& $s \vdash a_{1} \rightarrow_{a} v_{1}  s \vdash a_{2} \rightarrow_{a} v_{2} \over s \vdash a_{1} equals a_{2} \rightarrow_{b} ff$		& if $v_{1} \ne v_{2}$ \\
+			~			&															~																			& ~ \\
+	$[GREATER1_{BSS}]$	& $s \vdash a_{1} \rightarrow_{a} v_{1}  s \vdash a_{2} \rightarrow_{a} v_{2} \over s \vdash a_{1} < a_{2} \rightarrow_{b} tt$			& if $v_{1} < v_{2}$ \\
+			~			&															~																			& ~ \\
+	$[GREATER2_{BSS}]$	& $s \vdash a_{1} \rightarrow_{a} v_{1}  s \vdash a_{2} \rightarrow_{a} v_{2} \over s \vdash a_{1} < a_{2} \rightarrow_{b} ff$			& if $v_{1} \not< v_{2}$ \\
+			~			&															~																			& ~ \\
+	$[PARENT_{BSS}]$	& $s \vdash b_{1} \rightarrow_{b} v_{1} \over s \vdash (b_{1}) \rightarrow_{b} v_{1}$													& ~ \\
+			~			&															~																			& ~ \\
+	$[AND1_{BSS}]$		& $s \vdash b_{1} \rightarrow_{b} tt  s \vdash b_{2} \rightarrow_{b} tt \over s \vdash b_{1} \wedge b_{2} \rightarrow_{b} tt$			& ~ \\
+			~			&															~																			& ~ \\
+	$[AND2_{BSS}]$		& $s \vdash b_{i} \rightarrow_{b} ff \over s \vdash b_{1} \wedge b_{2} \rightarrow_{b} ff$												& where $i \in \{1,2\}$ \\
+			~			&															~																			& ~ \\
 	\hline
 	\end{tabular}
 	\label{tab:semantics_boolean}
 	\caption{The semantics of boolean operations}
+\end{table}
+
+\begin{table}[h]
+	\begin{tabular}{|l|l|l|}
+	\hline
+	\emph{Name}			& \emph{Rule}																															& \emph{Notes} \\ \hline
+			~			&															~																			& ~ \\
+	$[ASS_{BSS}]$		& $\langle x := a,s \rangle \rightarrow s[x \mapsto v]$																					& where $s \vdash a \rightarrow_{a} v$ \\
+			~			&															~																			& ~ \\
+	$[SKIP_{BSS}]$		& $\langle skip, s \rangle \rightarrow s$																								& ~ \\
+			~			&															~																			& ~ \\
+	$[COMP_{BSS}]$		& $\langle S_{1},s \rangle \rightarrow s''  \langle S_{1},s'' \rangle \rightarrow s'  \over \langle S_{1};S_{2},s \rangle \rightarrow s'$	& ~ \\
+			~			&															~																			& ~ \\
+	$[IFTRUE_{BSS}]$	& $\langle S_{1},s \rangle \rightarrow s' \over \langle if b then S_{1} else S_{2},s \rangle \rightarrow s'	$							& if $s \vdash b \rightarrow_{b} tt$\\
+			~			&															~																			& ~ \\
+	$[IFFALSE_{BSS}]$	& $\langle S_{2},s \rangle \rightarrow s' \over \langle if b then S_{1} else S_{2},s \rangle \rightarrow s'	$							& if $s \vdash b \rightarrow_{b} ff$\\
+			~			&															~																			& ~ \\
+	$[WHILETRUE_{BSS}]$	& $\langle S,s \rangle \rightarrow s'' \langle while b do S,s'' \rangle \rightarrow s' \over \langle while b do S,s \rangle \rightarrow s'	$ & if $s \vdash b \rightarrow_{b} tt$\\
+			~			&															~																			& ~ \\
+	$[WHILEFALSE_{BSS}]$& $\langle while b do S,s \rangle \rightarrow s if s \vdash b \rightarrow_{b} ff $														& ~ \\
+	\hline
+	\end{tabular}
+	\label{tab:semantics_statements}
+	\caption{The semantics of statements}
 \end{table}
