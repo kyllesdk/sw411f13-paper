@@ -22,10 +22,10 @@ $Dv$ ::= $x$ = $a$; Dv | $\lambda$
 \subsection{Numerals}
 
 \subsection{Variables}
-%Variables has not been specified in the syntax formation rules, listing \ref{lst:syntax-formaton}, because variables is considered to be everything that is not specified in the rules above.
+Variables has not been specified in the syntax definition, because it supports a very broad variaty of things. A variable in the language can consist of text, expressions, boolean expression, numerals etc. Therefore the variable have not been specified simply because it can be so many things.
 
-\subsubsection{Variable declarations}
-%Though variables has not specified in the rules the rule for declaration of a variable has been specified.
+\subsubsection{Variable declarations}\label{sec:analysis:syntax-definition:variable-declaration}
+Though variables has not specified in the syntax definition, the rule for declaration of a variable has been specified. The rule states that a variable has to be a variable on the left side and then the assignment character(=) which makes the right side assigned to the left side. The ``;'' character closes the variable declaration.
 
 \subsection{Arithmetic expressions}
 The source language features arithmetic expressions. The transition rules for the expressions can be read in table \ref{tab:semantics_aritmethic}.
@@ -58,6 +58,14 @@ The source language supports boolean expressions, which is expressions that eval
 	\item Parenthesis (($b$)) - Allows the boolean expressions to be insulated in parenthesis. The parenthesis will then evaluate to \textit{true} or \textit{false}.
 \end{itemize}
 \subsection{Statements}
+
+$S$ ::= "$x$ = $a$;" | if $b$ do $S$ end $S_b$ | while $b$ do $S$ end
+
+\begin{itemize}
+	\item Variable declaration - A statement can consist of a variable declaration, section \ref{sec:analysis:syntax-definition:variable-declaration}.
+	\item If-statement - A statement can consist of a if-statement which is a condition. The statement is given a boolean expression and then it evaluates the boolean expression. If the boolean expression evaluates to true the program goes into the if-statement where it can call another statement or declare a variable etc. If the condition evalutates to false then the program checks if the if-statement has and ``elseif'' or and ``else'' statement and then evaluates that.
+	\item While loop - The while loop takes a boolean expression as parameter. As long the boolean expression evaluates to true the code inside the loop is looping. When the boolean expression evaluates to false the loop stop.
+\end{itemize}
 
 \subsubsection{Substatements}
 
