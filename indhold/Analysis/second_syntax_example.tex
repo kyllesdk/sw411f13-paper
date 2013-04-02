@@ -35,38 +35,38 @@ This is the second example of how the new language looks like. Just like in the 
     int calculateZone (int x, int y, int cx, int cy) begin
   
     int alpha = calculateSlope(x,y, cx,cy);     // slope of the segment betweent the point and the center
-    if (x > cx) then
-        if (y > cy)                             // first quadrant then
-            if (alpha > 1) then                 // The slope is > 1, thus higher part of the first quadrant
+    if (x > cx) do
+        if (y > cy) do                          // first quadrant 
+            if (alpha > 1) do                   // The slope is > 1, thus higher part of the first quadrant
                 return 0;
             end
-            else then
+            else do
                 return 1;                       // Otherwise the point is in the lower part of the first quadrant
             end
         end
-        else then // second quadrant
-            if (alpha > -1) then
+        else do									// second quadrant
+            if (alpha > -1) do
                 return 2;
             end
-            else then
+            else do
                 return 3;
             end
         end
     end
-    else then
-        if (y < cy) then                        // third quadrant
-            if (alpha > 1) then
+    else do
+        if (y < cy) do                         // third quadrant
+            if (alpha > 1) do
                 return 4;
             end
-            else then
+            else do
                 return 5;
             end
         end
-        else then                               // fourth quadrant
-            if (alpha > -1) then
+        else do                               // fourth quadrant
+            if (alpha > -1) do
                 return 6;
             end
-            else then
+            else do
                 return 7;
             end
         end
@@ -80,7 +80,7 @@ This is the second example of how the new language looks like. Just like in the 
                                                 // We calculate in which x
         actualZone = calculateZone(coordX, coordY, centerX, centerY); 
         digitalWrite (ledPins[actualZone], HIGH);     
-        if (actualZone != previousZone) then
+        if (actualZone != previousZone) do
             digitalWrite (ledPins[previousZone], LOW);
         end
                                                 // we print int the terminal, the cartesian value of the coordinate, and the zone where it belongs. 
