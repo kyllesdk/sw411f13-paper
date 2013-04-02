@@ -1,4 +1,5 @@
 \section{Syntax definition}\label{sec:anlysis:syntax-definition}
+\todo{Intro goes here}
 \begin{lstlisting}[mathescape, captionpos=b, caption={Syntax formation rules}, label={lst:syntax-formation}]
 $n$ $\in$ Num - Numerals
 $x$ $\in$ Var - Variables
@@ -10,7 +11,7 @@ $S_b$ $\in$ Substatement
 
 $a$ ::= $n$ | $x$ | $a_1 + a_2$ | $a_1 - a_2$ | $a_1 * a_2$ | $a_1 / a_2$ | sqrt($a$) | $a_1$^$a_2$ | $a_1$ % $a_2$ | ($a$)
 
-$b$ ::= "$a_1$ EQUALS $a_2$" | "$a_1 > a_2$" | "$a_1 < a_2$" | "$a_1 <= a_2$" | "$a_1 >= a_2$" | "$a_1$ !EQUALS $a_2$" | !$b$ | $b$ AND $b$ | $b$ OR $b$ | ($b$)
+$b$ ::= "$a_1$ EQUALS $a_2$" | "$a_1 > a_2$" | "$a_1 < a_2$" | "$a_1 <= a_2$" | "$a_1 >= a_2$" | "$a_1$ NOTEQUALS $a_2$" | NOT$b$ | $b$ AND $b$ | $b$ OR $b$ | ($b$)
 
 $S$ ::= "$x$ = $a$;" | if $b$ do $S$ end $S_b$ | while $b$ do $S$ end
 
@@ -20,7 +21,7 @@ $Dv$ ::= $x$ = $a$; Dv | $\lambda$
 \end{lstlisting}
 
 \subsection{Numerals}
-
+\todo{Description of numerals is needed.}
 \subsection{Variables}
 Variables has not been specified in the syntax definition, because it supports a very broad variaty of things. A variable in the language can consist of text, expressions, boolean expression, numerals etc. Therefore the variable have not been specified simply because it can be so many things.
 
@@ -51,8 +52,8 @@ The source language supports boolean expressions, which is expressions that eval
 	\item Less than ($a_1 < a_2$) - ``$<$'' checks if one value is lesser than another value. If $a_1$ is less than $a_2$ it evaluates to \textit{true}, else \textit{false}.
 	\item Greater than or equal to ($a_1 >= a_2$) - 
 	\item Less than or equal to ($a_1 <= a_2$) - 
-	\item Different from ($a_1$ !EQUALS $a_2$) - 
-	\item Not (!$b$) -
+	\item Different from ($a_1$ NOTEQUALS $a_2$) - 
+	\item Not (NOT$b$) -
 	\item And ($b$ AND $b$) -
 	\item Or ($b$ OR $b$) -
 	\item Parenthesis (($b$)) - Allows the boolean expressions to be insulated in parenthesis. The parenthesis will then evaluate to \textit{true} or \textit{false}.
