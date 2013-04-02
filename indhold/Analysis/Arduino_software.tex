@@ -11,8 +11,8 @@ On the board there is an LED diode which is connected to the digital pin 13. Whe
 
 Arduino board gain extra features through shields. Shields is a ``board'', or rather an expansion board, which is plugged onto the Arduino board. This provides Arduino boards with the possibilities to control extra components for example motors, sensors and LCD displays.
 
-\section{The language}
-The language is based on Wiring and therefore there are a lot of similarities between the two languages, but the Arduino team have added to, improved the functions, and made it compatible with a wider range of chips. Also, both languages are implemented as a  version of C/C++, and are using an IDE based on the processing IDE \cite{Wiring:thesis}\cite{Arduino:IDE}.\\
+\section{The Arduino language}
+The Arduino language is based on Wiring and therefore there are a lot of similarities between the two languages, but the Arduino team have added to, improved the functions, and made it compatible with a wider range of chips. Also, both languages are implemented as a  version of C/C++, and are using an IDE based on the processing IDE \cite{Wiring:thesis}\cite{Arduino:IDE}.\\
 
 \begin{table}[H]
 \centering
@@ -53,5 +53,5 @@ void loop() {
 \label{tabel:comparison}
 \end{table}
 
-As can be seen from table \ref{tabel:comparison}, the syntax of the two languages are the same, and it is only in the functions implemented, that there are any noticeable difference.\\ 
+As can be seen from table \ref{tabel:comparison}, the syntax of the two languages are almost identical, and it is only in the functions parameters, that there are any noticeable difference.\\ 
 To help facilitate the compatibility with a wide range of AVR chips, the Arduino language makes great use of AVR Libc \cite{AVR:lib}, which is an open source C library that supplies the necessary functionality to make it possible to use the Atmel AVR micro controllers.
