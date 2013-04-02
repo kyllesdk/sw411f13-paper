@@ -1,0 +1,16 @@
+\section{JavaCC - Java Compiler Compiler}
+
+The parser is the part of the compiler that checks if the syntax of the source language is correct. When writing a compiler a parser program has to be made. The parser can be programmed manually or generated automatically using a tool, such as JavaCC. What this tool does is read the grammar specification and convert it to a Java program that can recognize matches to the grammar. \todo{insert ref javacc.java.net} JavaCC is based on LL(k) grammars, and transforms an EBNF grammar into an LL(k) parser.
+The process of a parser program:
+\begin{itemize}
+\item Input a set of token definitions, grammar and actions
+\item Outputs a Java program which performs lexical analysis
+	\begin{itemize}
+	\item Finding tokens
+	\item Parses the tokens according to the grammar
+	\item Executes actions
+	\end{itemize}
+\end{itemize}
+
+EXAMPLE: \\
+Using the source language grammar, a program has to parse the input " ". JavaCC generates a top-down parse tree, which means starting at the root of the tree. \todo{make this example}
