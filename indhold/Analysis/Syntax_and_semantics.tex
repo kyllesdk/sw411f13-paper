@@ -1,11 +1,11 @@
 \chapter{Syntax and Semantics}\label{analysis:syntax-and-semantics}
 In this section a small description of the meaning of syntax and semantics are described.
 
-\section{Extended Backus-Naur Formulation}
+\section{Syntax}
 When describing a programming language the syntax of the language is the set of rules which define the character combinations allowed when writing a program in that language. To define the syntax of a language regular expressions are being used, which specifies what strings are recognized in the language. The syntax of the language is also described via Backus-Naur Form, short BNF, that describes the context free grammar of the language with non-terminal and terminal symbols.
 EXAMPLE: \\
 \begin{lstlisting}
-<program> -> void setup() begin <statement_list> end void loop() begin <statement_list> end
+<program> -> begin <statement_list> end
 <statement_list> -> <statement>
 			| <statement> ; <statement_list>
 <statement> -> <variable> = <expression>
@@ -26,45 +26,45 @@ In this report an extended version of BNF, also called EBNF(Extended Backus-Naur
 \subsection{IF-statement}
 The following EBNF describes how IF-statements can be used in the source language. It describes that the if-statement can be used in one of the three different ways:
 \begin{itemize}
-	\item if(BOOLEAN) do STATEMENT end
-	\item if(BOOLEAN) do STATEMENT end elseif(BOOLEAN) do STATEMENT end else do STATEMENT end. The elseif statement can be used an infinite amount of times.
-	\item If(BOOLEAN) do STATEMENT end else do STATEMENT end
+	\item if(EXPRESSION) then STATEMENT end
+	\item if(EXPRESSION) then STATEMENT elseif STATEMENT else STATEMENT end. The elseif statement can be used an infinite amount of times.
+	\item If(EXPRESSION) then STATEMENT else STATEMENT end
 \end{itemize}
 \begin{lstlisting}[captionpos=b, caption={EBNF of the IF-statement in the source language}]
-<if_statement> -> if(<expression>) do <statement> [{elseif <statement>} else <statement> | else <statement>] end
+<if_statement> -> if(<expression>) then <statement> [{elseif <statement>} else <statement> | else <statement>] end
 \end{lstlisting}
 
 
 \subsection{While loop}
 The following EBNF describes how the while loop is allowed to be used in the source language. Note that only a while loop is described, because no other loops than the while loop is a part of the source language.
-\begin{lstlisting}[captionpos=b, caption={EBNF of a while loop.}]
+\begin{lstlisting}[mathescape, captionpos=b, caption={EBNF of a while loop.}]
 <while_stmt> -> while (<expression>) do <statement> end
 \end{lstlisting}
 
 \subsection{Function}
-\begin{lstlisting}[captionpos=b, caption={EBNF of a function.}]
+\begin{lstlisting}[mathescape, captionpos=b, caption={EBNF of a function.}]
 <function> -> function (<expression>) do <statement> end
 \end{lstlisting}
 
 \subsection{Assign}
-\begin{lstlisting}[captionpos=b, caption{EBNF of how assignment work.}]
+\begin{lstlisting}[mathescape, captionpos=b, caption{EBNF of how assignment work.}]
 <assign> -> <variable> = <expression>;
 \end{lstlisting}
 
 \subsection{Variables}
-\begin{lstlisting}[captionpos=b, caption{EBNF of how a variable can be declared.}]
+\begin{lstlisting}[mathescape, captionpos=b, caption{EBNF of how a variable can be declared.}]
 <variable> -> (<expression> | $\lambda$);
 \end{lstlisting}
 
 \subsection{Expression}
-\begin{lstlisting}[captionpos=b, caption{EBNF of expressions.}]
+\begin{lstlisting}[mathescape, captionpos=b, caption{EBNF of expressions.}]
 <expression> -> <variable> (+ | - | *) <variable>;
 \end{lstlisting}
-\todo{EBNF have to be reviewed now the transition rules have been made.}
-\section{Semantics}
-The semantics of a language is the description of what happens when a program is executed. \todo{Add some text about the Transition rules role in the project.}
 
-\begin{table}[H]
+\section{Semantics}
+The semantics of a language is the description of what happens when a program is executed.
+
+\begin{table}[h]
 	\begin{tabular}{|l|l|l|}
 	\hline
 	\emph{Name}			& \emph{Rule}																															& \emph{Notes} \\ \hline
@@ -75,13 +75,13 @@ The semantics of a language is the description of what happens when a program is
 			~			&															~																			& ~ \\
 	$[MULT_{BSS}]$		& $s \vdash a_{1} \rightarrow_{a} v_{1}  s \vdash a_{2} \rightarrow_{a} v_{2} \over s \vdash a_{1}*a_{2} \rightarrow_{a} v$ 			& where $v = v_{1}*v_{2}$ \\
 			~			&															~																			& ~ \\
-	$[DIV_{BSS}]$		& $s \vdash a_{1} \rightarrow_{a} v_{1}  s \vdash a_{2} \rightarrow_{a} v_{2} \over s \vdash \frac{a_{1}}{a_{2}} \rightarrow_{a} v$ 	& where $v = \frac{v_{1}}{v_{2}}$ \\
+	$[DIV_{BSS}]$		& $s \vdash a_{1} \rightarrow_{a} v_{1}  s \vdash a_{2} \rightarrow_{a} v_{2} \over s \vdash {a_{1}}/{a_{2}} \rightarrow_{a} v$ 	& where $v = \frac{v_{1}}{v_{2}}$ \\
 			~			&																																		& ~ \\
 	$[MOD_{BSS}]$		& $s \vdash a_{1} \rightarrow_{a} v_{1}  s \vdash a_{2} \rightarrow_{a} v_{2} \over s \vdash a_{1}\%a_{2} \rightarrow_{a} v$			& where $v = v_{1}\%v_{2}$ \\
 			~			&															~																			& ~ \\
 	$[POW_{BSS}]$		& $s \vdash a_{1} \rightarrow_{a} v_{1}  s \vdash a_{2} \rightarrow_{a} v_{2} \over s \vdash a_{1}\texttt{\^{}}a_{2} \rightarrow_{a} v$	& where $v = v_{1}\texttt{\^{}}v_{2}$ \\
 			~			&															~																			& ~ \\
-	$[SQRT_{BSS}]$		& $s \vdash a_{1} \rightarrow_{a} v_{1} \over s \vdash \sqrt{a_{1}} \rightarrow_{a} v_{1}$												& ~ \\
+	$[SQRT_{BSS}]$		& $s \vdash a_{1} \rightarrow_{a} v_{1} \over s \vdash sqrt(a_{1}) \rightarrow_{a} v_{1}$												& where $v = \sqrt{v_{1}}$ \\
 			~			&															~																			& ~ \\
 	$[PARENT_{BSS}]$	& $s \vdash a_{1} \rightarrow_{a} v_{1} \over s \vdash (a_{1}) \rightarrow_{a} v_{1}$													& ~ \\
 			~			&															~																			& ~ \\
@@ -95,7 +95,7 @@ The semantics of a language is the description of what happens when a program is
 	\caption{The semantics of arithmetic operations}
 \end{table}
 
-\begin{table}[H]
+\begin{table}[h]
 	\begin{tabular}{|l|l|l|}
 	\hline
 	\emph{Name}			& \emph{Rule}																															& \emph{Notes} \\ \hline
@@ -144,7 +144,7 @@ The semantics of a language is the description of what happens when a program is
 	\caption{The semantics of boolean operations}
 \end{table}
 
-\begin{table}[H]
+\begin{table}[h]
 	\begin{tabular}{|l|l|l|}
 	\hline
 	\emph{Name}			& \emph{Rule}																															& \emph{Notes} \\ \hline
