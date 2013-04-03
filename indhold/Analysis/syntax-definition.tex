@@ -6,18 +6,18 @@ $x$ $\in$ Var - Variables
 $a$ $\in$ Aexp - Arithmetic expressions
 $b$ $\in$ Bexp - Boolean expressions
 $S$ $\in$ Stm - Statements
-$DV \in$ DecV - Variable declarations
+$Dv \in$ DecV - Variable declarations
 $S_b$ $\in$ Substatement
 
 $a$ ::= $n$ | $x$ | $a_1 + a_2$ | $a_1 - a_2$ | $a_1 * a_2$ | $a_1 / a_2$ | sqrt($a$) | $a_1$^$a_2$ | $a_1$ % $a_2$ | ($a$)
 
-$b$ ::= "$a_1$ equals $a_2$" | "$a_1 > a_2$" | "$a_1 < a_2$" | "$a_1 <= a_2$" | "$a_1 >= a_2$" | "$a_1$ notequals $a_2$" | not$b$ | $b$ and $b$ | $b$ or $b$ | ($b$)
+$b$ ::= "$a_1$ equals $a_2$" | "$a_1 > a_2$" | "$a_1 < a_2$" | "$a_1 <= a_2$" | "$a_1 >= a_2$" | "$a_1$ notequals $a_2$" | not$b$ | $b_1$ and $b_2$ | $b_1$ or $b_2$ | ($b$)
 
-$S$ ::= "$x$ = $a$;" | if $b$ do $S$ end $S_b$ | while $b$ do $S$ end
+$S$ ::= $Dv$ | if $b$ do $S$ end $S_b$ | while $b$ do $S$ end | $S_1 ; S_2$
 
-$S_b$ ::= {elseif $b$ do $S_b$ end} | else do $S$ end | $\lambda$
+$S_b$ ::= {elseif $b$ do $S$ end} | else do $S$ end
 
-$Dv$ ::= $x$ = $a$; Dv | $\lambda$
+$Dv$ ::= $x$ = $a$; Dv
 \end{lstlisting}
 
 \subsection{Numerals}
