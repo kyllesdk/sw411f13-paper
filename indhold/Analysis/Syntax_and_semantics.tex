@@ -36,7 +36,7 @@ The following EBNF describes how IF-statements can be used in the source languag
 
 
 \subsection{While loop}
-The following EBNF describes how the while loop is allowed to be used in the source language. Note that only a while loop is described, because no other loops than the while loop is a part of the source language.
+The following EBNF describes how the while loop is allowed to be used in the source language. Note that only a while loop is described, because no other loops than the while loop is part of the source language.
 \begin{lstlisting}[mathescape, captionpos=b, caption={EBNF of a while loop.}]
 <while_stmt> -> while (<expression>) do <statement> end
 \end{lstlisting}
@@ -53,12 +53,12 @@ The following EBNF describes how the while loop is allowed to be used in the sou
 
 \subsection{Variables}
 \begin{lstlisting}[mathescape, captionpos=b, caption{EBNF of how a variable can be declared.}]
-<variable> -> (<expression> | $\lambda$);
+<variable> -> (<arithmetic expression> | $\lambda$);
 \end{lstlisting}
 
 \subsection{Expression}
 \begin{lstlisting}[mathescape, captionpos=b, caption{EBNF of expressions.}]
-<expression> -> <variable> (+ | - | *) <variable>;
+<arithmetic expression> -> <variable> (+ | - | *) <variable>;
 \end{lstlisting}
 
 \section{Semantics}
