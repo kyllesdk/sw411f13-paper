@@ -21,7 +21,12 @@ $Dv$ ::= $x$ = $a$; Dv
 \end{lstlisting}
 
 \subsection{Numerals}
-\todo{Description of numerals is needed.}
+In our programming language there are three numeral systems called integers doubles and floats. These types are needed to represent integers (for example -17, -239586, 0, 237, 9001). and decimal numbers (such as -12.3456, -30.009, 90.01 and 990.1259). Float and double are both used for decimal numbers with double being more precice than float at the cost of taking up more space. The numeral systems are however finite as the numerals can not exceed the size allocated to each float, integer and double. As such the limitations are:
+\begin{itemize}
+\item Integers: From $-2^{n-1}$ to $2^{n-1}-1$
+\item Floats: From $3.4E-38$ to $3.4E+38$
+\item Doubles: From $1.7E-308$ to $1.7E+308$
+\end{itemize}
 
 \subsection{Variables}
 A variable in the language ranges over text, expressions, boolean expression, numerals etc. Because the variables can so many things, they have not been specified. 
