@@ -34,13 +34,6 @@
   note = {http://arduino.cc/en/main/software}
 }
 
-@MISC{Arduino_board_pics,
-  title = {Pics of the Arduino board},
-  owner = {Zati},
-  timestamp = {2013.04.10},
-  url = {http://arduino.cc/en/Main/ArduinoBoardUno}
-}
-
 @MISC{JavaCC,
   note = {http://javacc.java.net/}
 }
@@ -106,13 +99,5 @@
   owner = {RevBlood},
   timestamp = {2013.02.18},
   url = {http://backtothecode.blogspot.dk/2010/04/similarities-and-differences-between.html}
-}
-
-@MISC{arduino_joystick_example,
-  title = {Joystick example},
-  year = {2008},
-  owner = {Zati},
-  timestamp = {2013.04.10},
-  url = {http://arduino.cc/en/Tutorial/TwoSwitchesOnePin}
 }
 

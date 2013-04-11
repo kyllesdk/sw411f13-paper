@@ -1,7 +1,17 @@
-\begin{lstlisting}
+\section{Original Syntax Example 1}
+This is the first example of the original way to write code to Arduino. This example is a Hello World.
+\begin{lstlisting}[caption=This is the first original Arduino example \cite{arduino_hello_world_example}, label=lst:first_syntax_example]
+// include the library code:
+#include <LiquidCrystal.h>
+
+// initialize the library with the numbers of the interface pins
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
 void setup() {
   // set up the LCD's number of columns and rows: 
   lcd.begin(16, 2);
+  // Print a message to the LCD.
+  lcd.print("hello, world!");
 }
 
 void loop() {
@@ -10,11 +20,6 @@ void loop() {
   lcd.setCursor(0, 1);
   // print the number of seconds since reset:
   lcd.print(millis()/1000);
-  
-  // Print a message to the LCD.
-  int i = 0;
-  while(i <= 10) {
-      lcd.print("hello, world!");
-  }
+}
 }
 \end{lstlisting}

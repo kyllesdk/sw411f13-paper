@@ -1,15 +1,17 @@
 \section{The second syntax example}
-This is the second example of how the new language looks like. Just like in the first syntax example \ref{lst:syntax1}, then this is an example derived from a code in the original Arduino language. The original code can be found in Appendix. \todo{insert ref to appendix secondSyntaxExampleOriginal here}.\todo{Describe what the code example is suppose to do.}
-\begin{lstlisting}
+This is the second example of how the new language looks like. Just like in the first syntax example \ref{lst:syntax1}, then this is an example derived from a code in the original Arduino language. The original code can be found in Appendix \ref{second_syntax_example}. This is second example is a small code doing a simple task. The task here is that when moving a joystick in one direction a LED will turn on, when moved in another direction another LED will be turned on, and so on. 
+\begin{lstlisting}[caption=Joystick code example based on the source language, label=lst:syntax2]
     // Declaration of Variables
-    int ledPins [] = { 2,3,4,5,6,7,8,9 };    // Array of 8 leds mounted in a circle
+    // Array of 8 leds mounted in a circle
+    int ledPins [] = { 2,3,4,5,6,7,8,9 };    
+    
     int ledVerde = 13;
-    int espera = 40;                 // Time you should wait for turning on the leds
-    int joyPin1 = 0;                 // slider variable connected to analog pin 0
-    int joyPin2 = 1;                 // slider variable connected to analog pin 1
-    int coordX = 0;                  // variable to read the value from the analog pin 0
-    int coordY = 0;                  // variable to read the value from the analog pin 1
-    int centerX = 500;               // we measured the value for the center of the joystick
+    int espera = 40		// Time waiting led to turn on
+    int joyPin1 = 0		// slider variable to analog pin 0
+    int joyPin2 = 1		// slider variable to analog pin 1
+    int coordX = 0		// variable-read value from analog 0
+    int coordY = 0		// variable-read value from analog 1
+    int centerX = 500	// Measured center-value of joystick
     int centerY = 500;
     int actualZone = 0;
     int previousZone = 0;
@@ -34,17 +36,17 @@ This is the second example of how the new language looks like. Just like in the 
     // function that calculates in which of the 8 possible zones is the coordinate x y, given the center cx, cy
     int calculateZone (int x, int y, int cx, int cy) begin
   
-    int alpha = calculateSlope(x,y, cx,cy);     // slope of the segment betweent the point and the center
+    int alpha = calculateSlope(x,y, cx,cy);     
     if (x > cx) do
-        if (y > cy) do                          // first quadrant 
-            if (alpha > 1) do                   // The slope is > 1, thus higher part of the first quadrant
+        if (y > cy) 		// first quadrant 
+            if (alpha > 1) do                   
                 return 0;
             end
             else do
-                return 1;                       // Otherwise the point is in the lower part of the first quadrant
+                return 1;                      
             end
         end
-        else do									// second quadrant
+        else do				// second quadrant
             if (alpha > -1) do
                 return 2;
             end
@@ -54,7 +56,7 @@ This is the second example of how the new language looks like. Just like in the 
         end
     end
     else do
-        if (y < cy) do                         // third quadrant
+        if (y < cy) do		// third quadrant
             if (alpha > 1) do
                 return 4;
             end
@@ -62,7 +64,7 @@ This is the second example of how the new language looks like. Just like in the 
                 return 5;
             end
         end
-        else do                               // fourth quadrant
+        else do				// fourth quadrant
             if (alpha > -1) do
                 return 6;
             end
@@ -73,18 +75,17 @@ This is the second example of how the new language looks like. Just like in the 
     end
     
     void loop() begin
-        digitalWrite(ledVerde, HIGH);           // flag to know we entered the loop, you can erase this if you want
-                                                // reads the value of the variable resistors 
+        digitalWrite(ledVerde, HIGH);           
+                                                
         coordX = analogRead(joyPin1);   
         coordY = analogRead(joyPin2);   
-                                                // We calculate in which x
+                                                
         actualZone = calculateZone(coordX, coordY, centerX, centerY); 
         digitalWrite (ledPins[actualZone], HIGH);     
         if (actualZone != previousZone) do
             digitalWrite (ledPins[previousZone], LOW);
         end
-                                                // we print int the terminal, the cartesian value of the coordinate, and the zone where it belongs. 
-                                                //This is not necessary for a standalone version
+                                                
         serialWrite('C');
         serialWrite(32); // print space
         printInteger(coordX);
@@ -97,7 +98,7 @@ This is the second example of how the new language looks like. Just like in the 
         printInteger(actualZone);
         serialWrite(10);
         serialWrite(13);
-                                                // But this is necessary so, don't delete it!
+                                                
         previousZone = actualZone;
         // delay (500);
     end
