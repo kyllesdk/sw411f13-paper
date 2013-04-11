@@ -49,7 +49,7 @@
 % <arithmetic expression> -> <variable> (+ | - | *) <variable>;
 % \end{lstlisting}
 
-\section{Semantics}
+\section{Semantics} \label{sec:semantics}
 The semantics of a language is the description of what happens when a program is executed.
 
 Seen in table \ref{tab:semantics_aritmethic}, \ref{tab:semantics_boolean} and \ref{tab:semantics_statements} are the exact descriptions of the possible operations in our language. \ref{tab:semantics_aritmethic} describes all arithmetic actions - the more obvious ones are addition, subtraction, multiplication and division (PLUS, MINUS, MULT, DIV) which all look near identical: A statement, s, with two expressions, $v_{1}$ and $v_{2}$ which both are arithmetic as seen by $\rightarrow_{a}$ can be added, subtracted, multiplied or divided with each other. This results in $v$ which again is arithmetic. Furthermore $v$ is the product of the operator used on $v_{1}$ and $v_{2}$. Both modulus and power (MOD, POW) are identical to these operations in procedure. \\
