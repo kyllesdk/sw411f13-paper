@@ -24,7 +24,7 @@ $Dv$ ::= $x$ = $a$; Dv
 \end{lstlisting}
 
 \subsection{Numerals}
-In our programming language there are three numeral systems called integers doubles and floats. These types are needed to represent integers (for example -17, -239586, 0, 237, 9001). and decimal numbers (such as -12.3456, -30.009, 90.01 and 990.1259). Float and double are both used for decimal numbers with double being more precice than float at the cost of taking up more space. The numeral systems are however finite as the numerals can not exceed the size allocated to each float, integer and double. As such the limitations are:
+In our programming language there are three numeral systems called integers doubles and floats. These types are needed to represent integers (for example -17, -239586, 0, 237, 9001). and decimal numbers (such as -12.3456, -30.009, 90.01 and 990.1259). Float and double are both used for decimal numbers with double being more precise than float at the cost of taking up more space. The numeral systems are however finite as the numerals can not exceed the size allocated to each float, integer and double. As such the limitations are:
 \begin{itemize}
 \item Integers: From $-2^{n-1}$ to $2^{n-1}-1$
 \item Floats: From $3.4E-38$ to $3.4E+38$
@@ -38,7 +38,7 @@ A variable in the language ranges over text, expressions, boolean expression, nu
 \todo{Distinction between variables and metavariables is needed}
 
 \subsubsection{Variable declarations}\label{sec:analysis:syntax-definition:variable-declaration}
-The following describes the specified rule for declarating a variable. The rule states that a variable has to be a variable name on the left side of the assignment character(=), and then the value on the right side is thereby assigned to the left side. The ``;'' character closes the variable declaration.
+The following describes the specified rule for declaration a variable. The rule states that a variable has to be a variable name on the left side of the assignment character(=), and then the value on the right side is thereby assigned to the left side. The ``;'' character closes the variable declaration.
 
 \subsection{Arithmetic expressions}
 The source language features arithmetic expressions. The transition rules for the expressions can be read in table \ref{tab:semantics_aritmethic}.
@@ -72,7 +72,7 @@ The source language supports boolean expressions, which is expressions that eval
 \end{itemize}
 \subsection{Statements}
 
-$S$ ::= "$x$ = $a$;" | if $b$ do $S$ end $S_b$ | while $b$ do $S$ end
+$S$ ::= "$x$ = $a$" | if $b$ do $S$ end $S_b$ | while $b$ do $S$ end | $S_1 ; S_2$
 
 \begin{itemize}
 	\item Variable declaration - A statement can consist of a variable declaration, section \ref{sec:analysis:syntax-definition:variable-declaration}.
