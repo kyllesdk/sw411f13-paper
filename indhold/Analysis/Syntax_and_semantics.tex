@@ -71,14 +71,14 @@ ASS describes that with a given state and expression ($a, s$), a variable $x$ ca
 			~			&															~																			& ~ \\
 	$[MULT_{BSS}]$		& $s~\vdash~a_{1}~\rightarrow_{a}~v_{1}~~s~\vdash a_{2}~\rightarrow_{a}~v_{2} \over s~\vdash~a_{1}~*~a_{2}~\rightarrow_{a}~v$ 			& where $v = v_{1}*v_{2}$ \\
 			~			&															~																			& ~ \\
-	$[DIV_{BSS}]$		& $s~\vdash a_{1}~\rightarrow_{a}~v_{1}~~s ~\vdash a_{2}~\rightarrow_{a}~v_{2} \over s~\vdash~{a_{1}}~/~{a_{2}}~\rightarrow_{a}~v$ 		& where $v = \frac{v_{1}}{v_{2}}$ \\
+	$[DIV_{BSS}]$		& $s~\vdash a_{1}~\rightarrow_{a}~v_{1}~~s ~\vdash a_{2}~\rightarrow_{a}~v_{2} \over s~\vdash~{a_{1}}~/~{a_{2}}~\rightarrow_{a}~v$ 		& where $v = \frac{v_{1}}{v_{2}}$ and $v_2 \neq 0$\\
 			~			&																																		& ~ \\
 	$[MOD_{BSS}]$		& $s~\vdash a_{1}~\rightarrow_{a}~v_{1}~~s~\vdash~a_{2}~\rightarrow_{a}~v_{2} \over s~\vdash~a_{1}~\%~a_{2}~\rightarrow_{a}~v$			& where $v = v_{1}\%v_{2}$ \\
 			~			&															~																			& ~ \\
 	$[POW_{BSS}]$		& $s~\vdash~a_{1}~\rightarrow_{a}~v_{1}~~s~\vdash~a_{2}~
 	\rightarrow_{a}~v_{2} \over~s~\vdash~a_{1}~\texttt{\^{}}~a_{2}~\rightarrow_{a}~v$	& where $v = v_{1}\texttt{\^{}}v_{2}$ \\
 			~			&															~																			& ~ \\
-	$[SQRT_{BSS}]$		& $s~\vdash~a_{1}~\rightarrow_{a}~v_{1} \over s~\vdash~sqrt(a_{1})~\rightarrow_{a}~v_{1}$												& where $v = \sqrt{v_{1}}$ \\
+	$[SQRT_{BSS}]$		& $s~\vdash~a_{1}~\rightarrow_{a}~v_{1} \over s~\vdash~sqrt(a_{1})~\rightarrow_{a}~v_{1}$												& where $v = \sqrt{v_{1}}$ and $v_1 >= 0$ \\
 			~			&															~																			& ~ \\
 	$[PARENT_{BSS}]$	& $s~\vdash a_{1}~\rightarrow_{a}~v_{1} \over s~\vdash~(a_{1})~\rightarrow_{a}~v_{1}$													& ~ \\
 			~			&															~																			& ~ \\
