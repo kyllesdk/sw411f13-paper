@@ -1,15 +1,68 @@
 \chapter{JavaCC - Java Compiler Compiler}
-The parser is the part of the compiler that checks if the syntax of the source language is correct. When writing a compiler a parser program has to be made. The parser can be programmed manually or generated automatically using a tool, such as JavaCC. What this tool does is read the grammar specification and convert it to a Java program that can recognize matches to the grammar\cite{JavaCC}. JavaCC is based on LL(k) grammars, and transforms an EBNF grammar into an LL(k) parser.
+JavaCC is a parser generator that generates a fully functioning parser. JavaCC takes a file containing EBNF grammar and then makes a program that can recognize matches between the input code and the grammar, this part of the parser is called the scanner. JavaCC also creates other things like e.g. an AST (Abstract Syntax Tree, page \todo{Jonas: add section about AST in the compiler chapter, and add reference here.}) that decides the derivation of the code. \cite{JavaCC}
+
 The process of a parser program:
 \begin{itemize}
 \item Input a set of token definitions, grammar and actions
 \item Outputs a Java program which performs lexical analysis
 	\begin{itemize}
-	\item Finding tokens
-	\item Parses the tokens according to the grammar
-	\item Executes actions
+	\item Finding tokens.
+	\item Parses the tokens according to the grammar.
+	\item Executes actions.
 	\end{itemize}
 \end{itemize}
 
-EXAMPLE: \\
-Using the source language grammar, a program has to parse the input " ". JavaCC generates a top-down parse tree, which means starting at the root of the tree. \todo{make this example}
+
+\section{Grammar example}
+Code table \ref{lst:javacc-grammar-example} is containing an example of how a grammar for an ``if''-statement can be constructed. The grammar in the example states the following:
+
+\begin{itemize}
+	\item Skip all whitespace and newlines.
+	\item An ``if''-statement consists of a condition (C), a statement (S)  and optionally an ``else statement'' which contains a Statement (S)·
+	\item A condition (C) consists of the string ``TBD'' - not anything else.
+	\item A statement (S) also consists of the string ``TBD'' or a new ``if''-statement
+\end{itemize}
+
+\begin{lstlisting}[captionpos=b, caption={One of JavaCC's standart examples on how to make a grammar that accepts ``if''-statements.}, label=lst:javacc-grammar-example]
+
+PARSER_BEGIN(Example)
+
+public class Example {
+
+  public static void main(String args[]) throws ParseException {
+    Example parser = new Example(System.in);
+    parser.IfStm();
+  }
+
+}
+
+PARSER_END(Example)
+
+SKIP :
+{
+  " "
+| "\t"
+| "\n"
+| "\r"
+}
+
+void IfStm() :
+{}
+{
+ "if" C() S() [ "else" S() ]
+}
+
+void C() :
+{}
+{
+  "TBD"
+}
+
+void S() :
+{}
+{
+  "TBD"
+|
+  IfStm()
+}
+\end{lstlisting}
