@@ -1,6 +1,10 @@
 \chapter{Syntax and Semantics}\label{analysis:syntax-and-semantics}
 In this section a description of the meaning of syntax and semantics are described.
 
+\section{Syntax}
+When describing a programming language the syntax of the language is given by the set of rules which defines the words (finite sequences of characters) that can be used for writing a program in that language. The syntax of the language is described using Backus-Naur Form (BNF) which provides the context free grammar of the language.
+In this report an extended version of BNF, Extended Backus-Naur Form (EBNF), is used. The advantage of using EBNF is to describe the set of rules in a more compact form, and the ability to describe regular expressions in the context free grammar. EBNF does not enhance the descriptive power of BNF, it only increases the readability and the write-ability.
+
 \section{Syntax definition}\label{sec:anlysis:syntax-definition}
 \todo{Intro goes here}
 \begin{lstlisting}[mathescape, captionpos=b, caption={Syntax formation rules}, label={lst:syntax-formation}]
@@ -57,7 +61,7 @@ The rules listed in listing \ref{lst:syntax-formation} states that arithmetic ex
 \end{itemize}
 
 \subsection{Boolean expressions}
-The source language supports boolean expressions, which is expressions that evaluates to \textit{true} or \textit{false}. The boolean transition rules are listed in table \ref{tab:semantics_boolean}.
+The source language supports boolean expressions, which are expressions that evaluate to \textit{true} or \textit{false}. The boolean transition rules are listed in table \ref{tab:semantics_boolean}.
 \begin{itemize}
 	\item Equals to ($a_1$ equals $a_2$) - $equals$ allows the programmer to compare two values, which will evaluates to \textit{true} if they match; if not it evaluates to \textit{false}.
 	\item Greater than ($a_1 > a_2$) - ``$>$'' checks if one value is greater than another value. If $a_1$ is greater than $a_2$ it evaluates to \textit{true}, else it evaluates to \textit{false}.
@@ -65,21 +69,30 @@ The source language supports boolean expressions, which is expressions that eval
 	\item Greater than or equal to ($a_1 >= a_2$) - ``$>=$'' checks if one value is greater then or equals another value. If $a_1$ is greater then or equals $a_2$ it evaluates to \textit{true}, else \textit{false}.
 	\item Less than or equal to ($a_1 <= a_2$) - ``$<=$'' checks if one value is less then or equals another value. If $a_1$ is less then or equals $a_2$ it evaluates to \textit{true}, else \textit{false}.
 	\item Different from ($a_1$ notequals $a_2$) - ``$notequals$'' checks if two values are different. If $a_1$ is different from $a_2$ it evaluates \textit{true}, else \textit{false}. 
-	\item Not (not$b$) - ``$not$'' checks if a value is boolean value is false. If $b$ is false it evaluates \textit{true}, else false.
-	\item And ($b_1$ and $b_2$) - ``$and$'' check if two boolean values are both \textit{true}. If both $b_1$ and $b_2$ are \textit{true} it evaluates \textit{true}, else \textit{false}. 
-	\item Or ($b_1$ or $b_2$) - ``$or$'' checks if one of the boolean values are \textit{true}. If either $b_1$ or $b_2$ are \textit{true} it evaluates \textit{true}, else \textit{false}.
+	\item Negation (not$b$) - ``$not$'' checks if a value is boolean value is false. If $b$ is false it evaluates \textit{true}, else false.
+	\item Conjunction ($b_1$ and $b_2$) - ``$and$'' check if two boolean values are both \textit{true}. If both $b_1$ and $b_2$ are \textit{true} it evaluates \textit{true}, else \textit{false}. 
+	\item Disjunction ($b_1$ or $b_2$) - ``$or$'' checks if one of the boolean values are \textit{true}. If either $b_1$ or $b_2$ are \textit{true} it evaluates \textit{true}, else \textit{false}.
 	\item Parenthesis (($b$)) - Allows the boolean expressions to be insulated in parenthesis. The parenthesis will then evaluate to \textit{true} or \textit{false}.
 \end{itemize}
 \subsection{Statements}
 
-$S$ ::= "$x$ = $a$" | if $b$ do $S$ end $S_b$ | while $b$ do $S$ end | $S_1 ; S_2$
+$S$ ::= Dv | if $b$ do $S$ end $S_b$ | while $b$ do $S$ end | $S_1 ; S_2$
 
 \begin{itemize}
 	\item Variable declaration - A statement can consist of a variable declaration, section \ref{sec:analysis:syntax-definition:variable-declaration}.
-	\item If-statement - A statement can consist of a if-statement which is a condition. The statement is given a boolean expression and then it evaluates the boolean expression. If the boolean expression evaluates to true the program goes into the if-statement where it can call another statement or declare a variable etc. If the condition evalutates to false then the program checks if the if-statement has and ``elseif'' or and ``else'' statement and then evaluates that.
-	\item While loop - The while loop takes a boolean expression as parameter. As long the boolean expression evaluates to true the code inside the loop is looping. When the boolean expression evaluates to false the loop stop.
+	\item If-statement - A statement can consist of an if-statement which is a condition. If the boolean expression evaluates to true another statement is called or declare a variable etc. If the condition evalutates to false then the program checks if the if-statement has an ``elseif'' or an ``else'' statement and then evaluates that.
+	\item While loop - The while loop will run if the boolean expression evaluates to true. As long as the boolean expression is true, the statements inside the loop will keep repeatedly execute over and over. When the boolean expression evaluates to false, the loop is exited.
+	\item Composition - To make programs run statements sequentially in the source language.
 \end{itemize}
 
 \subsubsection{Substatements}
+
+$S_b$ ::= {elseif $b$ do $S$ end} | else do $S$ end
+
+\begin{itemize}
+	\item Elseif - If an if-statement is reached the source language allows to follow up using an elseif statement. Elseif follow the same rules as if-statements, but can be run zero to many times.
+	\item Else - If the boolean expression in an if-statement evaluates to false, an else statement can be reached which will execute the other statement.
+\end{itemize}
+
 \todo{Add something here}
 
