@@ -34,8 +34,27 @@
   note = {http://arduino.cc/en/main/software}
 }
 
+@MISC{Arduino_board_pics,
+  title = {Pics of the Arduino board},
+  owner = {Zati},
+  timestamp = {2013.04.10},
+  url = {http://arduino.cc/en/Main/ArduinoBoardUno}
+}
+
 @MISC{JavaCC,
   note = {http://javacc.java.net/}
+}
+
+@MISC{pythonOff,
+  owner = {Zati},
+  timestamp = {2013.04.23},
+  url = {http://www.python.org/about/}
+}
+
+@MISC{pythonWiki,
+  owner = {Zati},
+  timestamp = {2013.04.23},
+  url = {http://en.wikipedia.org/wiki/History_of_Python}
 }
 
 @MISC{java:requirements,
@@ -45,6 +64,15 @@
   owner = {RevBlood},
   timestamp = {2013.02.18},
   url = {http://www.java.com/en/download/help/sysreq.xml}
+}
+
+@MISC{python:about,
+  title = {About Python},
+  howpublished = {http://python.org/about/},
+  year = {2013},
+  owner = {RevBlood},
+  timestamp = {2013.04.16},
+  url = {http://python.org/about/}
 }
 
 @MISC{python:official:about,
@@ -74,6 +102,14 @@
   url = {http://www.cs.man.ac.uk/~pjj/farrell/comp3.html}
 }
 
+@MISC{Impr,
+  month = {August},
+  year = {2012},
+  owner = {Zati},
+  timestamp = {2013.04.22},
+  url = {http://msdn.microsoft.com/en-us/library/bb669144.aspx}
+}
+
 @MISC{java:object:orientation,
   title = {Java Tutorial Object Orientation},
   howpublished = {http://howtoprogramwithjava.com/object-oriented-programming-java-tutorial/},
@@ -99,5 +135,13 @@
   owner = {RevBlood},
   timestamp = {2013.02.18},
   url = {http://backtothecode.blogspot.dk/2010/04/similarities-and-differences-between.html}
+}
+
+@MISC{arduino_joystick_example,
+  title = {Joystick example},
+  year = {2008},
+  owner = {Zati},
+  timestamp = {2013.04.10},
+  url = {http://arduino.cc/en/Tutorial/TwoSwitchesOnePin}
 }
 
