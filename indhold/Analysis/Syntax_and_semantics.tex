@@ -45,22 +45,11 @@
 % \begin{lstlisting}[mathescape, captionpos=b, caption{EBNF of expressions.}]
 % <arithmetic expression> -> <variable> (+ | - | *) <variable>;
 % \end{lstlisting}
-
+\newpage
 \section{Semantics} \label{sec:semantics}
-The semantics of a language is the description of what happens when a program is executed.
+The semantics of a language is the description of what happens when a program is executed. In table \ref{tab:semantics_aritmethic}, \ref{tab:semantics_boolean} and \ref{tab:semantics_statements} are the descriptions of the possible operations in the source language. \\
 
-Seen in table \ref{tab:semantics_aritmethic}, \ref{tab:semantics_boolean} and \ref{tab:semantics_statements} are the exact descriptions of the possible operations in our language. \ref{tab:semantics_aritmethic} describes all arithmetic actions - the more obvious ones are addition, subtraction, multiplication and division (PLUS, MINUS, MULT, DIV) which all look near identical: A statement, s, with two expressions, $v_{1}$ and $v_{2}$ which both are arithmetic as seen by $\rightarrow_{a}$ can be added, subtracted, multiplied or divided with each other. This results in $v$ which again is arithmetic. Furthermore $v$ is the product of the operator used on $v_{1}$ and $v_{2}$. Both modulus and power (MOD, POW) are identical to these operations in procedure. \\
-SQRT is a simple rule to allow any arithmetic expression, $v_{1}$ to be squared, where $v$ obviously is $\sqrt{v_{1}}$. \\
-The PARENT rule simply states that any arithmetic expression can be parenthesized, allowing chained arithmetic calculations to be performed in the correct order. VAR describes that in a state $s$ a value $v$ be assigned to a variable $x$ allowing variable declaration. NUM allows within a statement $S$ to get the numerical value of a variable $v$ \\
-
-The table \ref{tab:semantics_boolean} holds the rules of boolean operations. Once again a lot of operations look near identical, namely EQUAL1, EQUAL2, NOTEQUAL1, NOTEQUAL2, GREATER1, GREATER2, LESSER1, LESSER2, LEQ1, LEQ2, GEQ1 and GEQ2. The common factor is that these are all comparison expressions, respectively checks for equality, greater than, less than, less or equal to and greater or equal to. Having a $v_{1}$ and $v_{2}$ which are both arithmetic as seen by $\rightarrow_{a}$, we use a boolean evaluation to conclude whether comparison is true (tt) or false (ff). \\
-The NOT1, NOT2, AND1, AND2, OR1 and OR2 expressions are similar as well. Arithmetic expressions are tested with some criteria and evaluated to true or false. In the case of NOT1 where the evaluation is true, the evaluation of NOT1 is obviously false as it is not "not", with NOT2 being the opposite case. AND1, AND2, OR1 and OR2 follow same principles. In AND1 and AND2, two expressions need to be true if the entire expression is to be true, while OR1 and OR2 just needs one of two expressions. \\
-As with the PARENT rule in table \ref{tab:semantics_aritmethic} any boolean expression can be parenthesized as well as seen in this PARENT rule. \\ \todo{The therminology should be corrected here.}
-
-The table of statement semantics, \ref{tab:semantics_statements} holds rules affecting statements in any way. \\
-ASS describes that with a given state and expression ($a, s$), a variable $x$ can be assigned a value $v$. The SKIP rule states that within a state $s$, a skip can occur, leading to a state $s$. COMP allows compositional statements meaning that a series of statements can occur. IFTRUE and IFFALSE allows choosing an appropriate substatement based on some boolean expression within a statement. \\ \todo{Morten: Missing WHILETRUE and WHILEFALSE. Help please.}
-
-\begin{table}[h]
+\begin{table}[H]
 	\begin{tabular}{|l|l|l|}
 	\hline
 	\emph{Name}			& \emph{Rule}																															& \emph{Notes} \\ \hline
@@ -92,7 +81,12 @@ ASS describes that with a given state and expression ($a, s$), a variable $x$ ca
 	\caption{The semantics of arithmetic operations}
 \end{table}
 
-\begin{table}[h]
+First is table \ref{tab:semantics_aritmethic}, which describes the arithmetic expressions - the more common ones are addition, subtraction, multiplication and division (PLUS(+), MINUS(-), MULT(*), DIV(/)). Their rules all look near identical: A statement, ``$s$'', with two expressions, $v_{1}$ and $v_{2}$, which both are arithmetic as seen by $\rightarrow_{a}$ can be added, subtracted, multiplied or divided with each other. This results in $v$, which is arithmetic. However, when taking a look upon DIV's side-note, take notice that it states that $v_{2}$ cannot be divided by zero, as it is not possible to divide any number by zero, so this side-note making sure that it is not possible to do so. \\
+Furthermore, $v$ is the product of the operator used on $v_{1}$ and $v_{2}$. Both modulus and power of (MOD(\%), POW($\texttt{\^{}}$) are identical to these operations in procedure. \\
+SQRT, also known as square-root($\sqrt{}$) is a simple rule to allow any positive arithmetic expression, $v_{1}$ to be squared, where $v$ obviously is $\sqrt{v_{1}}$. Also here, like on division, is an extra side-note, which indicates that the number that is to be square-rooted is either a zero or a positive number, as the source language is not going to allow imaginary numbers. \\
+The PARENT, or parentheses(()), rule states that any arithmetic expression can be parenthesized, allowing chained arithmetic calculations to be performed in the correct order. VAR describes, that in a state $s$, a value $v$ can be assigned to a variable $x$, allowing variable declaration. NUM, or numeric value also known as absolute value, allows within a statement $S$ to get the numerical value of a variable $v$. A numeric value is a numbers distance from zero, for instance $|2|$ and $|-2|$ are both 2 units from 0.  \\
+
+\begin{table}[H]
 	\begin{tabular}{|l|l|l|}
 	\hline
 	\emph{Name}			& \emph{Rule}																															& \emph{Notes} \\ \hline
@@ -153,7 +147,11 @@ ASS describes that with a given state and expression ($a, s$), a variable $x$ ca
 	\caption{The semantics of boolean operations}
 \end{table}
 
-\begin{table}[h]
+Table \ref{tab:semantics_boolean} holds the rules of boolean operations. Once again a lot of operations look near identical, namely EQUAL1(=), EQUAL2($\neq$), NOTEQUAL1($\neq$), NOTEQUAL2(=), GREATER1(<), GREATER2($\not<$), LESSER1(>), LESSER2($\not>$), LEQ1($\leq$), LEQ2($\not\leq$), GEQ1($\geq$) and GEQ2($\not\geq$). The common factor is that these are all comparison expressions, respectively checks for equality, equals, not equals, greater than, less than, less or equal to and greater or equal to. Having a $v_{1}$ and $v_{2}$, which are both arithmetic as seen by $\rightarrow_{a}$, a boolean evaluation is used to conclude whether comparison is true (tt) or false (ff). \\
+The NOT1($\neg$), NOT2($\neg$), AND1($\wedge$), AND2($\wedge$), OR1($\vee$) and OR2($\vee$) expressions are similar as well. Arithmetic expressions are tested with some criteria and evaluated to true or false. In the case of NOT1 where the evaluation is true, the evaluation of NOT1 is obviously false as it is not ``not'', with NOT2 being the opposite case. AND1, AND2, OR1 and OR2 follow same principles. In AND1 and AND2, two expressions need to be true if the entire expression is to be true, while OR1 and OR2 just needs one of two expressions. \\
+As with the PARENT rule in table \ref{tab:semantics_aritmethic} any boolean expression can be parenthesized as well as seen in this PARENT rule. \\ 
+
+\begin{table}[H]
 	\begin{tabular}{|l|l|l|}
 	\hline
 	\emph{Name}			& \emph{Rule}																															& \emph{Notes} \\ \hline
@@ -176,3 +174,8 @@ ASS describes that with a given state and expression ($a, s$), a variable $x$ ca
 	\label{tab:semantics_statements}
 	\caption{The semantics of statements}
 \end{table}
+
+The table of statement semantics, \ref{tab:semantics_statements} holds rules affecting statements. \\
+ASS, assignments, describes that with a given expression and state ($a, s$), a variable $x$ can be assigned a value $v$. The SKIP rule states that within a state $s$, a skip can occur, leading to a state $s$. COMP, composition, allows compositional statements meaning that a series of statements can occur. IFTRUE and IFFALSE allows choosing an appropriate sub-statement based on boolean expression within a statement. WHILETRUE allows the statement to call itself again, making it recursive for as long as the expression is true. Whereas WHILEFALSE will do nothing for as long as the expression is false.\\ 
+All of these rules, arithmetic, boolean and statements makes the base of the source language.
+
