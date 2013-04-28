@@ -1,6 +1,8 @@
 \chapter{JavaCC - Java Compiler Compiler}
 JavaCC is a parser generator that generates a fully functioning parser. JavaCC takes a file containing EBNF grammar and then makes a program that can recognize matches between the input code and the grammar, this part of the parser is called the scanner. JavaCC also creates other things like e.g. an AST (Abstract Syntax Tree, page \todo{Jonas: add section about AST in the compiler chapter, and add reference here.}) that decides the derivation of the code. \cite{JavaCC}
 
+JavaCC generates top-down parsers (LL(k) parsers) which means that it replaces every nonterminal until the string is created. LL(k) grammars produce a left-to-right symbol scan which means that it produces a leftmost derivation. The LL(k) grammars use a maximum of \textit{k} symbols of lookahead(This is why it is called a LL(k) grammar).\todo{more info of lookahead is required}\cite{javacc-wustl-ppt}
+
 The process of a parser program:
 \begin{itemize}
 \item Input a set of token definitions, grammar and actions
@@ -66,3 +68,5 @@ void S() :
   IfStm()
 }
 \end{lstlisting}
+
+Using JavaCC a parser is generated that is used in the final compiler to determine wether the source language is written correctly or not. The code generation part of the compiler (more info in section \todo{ref here}) uses the stream of tokens sent from the parser to specify how to translate the source language into the target language. 
