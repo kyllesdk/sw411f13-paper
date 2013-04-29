@@ -6,7 +6,7 @@ When describing a programming language the syntax of the language is given by th
 In this report an extended version of BNF, Extended Backus-Naur Form (EBNF), is used. The advantage of using EBNF is to describe the set of rules in a more compact form, and the ability to describe regular expressions in the context free grammar. EBNF does not enhance the descriptive power of BNF, it only increases the readability and the write-ability.
 
 \section{Syntax definition}\label{sec:anlysis:syntax-definition}
-\todo{Intro goes here}
+Below is the syntax definition written in EBNF which shows the seven syntactic categories followed by the defined rules. As an example of how to read these rules, let $a$ be an arithmetic expression. By looking at the rule for $a$, this expression could for example be $a_1 + a_2$ meaning it is expanded to be one arithmetic expression added with another. These two expressions could then again be anything within the rule for $a$, for example the numerals 5 and 7. There are no rules for expanding a numeral, and as such the expression $a$ can be evaluated no further.
 \begin{lstlisting}[mathescape, captionpos=b, caption={Syntax formation rules}, label={lst:syntax-formation}]
 $n$ $\in$ Num - Numerals
 $x$ $\in$ Var - Variables
