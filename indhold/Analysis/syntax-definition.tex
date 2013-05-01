@@ -6,7 +6,7 @@ When describing a programming language the syntax of the language is given by th
 In this report an extended version of BNF, Extended Backus-Naur Form (EBNF), is used. The advantage of using EBNF is to describe the set of rules in a more compact form, and the ability to describe regular expressions in the context free grammar. EBNF does not enhance the descriptive power of BNF, it only increases the readability and the write-ability.
 
 \section{Syntax definition}\label{sec:anlysis:syntax-definition}
-Below is the syntax definition written in EBNF which shows the seven syntactic categories followed by the defined rules. As an example of how to read these rules, let $a$ be an arithmetic expression. By looking at the rule for $a$, this expression could for example be $a_1 + a_2$ meaning it is expanded to be one arithmetic expression added with another. These two expressions could then again be anything within the rule for $a$, for example the numerals 5 and 7. There are no rules for expanding a numeral, and as such the expression $a$ can be evaluated no further.
+Below is the syntax definition written in EBNF which shows the seven syntactic categories followed by the defined rules. As an example of how to read these rules, let $a$ be an arithmetic expression. By looking at the rule for $a$, this expression could for example be $a_1 + a_2$ meaning it is expanded to be one arithmetic expression consisting in the addition of two other simpler arithmetic expressions. These two expressions could then again be anything within the rule for $a$, for example the numerals 5 and 7. There are no rules for expanding a numeral, and as such the expression $a$ can be evaluated no further.
 \begin{lstlisting}[mathescape, captionpos=b, caption={Syntax formation rules}, label={lst:syntax-formation}]
 $n$ $\in$ Num - Numerals
 $x$ $\in$ Var - Variables
@@ -81,8 +81,8 @@ $S$ ::= Dv | if $b$ do $S$ end $S_b$ | while $b$ do $S$ end | $S_1 ; S_2$
 \begin{itemize}
 	\item Variable declaration - A statement can consist of a variable declaration, section \ref{sec:analysis:syntax-definition:variable-declaration}.
 	\item If-statement - A statement can consist of an if-statement which is a condition. If the boolean expression evaluates to true another statement is called or declare a variable etc. If the condition evalutates to false then the program checks if the if-statement has an ``elseif'' or an ``else'' statement and then evaluates that.
-	\item While loop - The while loop will run if the boolean expression evaluates to true. As long as the boolean expression is true, the statements inside the loop will keep repeatedly execute over and over. When the boolean expression evaluates to false, the loop is exited.
-	\item Composition - To make programs run statements sequentially in the source language.
+	\item While loop - It involves a boolean expression and the while loop will run if the boolean expression evaluates to true. As long as the boolean expression is true, the statements inside the loop will keep repeatedly execute over and over. When the boolean expression evaluates to false, the loop is exited.
+	\item Sequential Composition - To make programs run statements sequentially in the source language.
 \end{itemize}
 
 \subsubsection{Substatements}
@@ -90,7 +90,7 @@ $S$ ::= Dv | if $b$ do $S$ end $S_b$ | while $b$ do $S$ end | $S_1 ; S_2$
 $S_b$ ::= {elseif $b$ do $S$ end} | else do $S$ end
 
 \begin{itemize}
-	\item Elseif - If an if-statement is reached the source language allows to follow up using an elseif statement. Elseif follow the same rules as if-statements, but can be run zero to many times.
-	\item Else - If the boolean expression in an if-statement evaluates to false, an else statement can be reached which will execute the other statement.
+	\item Elseif - If an if-statement is executed the source language allows to follow up using an elseif statement. If and if-statement is not present, an elseif is not allowed to be used. Elseif follow the same rules as if-statements, and just like if-statements it has a boolean expression, which if true the statement is run. If the boolean expression is evaluated to false, the program checks for additional elseif statements, if none, then carries on to the else-statement. Elseif can run zero to many times.
+	\item Else - If the boolean expression in an if-statement evaluates to false, an else statement can be reached which will execute the other statement. An if-statement is required though to be able to use the else-statement.
 \end{itemize}
 
