@@ -69,11 +69,11 @@ The source language is not expressively. It does not support expressions like ``
 \textbf{Reliability:} \\
 \begin{itemize}
 \item Type checking: \\
-It is important that the source language is checking for typing errors as early as possible. ???????
+It is important that the source language is checking for typing errors as early as possible. The source language is being checked for these typing errors during the code generation, spelling mistakes is being checked for during the parser, whether or not the grammar is equal to the syntax.
 \item Exception handling: \\
-??????
+There is no exception handling in the source language, so if there is an error, the program will not be running.
 \item Aliasing: \\
-??????
+It is possible to refer to function-names as well as variable-names in the source language. However it is not possible to refer to the same slot in memory in two more or more distinct ways, which makes the source language weak regarding aliasing. 
 \item Readability and write-ability: \\
 If looking at readability as well as write-ability, then the source language supports ``natural'' ways of writing code, as well as when its written the code itself is easily read. However the code is not looking like all the other types of code one could write in depending on the programming language. For instance when writing an ``or'' expression it would not look the same in many other programming languages, so switching between the source language and some other language can become hard on ones interpretation of the different languages as they are not all alike. But in the end, writing ``OR'' or using ``$\|\|$'' is a mostly a matter of what the programmer is used to. 
 \end{itemize}
