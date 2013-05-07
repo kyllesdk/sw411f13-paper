@@ -49,11 +49,11 @@ The readability criteria is one of the most important criteria for this language
 \item Overall simplicity:\\
 The source language has a manageable set of features, which provides the user with the basic need to be able to form programs in a quite simple matter. With the source language being somewhat limited gives the source language an overall simplicity as there is not much operator overloading possible since the user is more or less closed off from giving the operators another semantics than first given. 
 \item Orthogonality:\\
-In the source language is not quite orthogonal, as it does not support that every combination is legal. However it does not reject all combinations either. A language that has good orthogonality is a language that has few or a limited amount constructs and a limited way that these can be combined. 
+The source language is not quite orthogonal, as it does not support that every combination is legal. However it does not reject all combinations either. A language that has good orthogonality is a language that has few or a limited amount constructs and a limited way that these can be combined. 
 \item Data types and control statements:\\
-In general the source language has adequate data types as well as control statements, however it does not support all the types, but enough for the most simple tasks. For instance Decimal is not supported, which is the preferred data type when making a program that can handle money. 
+In general the source language has adequate data types as well as control statements, however it does not support all the types, but enough for the most simple tasks. For instance Decimal is not supported, which is the preferred data type when making a program that can handle money. \todo{Describe why we do not use decimal. Also why we do not use double.}
 \item Syntax Consideration:\\
-The syntax consideration for the source language is mostly to be found within the keywords. For instance ``AND'' is quite self-describing whereas many programming languages uses ``\&\&'' for the same effect. They keywords that is used in the source language is easy to go to, and thereby easy to use as they are close to regular English language. If imagining what one want to do in the code, like ``is this expression right or is the other expression?'', here is important word ``OR'', which is also the keyword for how to distinguish between two boolean expressions.\\ 
+The syntax consideration for the source language is mostly to be found within the keywords. For instance ``AND'' is quite self-describing whereas many programming languages uses ``\&\&'' for the same effect. The keywords that is used in the source language is easy to go to, and thereby easy to use as they are close to regular English language. If imagining what one want to do in the code, like ``is this expression right or is the other expression?'', here is important word ``OR'', which is also the keyword for how to distinguish between two boolean expressions.\\ 
 \end{itemize}
 
 \textbf{Write-ability:} \\
@@ -61,7 +61,7 @@ The syntax consideration for the source language is mostly to be found within th
 \item Simplicity and Orthogonality: \\
 It is important for the source language to be able to have a small number of rules required to write code. The code has to be simple to write as well as it being easy to use along with orthogonality.
 \item Support for abstraction: \\
-Some languages support abstraction  in their programming language. For instance supporting imaginary numbers, The source language does not support abstraction. 
+Some languages support abstraction  in their programming language. For instance supporting imaginary numbers, The source language does not support abstraction. \todo{Why not?}
 \item Expressively: \\
 The source language is not expressively. It does not support expressions like ``$i++$'' or predefined functions like ``$and~then$''. These expressions is for easier coding for instance ``$i++$'' would have to be written as ``$i = i + 1$'' so, by using ``$i++$'' is both saving space and time.
 \end{itemize}
@@ -69,7 +69,7 @@ The source language is not expressively. It does not support expressions like ``
 \textbf{Reliability:} \\
 \begin{itemize}
 \item Type checking: \\
-It is important that the source language is checking for typing errors as early as possible. The source language is being checked for these typing errors during the code generation, spelling mistakes is being checked for during the parser, whether or not the grammar is equal to the syntax.
+It is important that the source language is checking for typing errors as early as possible. The source language is being checked for these typing errors during the code generation, spelling mistakes is being checked during the parsering, to make sure it fits that syntax definition.
 \item Exception handling: \\
 There is no exception handling in the source language, so if there is an error, the program will not be running.
 \item Aliasing: \\
