@@ -1,21 +1,36 @@
 \section{Priority Table}
 In this section a priority table is established for the source language. It contains level hierarchy (which operator is the most important), which symbol is used for the operator, a small description of the operator, and the associativity in which the operator is to be used.
 \begin{table}[H]
+	\center
 	\begin{tabular}{|l|l|l|l|}
 	\hline
 	\emph{Level} & \emph{Symbol} & \emph{Description} & \emph{Associativity} \\ 
  		\hline
  		1 & () & Arithmetic Expression & Left to right \\
  		\hline
- 		2 & not \\ * \\ / \\ \% \\ sqrt() \\ $^{}$ & Logical negation \\ Multiplication \\ Division \\ Modulus \\ Square root \\ Exponentiation & Left to right \\
+ 		2 & not & Logical negation & Left to right \\
+ 		& * & Multiplication & \\
+ 		& / & Division & \\
+ 		& \% & Modulus & \\
+ 		& sqrt() & Square root & \\
+ 		& $\texttt{\^{}}$ & Exponentiation &\\
  		\hline
- 		3 & + \\ - & Addition \\ Subtraction & DUNNO?!?!?!? \\
+ 		3 & + & Addition & Left to right \\
+ 		& - & Subtraction & \\
  		\hline
- 		4 & < \\ > \\ <= \\ >= \\ equals \\ notequals \\ or \\ and & Less than \\ Greater than \\ Less than or equal to \\ Greater than or equal to \\ Equal \\ Not equal \\ Logical or \\ Logical and & Left to right \\
+ 		4 & <  & Less than & Left to right \\
+ 		& > & Greater than &  \\
+ 		& <= & Less than or equal to &  \\
+ 		& >= & Greater than or equal to &  \\
+ 		& equals & Equal to &  \\
+ 		& notequals & Not equal to &  \\
+ 		& or & Logical or &  \\
+ 		& and & Logical and &  \\
  		\hline
  		5 & = & Assignment & Right to left \\
+ 		\hline
 	\end{tabular}
 	\label{tab:priority}
 	\caption{Table of operator priority}
-\end{table} \todo{Check Dunno!!}
+\end{table} 
 As seen in table \ref{tab:priority}, the operator read first in the source language is parenthesis, as they will be used in arithmetic and boolean expressions to determine what part of the expression is to be understood first. On the second level of the source language is negation, multiplication, division, modulus, square root, and exponentiation, this has been done because that is the priority of mathematics. Level three contains addition and subtraction which are placed just above the boolean expressions in order to have arithmetic and boolean expressions in the same statement but still separate them in order. The last level is assignment. \todo{insert something about associativity}
