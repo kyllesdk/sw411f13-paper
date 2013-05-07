@@ -1,105 +1,78 @@
 \section{The second syntax example}
-This is the second example of how the new language looks like. Just like in the first syntax example \ref{lst:syntax1}, then this is an example derived from a code in the original Arduino language. The original code can be found in Appendix \ref{second_syntax_example}. This is second example is a small code doing a simple task. The task here is that when moving a joystick in one direction a LED will turn on, when moved in another direction another LED will be turned on, and so on. 
-\begin{lstlisting}[caption=Joystick code example based on the source language, label=lst:syntax2]
-    // Declaration of Variables
-    // Array of 8 leds mounted in a circle
-    int ledPins [] = { 2,3,4,5,6,7,8,9 };    
-    
-    int ledVerde = 13;
-    int espera = 40		// Time waiting led to turn on
-    int joyPin1 = 0		// slider variable to analog pin 0
-    int joyPin2 = 1		// slider variable to analog pin 1
-    int coordX = 0		// variable-read value from analog 0
-    int coordY = 0		// variable-read value from analog 1
-    int centerX = 500	// Measured center-value of joystick
-    int centerY = 500;
-    int actualZone = 0;
-    int previousZone = 0;
-    
-    // Asignment of the pins
-    void setup() begin
-        int i;
-        beginSerial(9600);
-        pinMode (ledVerde, OUTPUT);
-        while (i < 8) do
-            pinMode(ledPins[i], OUTPUT);
-            i = i + 1;
-        end
-    end
+This is the second example of how the new language looks like. Just like in the first syntax example \ref{lst:syntax1}, then this is an example derived from a code in the original Arduino language. The original code can be found in Appendix \ref{second_syntax_example}. This is second example is a small code doing a simple task.
+It counts from 1 to 100 and prints a different output depending on the current count.\\
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+\hline 
+Count & print \\ 
+\hline 
+Dividebel with 3 & Foo \\ 
+\hline 
+Dividebel with 5 & Bar \\ 
+\hline 
+Dividebel with 3 and 5 & FooBar \\ 
+\hline 
+Anything else & the count \\ 
+\hline 
+\end{tabular} 
+\end{table}
 
-    // function that calculates the slope of the line that passes through the points
-    // x1, y1 and x2, y2
+So if the count is 9 it will print Foo and if it is 15 it will print FooBar. Despite it being a simple example it does make use of a lot of different operations.
 
-    int calculateSlope(int x1, int y1, int x2, int y2) begin
-    return ((y1-y2) / (x1-x2));
-    end
-    // function that calculates in which of the 8 possible zones is the coordinate x y, given the center cx, cy
-    int calculateZone (int x, int y, int cx, int cy) begin
-  
-    int alpha = calculateSlope(x,y, cx,cy);     
-    if (x > cx) do
-        if (y > cy) 		// first quadrant 
-            if (alpha > 1) do                   
-                return 0;
-            end
-            else do
-                return 1;                      
-            end
-        end
-        else do				// second quadrant
-            if (alpha > -1) do
-                return 2;
-            end
-            else do
-                return 3;
-            end
-        end
-    end
-    else do
-        if (y < cy) do		// third quadrant
-            if (alpha > 1) do
-                return 4;
-            end
-            else do
-                return 5;
-            end
-        end
-        else do				// fourth quadrant
-            if (alpha > -1) do
-                return 6;
-            end
-            else do
-                return 7;
-            end
-        end
-    end
-    
-    void loop() begin
-        digitalWrite(ledVerde, HIGH);           
-                                                
-        coordX = analogRead(joyPin1);   
-        coordY = analogRead(joyPin2);   
-                                                
-        actualZone = calculateZone(coordX, coordY, centerX, centerY); 
-        digitalWrite (ledPins[actualZone], HIGH);     
-        if (actualZone != previousZone) do
-            digitalWrite (ledPins[previousZone], LOW);
-        end
-                                                
-        serialWrite('C');
-        serialWrite(32); // print space
-        printInteger(coordX);
-        serialWrite(32); // print space
-        printInteger(coordY);
-        serialWrite(10);
-        serialWrite(13);
-        serialWrite('Z');
-        serialWrite(32); // print space
-        printInteger(actualZone);
-        serialWrite(10);
-        serialWrite(13);
-                                                
-        previousZone = actualZone;
-        // delay (500);
-    end
+\begin{lstlisting}[caption=LCD code example based on the source language, label=lst:syntax2]
+// include the library code:
+#include <LiquidCrystal.h>
+
+// initialize the library with the numbers of the interface pins
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+int count;
+
+void setup() begin
+  pinMode(9, OUTPUT);
+  analogWrite(9, 12);
+  // set up the LCD's number of columns and rows: 
+  lcd.begin(16, 2);
+  // Print a message to the LCD.
+  lcd.print("Foo Bar");
+  count = 1;
+  Serial.begin(9600);
+
+  delay(2000);
+end
+
+void loop() begin
+  lcd.clear();
+  delay(200);
+  //If count divided by 3 and 5 equals 0 write Foo Bar
+  if(count % 3 equals 0 && count % 5 equals 0)then
+      lcd.print("Foo Bar"); 
+      Serial.println("Foo Bar"); 
+  end
+  //If count divided by 3 equals 0 write Foo 
+  elseif(count % 3 equals 0)then
+    lcd.print("Foo");
+    Serial.println("Foo"); 
+  end
+    //If count divided by 5 equals 0 write Bar 
+  elseif(count % 5 equals 0)then
+    lcd.print("Bar");
+    Serial.println("Bar"); 
+  end
+  else then
+  //All other times write the number
+    lcd.print(count);
+    Serial.println(count); 
+  end
+end
+
+  count = count + 1;
+  if(count > 100)then
+    count = 2;
+  end
+  // delay at the end of the full loop:
+  delay(1000);
+
+
+end
 \end{lstlisting}
