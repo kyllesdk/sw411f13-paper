@@ -47,7 +47,9 @@
 % \end{lstlisting}
 \newpage
 \section{Semantics} \label{sec:semantics}
-The semantics of a language is the description of what happens when a program is executed. In table \ref{tab:semantics_aritmethic}, \ref{tab:semantics_boolean} and \ref{tab:semantics_statements} are the descriptions of the possible operations in the source language. \\
+The semantics of a language is the description of what happens when a program is executed. In table \ref{tab:semantics_aritmethic}, \ref{tab:semantics_boolean} and \ref{tab:semantics_statements} are the descriptions of the operations in the source language. \\
+
+In table \ref{tab:semantics_aritmethic} this arrow $\rightarrow_{a}$ is used. This arrow represents the transition system. For instance, taking in the first line in ``PLUS'', it represents the transition from state $a_1$ to $v_1$ as well as the transition from $a_2$ to $v_2$. The label on the arrow indicates that the transition system only allows values that all are arithmetic expressions.
 
 \begin{table}[H]
 	\begin{tabular}{|l|l|l|}
@@ -62,7 +64,7 @@ The semantics of a language is the description of what happens when a program is
 			~			&															~																			& ~ \\
 	$[DIV_{BSS}]$		& $s~\vdash a_{1}~\rightarrow_{a}~v_{1}~~s ~\vdash a_{2}~\rightarrow_{a}~v_{2} \over s~\vdash~{a_{1}}~/~{a_{2}}~\rightarrow_{a}~v$ 		& where $v = \frac{v_{1}}{v_{2}}$ and $v_2 \neq 0$\\
 			~			&																																		& ~ \\
-	$[MOD_{BSS}]$		& $s~\vdash a_{1}~\rightarrow_{a}~v_{1}~~s~\vdash~a_{2}~\rightarrow_{a}~v_{2} \over s~\vdash~a_{1}~\%~a_{2}~\rightarrow_{a}~v$			& where $v = v_{1}\%v_{2}$ \\
+	$[MOD_{BSS}]$		& $s~\vdash a_{1}~\rightarrow_{a}~v_{1}~~s~\vdash~a_{2}~\rightarrow_{a}~v_{2} \over s~\vdash~a_{1}~\%~a_{2}~\rightarrow_{a}~v$			& where $v = v_{1} mod v_{2}$ \\
 			~			&															~																			& ~ \\
 	$[POW_{BSS}]$		& $s~\vdash~a_{1}~\rightarrow_{a}~v_{1}~~s~\vdash~a_{2}~
 	\rightarrow_{a}~v_{2} \over~s~\vdash~a_{1}~\texttt{\^{}}~a_{2}~\rightarrow_{a}~v$	& where $v = v_{1}\texttt{\^{}}v_{2}$ \\
@@ -84,7 +86,8 @@ The semantics of a language is the description of what happens when a program is
 First is table \ref{tab:semantics_aritmethic}, which describes the arithmetic expressions - the more common ones are addition, subtraction, multiplication and division (PLUS(+), MINUS(-), MULT(*), DIV(/)). Their rules all look near identical: A statement, ``$s$'', with two expressions, $v_{1}$ and $v_{2}$, which both are arithmetic as seen by $\rightarrow_{a}$ can be added, subtracted, multiplied or divided with each other. This results in $v$, which is arithmetic. However, when taking a look upon DIV's side-note, take notice that it states that $v_{2}$ cannot be divided by zero, as it is not possible to divide any number by zero, so this side-note making sure that it is not possible to do so. \\
 Furthermore, $v$ is the product of the operator used on $v_{1}$ and $v_{2}$. Both modulus and power of (MOD(\%), POW($\texttt{\^{}}$) are identical to these operations in procedure. \\
 SQRT, also known as square-root($\sqrt{}$) is a simple rule to allow any positive arithmetic expression, $v_{1}$ to be squared, where $v$ obviously is $\sqrt{v_{1}}$. Also here, like on division, is an extra side-note, which indicates that the number that is to be square-rooted is either a zero or a positive number, as the source language is not going to allow imaginary numbers. \\
-The PARENT, or parentheses(()), rule states that any arithmetic expression can be parenthesized, allowing chained arithmetic calculations to be performed in the correct order. VAR describes, that in a state $s$, a value $v$ can be assigned to a variable $x$, allowing variable declaration. NUM, or numeric value also known as absolute value, allows within a statement $S$ to get the numerical value of a variable $v$. A numeric value is a numbers distance from zero, for instance $|2|$ and $|-2|$ are both 2 units from 0.  \\
+
+The PARENT, or parentheses(()), rule states that any arithmetic expression can be parenthesized, allowing chained arithmetic calculations to be performed in the correct order. VAR describes, that in a state $s$, a value $v$ can be assigned to a variable $x$, allowing variable declaration. NUM, numerals also known as absolute value, allows within a statement $S$ to get the numerical value of a variable $v$. A numeric value is a numbers distance from zero, for instance $|2|$ and $|-2|$ are both 2 units from 0.  \\
 
 \begin{table}[H]
 	\begin{tabular}{|l|l|l|}

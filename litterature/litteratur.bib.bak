@@ -1,4 +1,4 @@
-% This file was created with JabRef 2.7.2.
+% This file was created with JabRef 2.9.2.
 % Encoding: Cp1252
 
 @MISC{AVR:lib,
@@ -25,13 +25,19 @@
   year = {2009}
 }
 
+@MISC{javacc-wustl-ppt,
+  author = {Mike Wilson},
+  title = {LL Parsers and LL(k) Grammars},
+  year = {2011},
+  note = {http://www.arl.wustl.edu/~mlw2/cse431/lec/LL.pdf},
+  owner = {kyllesdk},
+  timestamp = {2013.04.28},
+  url = {http://www.arl.wustl.edu/~mlw2/cse431/lec/LL.pdf}
+}
+
 @MISC{Arduino,
   title = {Arduino Uno},
   note = {http://arduino.cc/en/Main/ArduinoBoardUno}
-}
-
-@MISC{Arduino:IDE,
-  note = {http://arduino.cc/en/main/software}
 }
 
 @MISC{Arduino_board_pics,
@@ -41,17 +47,16 @@
   url = {http://arduino.cc/en/Main/ArduinoBoardUno}
 }
 
+@MISC{Arduino:IDE,
+  note = {http://arduino.cc/en/main/software}
+}
+
 @MISC{JavaCC,
   note = {http://javacc.java.net/}
 }
 
-@MISC{pythonOff,
-  owner = {Zati},
-  timestamp = {2013.04.23},
-  url = {http://www.python.org/about/}
-}
-
-@MISC{pythonWiki,
+@MISC{python:wiki,
+  title = {Python History Wiki},
   owner = {Zati},
   timestamp = {2013.04.23},
   url = {http://en.wikipedia.org/wiki/History_of_Python}

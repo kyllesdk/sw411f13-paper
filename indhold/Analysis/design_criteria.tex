@@ -1,0 +1,80 @@
+\chapter{Design Criteria}\label{chap:design-criteria}
+This section presents the design criteria for the source language. Showing which goals is reached based on the criteria. 
+
+\section{The chosen criteria}
+In this design criteria for programming language there will be 5 main criteria, which each have sub-criteria. The criteria are as follows:
+\begin{itemize}
+\item Readability
+\begin{itemize}
+\item Overall simplicity
+\item Orthogonality
+\item Data types and control statements
+\item Syntax considerations
+\end{itemize}
+\item Write-ability
+\begin{itemize}
+\item Simplicity and Orthogonality
+\item Support for abstraction
+\item Expressivity
+\end{itemize}
+\item Reliability
+\begin{itemize}
+\item Type checking
+\item Exception handling
+\item Aliasing
+\item Readability and write-ability
+\end{itemize}
+\item Cost
+\begin{itemize}
+\item Training programmers to use the language
+\item Writing programs
+\item Compiling programs
+\item Executing programs
+\item Language implementation system
+\item Reliability
+\item Maintaining programs
+\end{itemize}
+\item Others
+\begin{itemize}
+\item Portability
+\item Generality
+\item Well-definedness
+\end{itemize}
+\end{itemize}
+
+However the source language does not fulfil all criteria, and not all of the criteria is needed. As for this language the ``Cost'' criteria as well as the ``Others'' criteria including both their sub-criteria are not needed here. However ``Readability'', ``Write-ability'' and ``Reliability'' are, including their sub-criteria. So the focus will be on these 3 and their respective sub-criteria. \\ \\
+\textbf{Readability:} \\
+The readability criteria is one of the most important criteria for this language, because this language is developed so that it should be easy to read and thereby easy to understand what it is going on. \\
+\begin{itemize}
+\item Overall simplicity:\\
+The source language has a manageable set of features, which provides the user with the basic need to be able to form programs in a quite simple matter. With the source language being somewhat limited gives the source language an overall simplicity as there is not much operator overloading possible since the user is more or less closed off from giving the operators another semantics than first given. 
+\item Orthogonality:\\
+In the source language is not quite orthogonal, as it does not support that every combination is legal. However it does not reject all combinations either. A language that has good orthogonality is a language that has few or a limited amount constructs and a limited way that these can be combined. 
+\item Data types and control statements:\\
+In general the source language has adequate data types as well as control statements, however it does not support all the types, but enough for the most simple tasks. For instance Decimal is not supported, which is the preferred data type when making a program that can handle money. 
+\item Syntax Consideration:\\
+The syntax consideration for the source language is mostly to be found within the keywords. For instance ``AND'' is quite self-describing whereas many programming languages uses ``\&\&'' for the same effect. They keywords that is used in the source language is easy to go to, and thereby easy to use as they are close to regular English language. If imagining what one want to do in the code, like ``is this expression right or is the other expression?'', here is important word ``OR'', which is also the keyword for how to distinguish between two boolean expressions.\\ 
+\end{itemize}
+
+\textbf{Write-ability:} \\
+\begin{itemize}
+\item Simplicity and Orthogonality: \\
+It is important for the source language to be able to have a small number of rules required to write code. The code has to be simple to write as well as it being easy to use along with orthogonality.
+\item Support for abstraction: \\
+Some languages support abstraction  in their programming language. For instance supporting imaginary numbers, The source language does not support abstraction. 
+\item Expressively: \\
+The source language is not expressively. It does not support expressions like ``$i++$'' or predefined functions like ``$and~then$''. These expressions is for easier coding for instance ``$i++$'' would have to be written as ``$i = i + 1$'' so, by using ``$i++$'' is both saving space and time.
+\end{itemize}
+
+\textbf{Reliability:} \\
+\begin{itemize}
+\item Type checking: \\
+It is important that the source language is checking for typing errors as early as possible. The source language is being checked for these typing errors during the code generation, spelling mistakes is being checked for during the parser, whether or not the grammar is equal to the syntax.
+\item Exception handling: \\
+There is no exception handling in the source language, so if there is an error, the program will not be running.
+\item Aliasing: \\
+It is possible to refer to function-names as well as variable-names in the source language. However it is not possible to refer to the same slot in memory in two more or more distinct ways, which makes the source language weak regarding aliasing. 
+\item Readability and write-ability: \\
+If looking at readability as well as write-ability, then the source language supports ``natural'' ways of writing code, as well as when its written the code itself is easily read. However the code is not looking like all the other types of code one could write in depending on the programming language. For instance when writing an ``or'' expression it would not look the same in many other programming languages, so switching between the source language and some other language can become hard on ones interpretation of the different languages as they are not all alike. But in the end, writing ``OR'' or using ``$\|\|$'' is a mostly a matter of what the programmer is used to. 
+\end{itemize}
+Its hard to be fully objective regarding the design criteria, as these criteria versus the source language can be look upon from different angles. So different people could have different opinions on whether or not the source language is fulfilling the criteria, whether is lacking or not. 
