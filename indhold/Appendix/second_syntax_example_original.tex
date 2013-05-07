@@ -1,100 +1,60 @@
 \section{Original Syntax Example 2}
-This is the second example of the original way to write code to Arduino. This is about the joystick example.
-\begin{lstlisting}[caption=This is the second original Arduino example \cite{arduino_joystick_example}, label=lst:second_syntax_example]
-  // Declaration of Variables
-  int ledPins [] = { 2,3,4,5,6,7,8,9 };    // Array of 8 leds mounted in a circle
-  int ledVerde = 13;
-  int espera = 40;                 // Time you should wait for turning on the leds
-  int joyPin1 = 0;                 // slider variable connecetd to analog pin 0
-  int joyPin2 = 1;                 // slider variable connecetd to analog pin 1
-  int coordX = 0;                  // variable to read the value from the analog pin 0
-  int coordY = 0;                  // variable to read the value from the analog pin 1
-  int centerX = 500;               // we measured the value for the center of the joystick
-  int centerY = 500;
-  int actualZone = 0;
-  int previousZone = 0;
-  // Asignment of the pins
-  void setup()
-  {
-    int i;
-    beginSerial(9600);
-    pinMode (ledVerde, OUTPUT);
-    for (i=0; i< 8; i++)
-    {
-      pinMode(ledPins[i], OUTPUT);
-    } 
+This is the second example of the original way to write code to Arduino. This is about the LCD example.
+\begin{lstlisting}[caption=This is the second original Arduino example \cite{arduino_LCD_example}, label=lst:second_syntax_example]
+  #include <LiquidCrystal.h>
+
+// initialize the library with the numbers of the interface pins
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+int count;
+
+void setup() {
+  pinMode(9, OUTPUT);
+  analogWrite(9, 12);
+  // set up the LCD's number of columns and rows: 
+  lcd.begin(16, 2);
+  // Print a message to the LCD.
+  lcd.print("Foo Bar");
+  count = 1;
+  Serial.begin(9600);
+
+  delay(2000);
+}
+
+void loop() {
+  lcd.clear();
+  delay(200);
+  //If count divided by 3 and 5 equals 0 write Foo Bar
+  if(count % 3 == 0 && count % 5 == 0){
+    lcd.print("Foo Bar"); 
+    Serial.println("Foo Bar"); 
   }
-  // function that calculates the slope of the line that passes through the points
-  // x1, y1 and x2, y2
-  int calculateSlope(int x1, int y1, int x2, int y2)
-  {
-    return ((y1-y2) / (x1-x2));
-  }
-  // function that calculates in which of the 8 possible zones is the coordinate x y, given the center cx, cy
-  int calculateZone (int x, int y, int cx, int cy)
-  {
-    int alpha = calculateSlope(x,y, cx,cy); // slope of the segment betweent the point and the center
-    if (x > cx)
-    {
-      if (y > cy) // first cuadrant
-      {
-        if (alpha > 1) // The slope is > 1, thus higher part of the first quadrant
-          return 0;
-        else
-          return 1;    // Otherwise the point is in the lower part of the first quadrant
+  else{
+    //If count divided by 3 equals 0 write Foo 
+    if(count % 3 == 0){
+      lcd.print("Foo");
+      Serial.println("Foo"); 
+    }
+    else{
+      //If count divided by 5 equals 0 write Bar 
+      if(count % 5 == 0){
+        lcd.print("Bar");
+        Serial.println("Bar"); 
       }
-      else // second cuadrant
-      {
-        if (alpha > -1)
-          return 2;
-        else
-          return 3;
+      else{
+        //All other times write the number
+        lcd.print(count);
+        Serial.println(count); 
       }
     }
-    else
-    {
-      if (y < cy) // third cuadrant
-      {
-        if (alpha > 1)
-          return 4;
-        else
-          return 5;
-      }
-      else // fourth cuadrant
-      {
-        if (alpha > -1)
-          return 6;
-        else
-          return 7;
-      }
-    }
-  } 
-   void loop() {
-    digitalWrite(ledVerde, HIGH); // flag to know we entered the loop, you can erase this if you want
-    // reads the value of the variable resistors 
-    coordX = analogRead(joyPin1);   
-    coordY = analogRead(joyPin2);   
-    // We calculate in which x
-    actualZone = calculateZone(coordX, coordY, centerX, centerY); 
-    digitalWrite (ledPins[actualZone], HIGH);     
-    if (actualZone != previousZone)
-      digitalWrite (ledPins[previousZone], LOW);
-   // we print int the terminal, the cartesian value of the coordinate, and the zone where it belongs. 
-  //This is not necesary for a standalone version
-    serialWrite('C');
-    serialWrite(32); // print space
-    printInteger(coordX);
-    serialWrite(32); // print space
-    printInteger(coordY);
-    serialWrite(10);
-    serialWrite(13);
-    serialWrite('Z');
-    serialWrite(32); // print space
-    printInteger(actualZone);
-    serialWrite(10);
-    serialWrite(13);
-  // But this is necesary so, don't delete it!
-    previousZone = actualZone;
-   // delay (500);
- }
+  }
+
+  count++;
+  if(count > 100){
+    count = 2;
+  }
+  // delay at the end of the full loop:
+  delay(1000);
+
+
+}
 \end{lstlisting}
