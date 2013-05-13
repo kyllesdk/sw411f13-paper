@@ -1,5 +1,5 @@
 \section{Tombstone Diagram}
-When crafting a compiler tombstone diagrams can be used to define the programming languages needed to compile the source code of a program. The tombstone diagram shows the source language the program is written in, the language of the compiler(s), the language(s) of the different stages of compiling, and the target language.
+When developing a compiler tombstone diagrams can be used to define the programming languages needed to compile the source code of a program. The tombstone diagram shows the source language, the language of the compiler(s), the language(s) of the different stages of compiling, and the target language.
 
 \begin{figure}[H]
 	\centering
@@ -9,4 +9,4 @@ When crafting a compiler tombstone diagrams can be used to define the programmin
 \end{figure}
 
 As seen in figure \ref{fig:tombstone} the tombstone diagram for this project is as follows: The program is written in PH \todo{Name for source language placeholder}, it is then translated by the compiler, written in Java, into the Arduino language. Since the Arduino only understands machine code, another compiler, written in C++, is needed to translate from the Arduino language into machine code. For this the standard Arduino IDE, is used to compile the Arduino program to machine code, which can run on Arduino.
-Since this project focuses on compiling from PH to Arduino language the first tombstone diagram in figure \ref{fig:tombstone} is the important one to notice.
+Since this project focuses on compiling from PH to Arduino language the first tombstone diagram in figure \ref{fig:tombstone} is the important one.
