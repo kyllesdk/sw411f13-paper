@@ -8,18 +8,20 @@ This is the first example of the original way to write code to Arduino. This exa
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 
 void setup() {
+  pinMode(9, OUTPUT);
+  analogWrite(9, 20);
   // set up the LCD's number of columns and rows: 
-  lcd.begin(16, 2);
+  lcd.begin(8, 2);
   // Print a message to the LCD.
   lcd.print("hello, world!");
+  delay(2000);
 }
 
 void loop() {
-  // set the cursor to column 0, line 1
+  // set the cursor to column 0, line 0
   // (note: line 1 is the second row, since counting begins with 0):
-  lcd.setCursor(0, 1);
+  lcd.setCursor(0, 0);
   // print the number of seconds since reset:
   lcd.print(millis()/1000);
-}
 }
 \end{lstlisting}
