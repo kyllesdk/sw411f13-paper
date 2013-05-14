@@ -1,9 +1,9 @@
 \chapter{Design Criteria}\label{chap:design-criteria}
-This section presents the design criteria for the source language. Showing which goals is reached based on the criteria. 
+This section presents the design criteria for the source language, showing which goals is reached based on the criteria. 
 
 \section{The chosen criteria}
-Typically one uses a set of criteria to evaluate the usability if a language. The design criteria that were considered to evaluate the source code is listed in table \ref{chap:design-criteria}. 
-The source language does not fulfil all criteria, since not all of the criteria are relevant for this projects purpose. But for instance the ``Cost'' criteria as well as the ``Others'' criteria including their sub-criteria are not needed here. However ``Readability'', ``Write-ability'' and ``Reliability'' are relevant for this project and the focus will be on these 3 and their respective sub-criteria.
+Typically one uses a set of criteria to evaluate the usability of a language. The design criteria that were considered to evaluate the source code is listed in table \ref{chap:design-criteria}. 
+The source language does not fulfil all criteria, since not all of the criteria are relevant for this projects purpose. For instance the ``Cost'' criteria as well as the ``Others'' criteria including their sub-criteria are not needed here. However ``Readability'', ``Write-ability'' and ``Reliability'' are relevant for this project and the focus will be on these 3 and their respective sub-criteria.
 
 \begin{table}[H]
 	\center
@@ -46,35 +46,35 @@ The source language does not fulfil all criteria, since not all of the criteria 
 The readability criteria is one of the most important criteria for this language, because this language is developed so that it should be easy to read and thereby easy to understand what it is going on. \\
 \begin{itemize}
 \item Overall simplicity:\\
-The source language has a manageable set of features, which provides the user with the basic need to be able to form programs in a quite simple matter. With the source language being somewhat limited gives the source language an overall simplicity as there is not much operator overloading possible since the user is more or less closed off from giving the operators another semantics than first given. 
+The source language has a manageable set of features, which provides the user with the basic need to be able to form programs in a quite simple matter. The source language being somewhat limited gives the source language an overall simplicity as there is not much operator overloading possible since the user is more or less closed off from giving the operators another semantics than first given. 
 \item Orthogonality:\\
-A language that has good orthogonality is a language that has few or a limited amount constructs, where every possible combinations is allowed. Though, too much orthogonality is not always good, as it can cause problems. For instance having too many choice, and which solution would be the best.\\
-The source language is not quite orthogonal, as every possible combination is not legal. Though it does not reject all combinations either.  
+A language that has good orthogonality is a language that has few or a limited amount constructs, where every possible combinations is allowed. Though, too much orthogonality is not always good, as it can cause problems. For instance having too many choices, and which solution would be the best.\\
+The source language is not quite orthogonal, as every possible combination is not legal though it does not reject all combinations either.  
 \item Data types and control statements:\\
-In general the source language has adequate data types as well as control statements, however it does not support all the types, but enough for the most simple tasks. For instance decimal is not supported, which is the preferred data type when making a program that can handle money. In the source language decimal and doubles were chosen not to be included as float provides the source language with plenty opportunities, which can make them obsolete.
+In general the source language has adequate data types as well as control statements, however it does not support all the types featured in Arduino, but enough for the most simple tasks. For instance decimal is not supported, which is the preferred data type when making a program that can handle money. In the source language decimal and doubles were chosen not to be included as float provides the source language with plenty opportunities, which can make them obsolete.
 \item Syntax Consideration:\\
-The syntax consideration for the source language is mostly to be found within the keywords. For instance ``AND'' is quite self-describing whereas many programming languages uses ``\&\&'' for the same effect. The keywords that is used in the source language is easy to go to, and thereby easy to use as they are close to English language. If imagining what one want to do in the code, like ``is this expression right or is the other expression?'', here is important the word ``OR'', which is also the keyword for how to distinguish between two boolean expressions.\\ 
+The syntax consideration for the source language is mostly to be found within the keywords. For instance ``AND'' is quite self-describing whereas many programming languages uses ``\&\&'' for the same effect. The keywords that is used in the source language is easy to go to\todo{Morten: What is this?}, and thereby easy to use as they are close to English language. If imagining what one want to do in the code, like ``is this expression right or is the other expression?'', here is important the word ``OR'', which is also the keyword for how to distinguish between two boolean expressions.\todo{Morten: And this?}\\ 
 \end{itemize}
 \textbf{Write-ability:} \\
 The write-ability criteria is quite important as it shows the criteria of how the code should be written. 
 \begin{itemize}
 \item Simplicity and Orthogonality: \\
-It is important for the source language to be able to have a small number of rules required to write code. The code has to be simple to write as well as it being easy to use along with orthogonality.
+It is important for the source language to have a small number of rules required to write code. The code has to be simple to write as well as it being easy to use along with orthogonality.
 \item Support for abstraction: \\
-Some languages support abstraction  in their programming language. For instance supporting imaginary numbers, The source language does not support abstraction. Having imaginary numbers is without need for the source language as it has no of practical use in a daily life. It is not felt that the source language needs them to achieve its goals.
+Some languages support abstraction  in their programming language. For instance supporting imaginary numbers, The source language does not support abstraction. Having imaginary numbers is without need for the source language as it has no of practical use in a daily life\todo{Morten: from a beginners perspective?}. The source language does not need this feature to achieve its goals.
 \item Expressivity: \\
-The source language is not expressively. It does not support expressions like ``$i++$'' or predefined functions like ``$and~then$''. These expressions are usually used to ease coding. For instance, instead of writing ``$i++$'', one would have write ``$i = i + 1$''. So, by using ``$i++$'' the programmer would both be saving space and time. Though having focus on expressivity can mean sacrificing some readability. 
+The source language is not expressive. It does not support expressions like ``$i++$'' or predefined functions like ``$and~then$''. These expressions are usually used to ease coding. For instance, instead of writing ``$i++$'', one would have write ``$i = i + 1$''. So, by using ``$i++$'' the programmer would both be saving space and time. Though having focus on expressivity can mean sacrificing some readability. 
 \end{itemize}
 \textbf{Reliability:} \\
-It is important that the source language is reliable. If the source language keeps making errors or mistakes, then the user might be less likely to use the programming language.
+It is important that the source language is reliable. If the source language keeps producing errors or mistakes, the user is less likely to use the programming language.
 \begin{itemize}
 \item Type checking: \\
-It is important that the source language is checking for typing errors as early as possible. The source language is being checked for these typing errors during the code generation, spelling mistakes is being checked during the parsing, to make sure it fits the syntax definition.
+It is important that the source language is checking for typing errors as early as possible. The source language is being checked for these typing errors during the code generation, spelling mistakes is being checked during the parsing, to make sure it fits the syntax definition. \todo{Morten: This is not what typechecking is}
 \item Exception handling: \\
-There is no exception handling in the source language, so if there is an error, the program will not be running.
+There is no exception handling in the source language, so if there is an error, the program will not run. \todo{Morten: Elaboration?}
 \item Aliasing: \\
 It is possible to refer to function-names as well as variable-names in the source language. However, it is not possible to refer to the same slot in memory in two or more distinct ways, which makes the source language weak regarding aliasing. 
-\item Readability and write-ability: \\
+\item Readability and write-ability: \todo{Morten: Needs an overhaul} \\
 If looking at readability as well as write-ability, then the source language supports ``natural'' ways of writing code, as well as when its written the code itself is easy to read. However, the code is not looking like all the other types of code one could write in depending on the programming language. For instance when writing an ``or'' expression it would not look the same in many other programming languages. So, switching between the source language and some other programming language might be hard on ones interpretation. The difference in the languages can become problematic. But in the end, using ``OR'' or ``$||$'' is mostly a matter of what the programmer is used to use while writing code. 
 \end{itemize}
-It is difficult to be fully objective regarding the design criteria, as these criteria versus the source language can be look upon from different angles. So, different people could have different opinions on whether or not the source language is fulfilling the criteria, whether is lacking or not. 
+It is difficult to be fully objective regarding the design criteria as they can be seen from different angles. Different people will have different opinions on whether or not the source language is fulfilling the criteria. 
