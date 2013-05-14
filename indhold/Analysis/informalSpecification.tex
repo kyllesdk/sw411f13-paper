@@ -5,17 +5,18 @@ The purpose of this section is to outline what the programming language, propose
 \subsection{Data types}
 The language contains the following data types: \\ 
 \begin{center}
-\begin{tabular}{ l l l }
-int & float & double \\
-string & boolean \\
+\begin{tabular}{ l l l l}
+int & float & string & boolean \\
 \end{tabular}
 \end{center}
+
 The different data types can hold different ranges or types of values. The values have been specified more below: 
 \begin{itemize}
-\item \textbf{Int} or integer does not include floating point numbers, but and it can only hold a number between $-32.768$ and $32.767$. If however it is unsigned it can range from $0$ to $65.535$.
+\item \textbf{Int} or integer does not include floating point numbers, and can only hold numbers between $-32.768$ and $32.767$. If however it is unsigned it can range from $0$ to $65.535$. \todo{Morten: Hvem har været her? Blev vi ikke enige om ingen unsigned?}
 \item \textbf{Float} allows a number within the range $1.175494351e-38$ and $3.402823466e+384$.
-\item \textbf{Double} is the numeric type in the source language with the biggest range, which goes from $2.2250738585072014e-308$ to $1.7976931348623157e+308$.
+%\item \textbf{Double} is the numeric type in the source language with the biggest range, which goes from $2.2250738585072014e-308$ to $1.7976931348623157e+308$.
 \item \textbf{String} can hold any kind of number and/or character. 
+%\item \textbf{Array} can consist of collections of elements, either values or variables. For instance it can hold numbers and/or string of characters. 
 \item \textbf{Boolean} can either be ``true'' or ``false''. 
 \end{itemize}
 
@@ -25,7 +26,8 @@ The following words are reserved words in the programming language:\\
 \begin{tabular}{ l l l l l l}
 if & else & elseif & do & end & function \\
 while & return & true & false & void & int \\
-float & double & string & bool & print\\
+float & system & string & out & bool & print\\
+loop & setup \\
 \end{tabular}
 \end{center}
 
