@@ -1,7 +1,7 @@
 \chapter{JavaCC - Java Compiler Compiler}
 JavaCC is a parser generator that generates a fully functioning parser. JavaCC takes a file containing EBNF grammar and then makes a program that can recognize matches between the input code and the grammar, this part of the parser is called the scanner. JavaCC also creates other things like e.g. an AST (Abstract Syntax Tree, see section \ref{sec:AST}) that decides the derivation of the code. \cite{JavaCC}
 
-JavaCC generates top-down parsers (LL(k) parsers) which means that it replaces every nonterminal until the string is created. LL(k) grammars produce a left-to-right symbol scan which means that it produces a leftmost derivation. The LL(k) grammars use a maximum of \textit{k} symbols of lookahead(This is why it is called a LL(k) grammar).\todo{more info of lookahead is required}\cite{javacc-wustl-ppt}
+JavaCC generates top-down parsers (LL(k) parsers) which means that it replaces every nonterminal until the string is created. LL(k) grammars produce a left-to-right symbol scan which means that it produces a leftmost derivation. The LL(k) grammars use a maximum of \textit{k} symbols of lookahead(This is why it is called a LL(k) grammar).For more information on lookahead see section \ref{sec:lookahead}. \cite{javacc-wustl-ppt}
 
 The process of a parser program:
 \begin{itemize}
@@ -20,7 +20,7 @@ Code table \ref{lst:javacc-grammar-example} is containing an example of how a gr
 
 \begin{itemize}
 	\item Skip all whitespace and newlines.
-	\item An ``if''-statement consists of a condition (C), a statement (S)  and optionally an ``else statement'' which contains a Statement (S)·
+	\item An ``if statement'' consists of a condition (C), a statement (S)  and optionally an ``else statement'' which contains a Statement (S)·
 	\item A condition (C) consists of the string ``TBD'' - not anything else.
 	\item A statement (S) also consists of the string ``TBD'' or a new ``if''-statement
 \end{itemize}

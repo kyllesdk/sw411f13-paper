@@ -53,7 +53,7 @@ The source language is not quite orthogonal, as every possible combination is no
 \item Data types and control statements:\\
 In general the source language has adequate data types as well as control statements, however it does not support all the types featured in Arduino, but enough for the most simple tasks. For instance decimal is not supported, which is the preferred data type when making a program that can handle money. In the source language decimal and doubles were chosen not to be included as float provides the source language with plenty opportunities, which can make them obsolete.
 \item Syntax Consideration:\\
-The syntax consideration for the source language is mostly to be found within the keywords. For instance ``AND'' is quite self-describing whereas many programming languages uses ``\&\&'' for the same effect. The keywords that is used in the source language is easy to go to\todo{Morten: What is this?}, and thereby easy to use as they are close to English language. If imagining what one want to do in the code, like ``is this expression right or is the other expression?'', here is important the word ``OR'', which is also the keyword for how to distinguish between two boolean expressions.\todo{Morten: And this?}\\ 
+The syntax consideration for the source language is mostly to be found within the keywords. For instance ``AND'' is quite self-describing whereas many programming languages uses ``\&\&'' for the same effect. The keywords used in the source language are easy to use as they are close to English language. For instance looking at this example: ``expression(1) is true or if expression(2) is true'', here the important word is ``OR'', which is also the keyword for how to distinguish between two boolean expressions.
 \end{itemize}
 \textbf{Write-ability:} \\
 The write-ability criteria is quite important as it shows the criteria of how the code should be written. 
@@ -61,7 +61,7 @@ The write-ability criteria is quite important as it shows the criteria of how th
 \item Simplicity and Orthogonality: \\
 It is important for the source language to have a small number of rules required to write code. The code has to be simple to write as well as it being easy to use along with orthogonality.
 \item Support for abstraction: \\
-Some languages support abstraction  in their programming language. For instance supporting imaginary numbers, The source language does not support abstraction. Having imaginary numbers is without need for the source language as it has no of practical use in a daily life\todo{Morten: from a beginners perspective?}. The source language does not need this feature to achieve its goals.
+Some languages support abstraction  in their programming language. For instance supporting imaginary numbers, The source language does not support abstraction. Having imaginary numbers is without need for the source language as it has no of practical use for this project. The source language does not need this feature to achieve its goals.
 \item Expressivity: \\
 The source language is not expressive. It does not support expressions like ``$i++$'' or predefined functions like ``$and~then$''. These expressions are usually used to ease coding. For instance, instead of writing ``$i++$'', one would have write ``$i = i + 1$''. So, by using ``$i++$'' the programmer would both be saving space and time. Though having focus on expressivity can mean sacrificing some readability. 
 \end{itemize}
@@ -69,12 +69,12 @@ The source language is not expressive. It does not support expressions like ``$i
 It is important that the source language is reliable. If the source language keeps producing errors or mistakes, the user is less likely to use the programming language.
 \begin{itemize}
 \item Type checking: \\
-It is important that the source language is checking for typing errors as early as possible. The source language is being checked for these typing errors during the code generation, spelling mistakes is being checked during the parsing, to make sure it fits the syntax definition. \todo{Morten: This is not what typechecking is}
+It is important that the source language is checking for type errors as early as possible. The source language is being checked for these type errors during the code generation.
 \item Exception handling: \\
-There is no exception handling in the source language, so if there is an error, the program will not run. \todo{Morten: Elaboration?}
+There is no exception handling in the source language, so if there is an error, the program will not run. To include this would add to the complexity of source language.
 \item Aliasing: \\
 It is possible to refer to function-names as well as variable-names in the source language. However, it is not possible to refer to the same slot in memory in two or more distinct ways, which makes the source language weak regarding aliasing. 
-\item Readability and write-ability: \todo{Morten: Needs an overhaul} \\
-If looking at readability as well as write-ability, then the source language supports ``natural'' ways of writing code, as well as when its written the code itself is easy to read. However, the code is not looking like all the other types of code one could write in depending on the programming language. For instance when writing an ``or'' expression it would not look the same in many other programming languages. So, switching between the source language and some other programming language might be hard on ones interpretation. The difference in the languages can become problematic. But in the end, using ``OR'' or ``$||$'' is mostly a matter of what the programmer is used to use while writing code. 
+\item Readability and write-ability:
+When looking at readability and write-ability it is important that the source language supports a natural way of writing and reading code. 
 \end{itemize}
 It is difficult to be fully objective regarding the design criteria as they can be seen from different angles. Different people will have different opinions on whether or not the source language is fulfilling the criteria. 
