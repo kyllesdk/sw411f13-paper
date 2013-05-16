@@ -3,3 +3,4 @@ http://www.seeedstudio.com/depot/images/product/mtdc2n.jpg
 http://www.seeedstudio.com/depot/images/product/twigmq21.jpg
 http://www.seeedstudio.com/depot/images/product/toleddisplay12864.jpg
 http://www.seeedstudio.com/depot/images/product/relayshieldb1s.jpg
+http://www.seeedstudio.com/depot/images/product/315rfkitswed.jpg
