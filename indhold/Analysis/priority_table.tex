@@ -1,6 +1,8 @@
 \section{Priority Table}
-\todo{Might need to find a better place for this chapter}
-In this section a priority table of the syntax is established for the source language. It contains level hierarchy (which operator is read first), which symbol is used for the operator, a small description of the operator, and the associativity of the operator. Associativity can be read differently, different ways of reading it produces different outcomes. For instance, $a * (b * c) = (a * b) * c$.
+In this section a priority table of the syntax for the language is described. The priority table contains different sections, the first is level hierarchy. Level hierachy describes the operators precedence. The operators with the highest precedence are evaluated first, and the operators with the lowest precedence are evaluated last. The level 1 operators have the highest precedence, and the level 4 operators have the lowest.
+ 
+The table also shows which symbol is used for the different operators, and a short description of the operator. Furthermore it also describes the associativity of the operator. Associativity describes which direction an operator is evaluated in, either left to right or right to left.
+
 \begin{table}[H]
 	\center
 	\begin{tabular}{|l|l|l|l|}
@@ -32,4 +34,7 @@ In this section a priority table of the syntax is established for the source lan
 	\label{tab:priority}
 	\caption{Table of operator priority}
 \end{table} 
-As seen in table \ref{tab:priority}, on the first level of the source language is negation, multiplication, division, modulus, square root, and exponentiation, this has been done because that is the priority of mathematics. Level two contains addition and subtraction which are placed just above the boolean expressions in order to have arithmetic and boolean expressions in the same statement but still separate them in order. The last level is assignment.
+
+As seen in table \ref{tab:priority}, on level 1 of the language is negation, multiplication, division, modulus, square root, and exponentiation. This precedence has been chosen because it matches that of mathematics. Level 2 contains addition and subtraction, which are placed above the boolean expressions in precedence, in order to have arithmetic and boolean expressions in the same statement but separate them in precendence. The last level is assignment.
+
+\todo{Matti: This chapter is missing a section about how encapsulation is handled in our language, which is what scope rules is really all about. Consider moving priority table and environment-store-model to another chapter, unless there's a good reason for them to be in this chapter?}
