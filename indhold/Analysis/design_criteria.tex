@@ -2,7 +2,7 @@
 This section presents the design criteria for the source language, showing which features are reached. 
 
 \section{The chosen criteria}
-When designing a language it is possible to define design criteria of the language, which can provide overall knowledge of the usability of the language. The design criteria that were considered to evaluate the source language are listed in table \ref{chap:design-criteria}. The source language does not fulfil all the criteria, since not all of them are relevant for this projects purpose. For instance the ``Cost'' criteria as well as the ``Others'' criteria including their sub-criteria are of no use. However ``Readability'', ``Write-ability'' and ``Reliability'' are relevant for this project and the focus will be on these 3 and their respective sub-criteria.
+When designing a language it is possible to define design criteria of the language, which can provide knowledge of the usability of the language. The design criteria that were considered to evaluate the source language are listed in table \ref{chap:design-criteria}. The language does not fulfil all the criteria, since not all of them are relevant for this projects purpose. For instance the ``Cost'' criteria as well as the ``Others'' criteria including their sub-criteria are of no use. However ``Readability'', ``Write-ability'' and ``Reliability'' are relevant for this project, and the focus will be on these 3, and their respective sub-criteria.
 
 \begin{table}[H]
 	\center
@@ -42,38 +42,38 @@ When designing a language it is possible to define design criteria of the langua
 \end{table} 
 
 \textbf{Readability:} \\
-The readability criteria is one of the most important criteria for this language, because the source language is developed with the focus on it being easy to read and thereby easy to understand for people new to programming. \\
+The readability criteria is one of the most important criteria for this language, because the language is developed with the focus on it being easy to read, and thereby easy to understand for people new to programming. \\
 \begin{itemize}
 \item Overall simplicity:\\
-The source language has a manageable set of features, which provides the user with the basic need to be able to form programs in a quite simple matter. The source language being somewhat limited adds simplicity, since there is not much operator overloading possible, so the user is more or less closed off from giving the operators another semantics than first given. 
+The language has a manageable set of features, which provides the users with the basic neccessities to be able to write programs in a simple matter. The language being limited adds simplicity, since there is no operator overloading possible. The user is closed off from giving the operators another semantics than the ones given first. 
 \item Orthogonality:\\
-A language that has good orthogonality is a language that has few or a limited amount constructs, where every possible combinations is allowed. Though, too much orthogonality is not always good, as it can cause problems. For instance having too many choices, and which solution would be the best.\\
-The source language is not orthogonal, as every possible combination is not legal though it does not reject all combinations either.  
+A language that has good orthogonality, is one that has few, or a limited amount of constructs, where every possible combination is allowed. Too much orthogonality is not always good, as it can cause problems. For example, if the users have too many choices, it can be difficult to determine which solution is best.\\
+The language is not orthogonal, because not every possible combination is legal, however it does not reject all combinations either.  
 \item Data types and control statements:\\
-In general the source language has adequate data types as well as control statements, however it does not support all the types featured in Arduino, but enough for the most simple tasks. For instance decimal is not supported, which is the preferred data type when making a program that can handle money. In the source language decimal and doubles\todo{doubles yay or nay?} were chosen not to be included as float provides the source language with plenty opportunities.
+The language has adequate data types as well as control statements. It does not support all the types featured in Arduino, but there are enough to fulfil the simple tasks. For example, decimals are not supported, which is the preferred data type when writing programs that handle finances. In the language decimal, and doubles\todo{doubles yay or nay?} were chosen not to be included, because float provides the language with sufficient opportunities.
 \item Syntax Consideration:\\
-The syntax consideration for the source language is mostly to be found within the keywords. For instance ``AND'' is quite self-describing whereas many programming languages uses ``\&\&'' for the same effect. The keywords used in the source language are easy to use as they are close to English language. For instance looking at this example: ``expression(1) is true or if expression(2) is true'', here the important word is ``OR'', which is also the keyword for how to distinguish between two boolean expressions.
+The consideration of the syntax for the language is mostly to be found within the keywords. For instance ``AND'' is self-describing, whereas many programming languages use ``\&\&'' for the same effect. The keywords used in the language are easy to use, because they are close to English language. For example, if ``expression(1) is true, or if expression(2) is true''. The important word in this example is ``OR'', which is the keyword for how to distinguish between two boolean expressions.
 \end{itemize}
 \textbf{Write-ability:} \\
-The write-ability criteria is quite important as it shows the criteria of how the code should be written. 
+The write-ability criteria is important, because it shows the criteria of how the code should be written. 
 \begin{itemize}
 \item Simplicity and Orthogonality: \\
-It is important for the source language to have a small number of rules required to write code. The code has to be simple to write as well as it being easy to use along with orthogonality.\todo{earlier it is described we don't use orthogonality, what do we do??!?!?}
+It is important for the language to have a small number of rules required to write code. The code has to be simple to write, and easy to use in terms of orthogonality.\todo{earlier it is described we don't use orthogonality, what do we do??!?!?}
 \item Support for abstraction: \\
-Some programming languages support abstraction. For instance supporting imaginary numbers, The source language does not support abstraction. Having imaginary numbers is without need for the source language as it has no of practical use for this project. The source language does not need this feature to achieve its goals.
+Some programming languages support abstraction. For example, supporting imaginary numbers. The language does not support abstraction. The language does not require the option of imaginary numbers, because it has no use in this project, and it achieves its goals without them.
 \item Expressivity: \\
-The source language is not expressive. It does not support expressions like ``$i++$'' or predefined functions like ``$and~then$''. These expressions are usually used to ease coding. For instance, instead of writing ``$i++$'', one would have write ``$i = i + 1$''. So, by using ``$i++$'' the programmer would both be saving space and time. Though having focus on expressivity can mean sacrificing some readability. 
+The language is not expressive. It does not support expressions like ``$i++$'' or predefined functions like ``$and~then$''. These expressions are used to simplify coding. For example, instead of writing ``$i++$'', one would have written ``$i = i + 1$''. By using ``$i++$'' the programmer would both be saving space and time. By including expressivity, it is likely that readability will descrease. 
 \end{itemize}
 \textbf{Reliability:} \\
 It is important that the source language is reliable. If the source language keeps producing errors or mistakes, the user is less likely to use the programming language.
 \begin{itemize}
 \item Type checking: \\
-It is important that the source language is checking for type errors. The source language is being checked for these type errors during the code generation.
+It is important that the language gets checked for type errors, this happens during the code generation.\todo{Matti: During code generation or translation?}
 \item Exception handling: \\
-There is no exception handling in the source language, so if there is an error, the program will not run. To include this would add to the complexity of source language.
+There is no exception handling in the language. If there is an error, the program will not run. Exception handling would increase the complexity of the language significantly, therefore it is not included.
 \item Aliasing: \\
-It is possible to refer to function-names as well as variable-names in the source language. However, it is not possible to refer to the same slot in memory in two or more distinct ways, which makes the source language weak regarding aliasing. 
+It is possible to refer to function-names, as well as variable-names in the language. However, it is not possible to refer to the same slot in memory in two or more distinct ways, which makes the source language weak regarding aliasing. 
 \item Readability and write-ability:
-When looking at readability and write-ability it is important that the source language supports a natural way of writing and reading code. 
+In regards of readability and write-ability, it is important that the source language supports a natural way of writing and reading code. 
 \end{itemize}
-It is difficult to be fully objective regarding the design criteria as they can be seen from different angles. Different people will have different opinions on whether or not the source language is fulfilling the criteria. 
+It is difficult to be completely objective regarding the design criteria, because they can be seen from different angles. Different people will have different opinions on whether or not, the language is fulfilling the criteria. 
