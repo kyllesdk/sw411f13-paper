@@ -1,0 +1,45 @@
+\section{Lexical analysis}
+\subsection{Scanner}
+This section contains a description of the implementation of the scanner in the compiler. The scanner generates a token stream by reading the input one character at a time.
+
+
+\begin{lstlisting}[caption=Token identifiers for reserved words and literals, label=list:token]
+TOKEN : /* Reserved words and literals */
+{
+	< SETUP : "setup()" >
+|	< LOOP: "loop()" >	
+|	< CALL: "call" >
+|	< BOOLEAN: "boolean" >
+|	< DOUBLE: "double" >
+|	< ELSE: "else" >
+|	< ELSEIF: "elseif" >
+|	< FALSE: "false" >
+|	< FLOAT: "float" >
+|	< IF: "if" >
+|	< INT: "int" >
+|	< NULL: "null" >
+|	< STRING: "string" >
+|	< TRUE: "true" >
+|	< WHILE: "while" >
+| 	< DO: "do" >
+| 	< END: "end" >
+|   < VOID: "void" >
+|   < FUNCTION: "function" >
+|   < RETURN: "return" >
+}
+
+\end{lstlisting}
+
+The implementation of the scanner contains a list of token identifiers. Token identifiers recognize when a token is found in the process of scanning the input. Token identifiers for the reserved words and literals in the source language can be seen in listing \ref{list:token}. For example, when "setup()" is scanned, it is saved as a SETUP token. The token will then be used in the parser task of the lexical analysis. 
+
+
+\begin{lstlisting}[caption=Special token for single line comment, label=list:spectoken]
+SPECIAL_TOKEN :
+{
+  <SINGLE_LINE_COMMENT: "//" (~["\n", "\r"])* ("\n" | "\r" | "\r\n")?>
+}
+\end{lstlisting}
+
+Since JavaCC uses EBNF, the source language supports token identifiers defined with regular expressions. As seen in listing \ref{list:spectoken}, regular expression is used to define single line comment tokens. It is instructed to ignore carriage returns (\textbackslash{r}) and line feeds (\textbackslash{n}), zero or more times. 
+
+ 

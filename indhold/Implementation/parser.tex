@@ -1,0 +1,45 @@
+\subsection{Parser}
+The parser is implemented to check if the input is legal according to the syntax and semantics of the source language. The parser implementation consists of a list of productions, which are defined in the grammar. The productions use the tokens generated in the scanner as an input for the parser. In this section a few of the productions from the parser will be described. 
+
+\begin{lstlisting}[caption=Implementation of the arithmetic expressions production, label=arit_listing]
+void ArithmeticExpression() :
+{}
+{
+	(<PLUS> | <MINUS> | <MULTIPLY> | <DIVIDE> | <MOD> | <SQRT> | <POW>)
+
+}
+
+\end{lstlisting}
+
+One of the features of the source language is basic arithmetic expressions. The production for these expressions has been implemented as seen in listing \ref{arit_listing}. 
+\todo{Matti: Find and insert the updated version of the Arithmetic Expression production}
+
+\begin{lstlisting}[caption=Implementation of the if\, elseif\, and else statements, label=if_listing]
+void IfStatement() #If_stm : {Token t;}
+{
+	(t = <IF><LPAREN>BooleanExpression()<RPAREN> <DO> Statements() <END> (ElseifStatement())* [ElseStatement()] {jjtThis.value = t.image;})
+}
+
+void ElseifStatement() #ElsIf_stm : {Token t;}
+{
+	(t = <ELSEIF><LPAREN>BooleanExpression()<RPAREN> <DO> Statements() <END>{jjtThis.value = t.image;})
+}
+
+void ElseStatement() #void : {Token t;}
+{
+	(t = <ELSE> <DO> Statements() <END>) {jjtThis.value = t.image;} #Els_stm(1)
+}
+\end{lstlisting}
+
+Another feature is if statements. If statements have the option of using only the if statement, or following up with one or more elseif statements, and ending with an else statement. 
+\\If statements have been implemented as seen in listing \ref{if_listing}. The ability to use elseif statements zero or more times by is made possibly by definining it as a regular expression. 
+\\To make sure the order of the if statements are created in the right order and eliminating dangling else problems, every if, elseif, or else statement requires a "do", and "end" block to avoid ambiguity.
+
+\begin{lstlisting}[caption=Implementation of the while statement, label=while_listing]
+void WhileStatement() #void : {Token t;}
+{
+	(t = <WHILE> <LPAREN> BooleanExpression() <RPAREN> <DO> Statements() <END>) {jjtThis.value = t.image;} #WhileStatement(2)
+}
+\end{lstlisting}
+\todo{Matti: Is this neccessary?}
+
