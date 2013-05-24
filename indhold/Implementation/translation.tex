@@ -1,0 +1,27 @@
+\subsection{Translation}
+In this subsection the implementation of the translator is described. This will include examples of how translation from PH to the Arduino language is done through visitors.
+Visitors will scan through the code till it finds the appropriate statement or expression to translate.
+
+\begin{lstlisting}[Caption=Visitor for translation of an if-statement, label=list:if]
+
+	public Object visit(ASTIf_stm node, Object data) {
+		System.out.print("if (");
+		node.jjtGetChild(0).jjtAccept(this, data);
+		System.out.println(") {");
+		node.jjtGetChild(1).jjtAccept(this, data);
+		System.out.println("");
+		System.out.println("} ");
+		if(node.jjtGetNumChildren() > 2) {
+			for(int i = 2; i <= node.jjtGetNumChildren(); i++) {
+				if(i < (node.jjtGetNumChildren() -1)) {
+					node.jjtGetChild(i).jjtAccept(this, data);
+				} else {
+					node.jjtGetChild(i).jjtAccept(this, data);
+					break;
+				}
+			}
+		}
+
+\end{lstlisting}
+
+As seen in listing \ref{list:if} a codegen visitor is taken in use to translate an if-statement in PH to the equivalent in Arduino. The changes consist of translating braces ''{``, ''}`` to ''do`` and ''end`` blocks. The children 
