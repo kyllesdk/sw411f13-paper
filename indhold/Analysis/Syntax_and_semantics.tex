@@ -181,5 +181,5 @@ As with the PARENT rule in table \ref{tab:semantics_aritmethic} any boolean expr
 
 The table of statement semantics, \ref{tab:semantics_statements} holds rules affecting statements. \\
 ASS, assignments, describes that with a given expression and state ($a, s$), a variable $x$ can be assigned a value $v$. The SKIP rule states that within a state $s$, a skip can occur, leading to a state $s$. COMP, composition, allows compositional statements meaning that a series of statements can occur. IFTRUE and IFFALSE allows choosing an appropriate sub-statement based on boolean expression within a statement. WHILETRUE allows the statement to call itself again, making it recursive for as long as the expression is true. Whereas WHILEFALSE will do nothing for as long as the expression is false.\\ 
-All of these rules, arithmetic, boolean and statements makes the base of the source language.
+All these rules, arithmetic, boolean and statements makes the base of the semantics of the source language.
 
