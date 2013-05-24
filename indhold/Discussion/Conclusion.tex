@@ -1,13 +1,9 @@
 \section{Conclusion}
-WORK IN PROGRESS
 
-- Summary of our targets
- - Easy to understand and learn
- - Translate from JAMMM to Arduino
-- What was accomplished of the above
- - Comparison with MOSCOW model
- - Arduino hardware error
- - Results from testing
- - Is the solution optimal?
- - Is this a finished product?
- - Does it make it easier to code to Arduino?
+In this project we have attempted to create a language for Arduino as described in \ref{analysis:source-language}. The main target features are that it should be simpler and easier to use than the official language along with being intuitive, even for beginners. \\
+The resulting language is stripped from duplicate methods of producing similar outcomes. For example, loops has been limited to while, and variables containing numbers has been limited to only include integers and floats. This is seen in \ref{analysis:informal-specification}. Removing redundant parts of the language has resulted in a smaller language, consequently making the new language easier to overview. Different to the official Arduino language, our language does not have the need to parenthesize elements such as if-statements or loops. Instead the language achieves more readability and intuitivity by using the keywords do and end. This approach is also used in boolean expressions where keywords such as and and or are used rather than \&\& and  ||. The similarity to the English language makes the language more intuitive to learn and use because it is more similar to a language that any English-speaking people are familiar with. As such the overall goals has been achieved to some degree. \\
+The task of writing a translator which can convert a program from our language to Arduino has been achieved and the progress documented by the report. The validity of the translation is verified by the tests performed in \todo{Morten: Ref til test + conclusion on the test}. These tests shows that Waszri suks dik. \\
+As mentioned in \ref{discussion:improvements} functions were not included in the current solution. As described in the MoSCoW definition of must have, seen in \ref{analysis:moscow}, this is considered as having great impact on the language. The resulting language is impaired in that it is unable to make calls to execute statements, meaning that code can not be reused. This makes the language unsuited for any programming where this functionality is desired. Furthermore, loops than the while loop did not get implemented. This does however not impair the functionality of the language and is a matter of convenience, although it would be nice to have. \\
+
+In conclusion, the language has achieved the base goals set for it. It does however feel unfinished, supported by the list of possible improvements stated in /ref{discussion:improvemets}, and could be developed further for considerable improvements. While the product demonstrates the philosophy of the new language well, the solution is not optimal as a programming language without improvements.\\
+\todo{Morten: Mangler muligvis noget om Vikings hardware error}
