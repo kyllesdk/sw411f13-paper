@@ -9,6 +9,7 @@ The Advantages of the two different methods are:
 \item[] \textbf{White box} Since it tests the code, it is possible to use these tests to optimize the code, although this kind of testing requires a expert knowledge of the code to design the tests. 
 \end{itemize}   
 
+\subsection*{Syntax}
 \begin{table}[thp]\scriptsize
 \centering
 \begin{tabular}{|l|l|c|}
@@ -56,26 +57,13 @@ else {
 \hline
 \end{tabular}
 \caption{Examples of test cases}
+\label{tab:test}
 \end{table}
 
+The test case shown in table \ref{tab:test} are just some examples of the case the were run during the development of the compiler, also there were more complex cases, which have been omitted due to readability. Examples of these more complex test cases are the complete code examples found in chapter \ref{sec:code_examples}, code example \ref{lst:syntax1} and \ref{lst:syntax2}\\
 
-%\begin{tabular}{|c|c|c|c|}
-%\hline 
-%Test  & Expected result & Actual result  & Passed \\ 
-%\hline 
-%{\begin{lstlisting}
-%    void setup do
-%    end
-%  \end{lstlisting}}
-% &
-%void setup()\{
-%\} &
-%void setup()\{
-%\} & 
-%\checkmark  \\ 
-%\hline 
-%• & • & • & \checkmark \\ 
-%\hline 
-%• & • & • & \checkmark \\ 
-%\hline 
-%\end{tabular} 
+The tests have been conducted repeatedly through the process every time a new feature or some new functionality have been completed to help make sure that not only the does the new implementations work as intended, but also that it does not result in some other function not working properly.
+
+\subsection*{Type checking}
+
+\subsection*{Functionality}
