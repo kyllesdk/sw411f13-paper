@@ -1,12 +1,12 @@
 \chapter{JavaCC - Java Compiler Compiler}
-JavaCC is a parser generator that generates a fully functioning parser. JavaCC takes a file containing EBNF grammar and then makes a program that can recognize matches between the input code and the grammar, this part of the parser is called the scanner. JavaCC also creates other things like e.g. an AST (Abstract Syntax Tree, see section \ref{sec:AST}) that decides the derivation of the code. \cite{JavaCC}
+JavaCC is a parser generator that generates a fully functioning parser. JavaCC takes a file written using EBNF grammar and makes a program that can recognize matches between the input code and the grammar, this part of the parser is the scanner. JavaCC also creates an AST (Abstract Syntax Tree, see section \ref{sec:AST}) that describes the structure of the derivation of the code. \cite{JavaCC}
 
-JavaCC generates top-down parsers (LL(k) parsers) which means that it replaces every nonterminal until the string is created. LL(k) grammars produce a left-to-right symbol scan which means that it produces a leftmost derivation. The LL(k) grammars use a maximum of \textit{k} symbols of lookahead(This is why it is called a LL(k) grammar).For more information on lookahead see section \ref{sec:lookahead}. \cite{javacc-wustl-ppt}
+JavaCC generates top-down parsers (LL(k) parsers), which means that it replaces every nonterminal symbol until the string is created. LL(k) grammars produce a left-to-right symbol scan which means that it produces a leftmost derivation. The LL(k) parsers use a maximum of \textit{k} symbols of lookahead.
 
 The process of a parser program:
 \begin{itemize}
-\item Input a set of token definitions, grammar and actions
-\item Outputs a Java program which performs lexical analysis
+\item Inputs a set of token definitions, grammar and actions
+\item Outputs a Java program which performs lexical analysis, meaning that:
 	\begin{itemize}
 	\item Finding tokens.
 	\item Parses the tokens according to the grammar.
@@ -16,7 +16,7 @@ The process of a parser program:
 
 
 \section{Grammar example}
-Code table \ref{lst:javacc-grammar-example} is containing an example of how a grammar for an ``if''-statement can be constructed. The grammar in the example states the following:
+Code table \ref{lst:javacc-grammar-example} contains an example of how a grammar for an ``if''-statement can be constructed. The grammar in the example states the following:
 
 \begin{itemize}
 	\item Skip all whitespace and newlines.
@@ -25,7 +25,7 @@ Code table \ref{lst:javacc-grammar-example} is containing an example of how a gr
 	\item A statement (S) also consists of the string ``TBD'' or a new ``if''-statement
 \end{itemize}
 
-\begin{lstlisting}[captionpos=b, caption={One of JavaCC's standart examples on how to make a grammar that accepts ``if''-statements.}, label=lst:javacc-grammar-example]
+\begin{lstlisting}[caption={One of JavaCC's standard examples on how to make a grammar that accepts ``if''-statements.}, label=lst:javacc-grammar-example]
 
 PARSER_BEGIN(Example)
 
