@@ -49,33 +49,33 @@
 \section{Semantics} \label{sec:semantics}
 The semantics of a language is the description of what happens when a program is executed. In table \ref{tab:semantics_aritmethic}, \ref{tab:semantics_boolean} and \ref{tab:semantics_statements} are the descriptions of the operations in the source language. \\
 
-In table \ref{tab:semantics_aritmethic} the arrow $\rightarrow_{a}$ is used. This arrow represents the transition system. For instance, the first line in ``PLUS'', represents the transition from state $a_1$ to $v_1$ as well as the transition from $a_2$ to $v_2$. The label on the arrow indicates that the transition system only allows values that all are arithmetic expressions.
+In table \ref{tab:semantics_aritmethic} the arrow $\rightarrow_{a}$ is used. This arrow represents a transition. For instance, the first line in ``PLUS'', represents the transition from state $a_1$ to $v_1$ as well as the transition from $a_2$ to $v_2$. The label on the arrow indicates that the transition system only allows values that all are arithmetic expressions.
 
 \begin{table}[H]
 	\begin{tabular}{|l|l|l|}
 	\hline
 	\emph{Name}			& \emph{Rule}																															& \emph{Notes} \\ \hline
 			~			&															~																			& ~ \\
-	$[PLUS_{BSS}]$		& $s~\vdash~a_{1}~\rightarrow_{a}~v_{1}~~ s~\vdash~a_{2}~\rightarrow_{a}~v_{2} \over s~\vdash~a_{1}~+~a_{2}~\rightarrow_{a}~v$ 			& where $v = v_{1}+v_{2}$ \\
+	$[PLUS_{BSS}]$		& $env_{v}, sto~\vdash~a_{1}~\rightarrow_{a}~v_{1}~~ env_{v}, sto~\vdash~a_{2}~\rightarrow_{a}~v_{2} \over env_{v}, sto~\vdash~a_{1}~+~a_{2}~\rightarrow_{a}~v$ 			& where $v = v_{1}+v_{2}$ \\
 			~			&															~																			& ~ \\
-	$[MINUS_{BSS}]$		& $s~\vdash~a_{1}~\rightarrow_{a}~v_{1}~~s \vdash a_{2}~\rightarrow_{a}~v_{2} \over s~\vdash~a_{1}~-~a_{2}~\rightarrow_{a}~v$ 			& where $v = v_{1}-v_{2}$ \\
+	$[MINUS_{BSS}]$		& $env_{v}, sto~\vdash~a_{1}~\rightarrow_{a}~v_{1}~~ env_{v}, sto \vdash a_{2}~\rightarrow_{a}~v_{2} \over env_{v}, sto~\vdash~a_{1}~-~a_{2}~\rightarrow_{a}~v$ 			& where $v = v_{1}-v_{2}$ \\
 			~			&															~																			& ~ \\
-	$[MULT_{BSS}]$		& $s~\vdash~a_{1}~\rightarrow_{a}~v_{1}~~s~\vdash a_{2}~\rightarrow_{a}~v_{2} \over s~\vdash~a_{1}~*~a_{2}~\rightarrow_{a}~v$ 			& where $v = v_{1}*v_{2}$ \\
+	$[MULT_{BSS}]$		& $env_{v}, sto~\vdash~a_{1}~\rightarrow_{a}~v_{1}~~env_{v}, sto~\vdash a_{2}~\rightarrow_{a}~v_{2} \over env_{v}, sto~\vdash~a_{1}~*~a_{2}~\rightarrow_{a}~v$ 			& where $v = v_{1}*v_{2}$ \\
 			~			&															~																			& ~ \\
-	$[DIV_{BSS}]$		& $s~\vdash a_{1}~\rightarrow_{a}~v_{1}~~s ~\vdash a_{2}~\rightarrow_{a}~v_{2} \over s~\vdash~{a_{1}}~/~{a_{2}}~\rightarrow_{a}~v$ 		& where $v = \frac{v_{1}}{v_{2}}$ and $v_2 \neq 0$\\
+	$[DIV_{BSS}]$		& $env_{v}, sto~\vdash a_{1}~\rightarrow_{a}~v_{1}~~env_{v}, sto ~\vdash a_{2}~\rightarrow_{a}~v_{2} \over env_{v}, sto~\vdash~{a_{1}}~/~{a_{2}}~\rightarrow_{a}~v$ 		& where $v = \frac{v_{1}}{v_{2}}$ and $v_2 \neq 0$\\
 			~			&																																		& ~ \\
-	$[MOD_{BSS}]$		& $s~\vdash a_{1}~\rightarrow_{a}~v_{1}~~s~\vdash~a_{2}~\rightarrow_{a}~v_{2} \over s~\vdash~a_{1}~\%~a_{2}~\rightarrow_{a}~v$			& where $v = v_{1} mod v_{2}$ \\
+	$[MOD_{BSS}]$		& $env_{v}, sto~\vdash a_{1}~\rightarrow_{a}~v_{1}~~env_{v}, sto~\vdash~a_{2}~\rightarrow_{a}~v_{2} \over env_{v}, sto~\vdash~a_{1}~\%~a_{2}~\rightarrow_{a}~v$			& where $v = v_{1} mod v_{2}$ \\
 			~			&															~																			& ~ \\
-	$[POW_{BSS}]$		& $s~\vdash~a_{1}~\rightarrow_{a}~v_{1}~~s~\vdash~a_{2}~
-	\rightarrow_{a}~v_{2} \over~s~\vdash~a_{1}~\texttt{\^{}}~a_{2}~\rightarrow_{a}~v$	& where $v = v_{1}\texttt{\^{}}v_{2}$ \\
+	$[POW_{BSS}]$		& $env_{v}, sto~\vdash~a_{1}~\rightarrow_{a}~v_{1}~~env_{v}, sto~\vdash~a_{2}~
+	\rightarrow_{a}~v_{2} \over~env_{v}, sto~\vdash~a_{1}~\texttt{\^{}}~a_{2}~\rightarrow_{a}~v$	& where $v = v_{1}\texttt{\^{}}v_{2}$ \\
 			~			&															~																			& ~ \\
-	$[SQRT_{BSS}]$		& $s~\vdash~a_{1}~\rightarrow_{a}~v_{1} \over s~\vdash~sqrt(a_{1})~\rightarrow_{a}~v_{1}$												& where $v = \sqrt{v_{1}}$ and $v_1 >= 0$ \\
+	$[SQRT_{BSS}]$		& $env_{v}, sto~\vdash~a_{1}~\rightarrow_{a}~v_{1} \over env_{v}, sto~\vdash~sqrt(a_{1})~\rightarrow_{a}~v_{1}$												& where $v = \sqrt{v_{1}}$ and $v_1 >= 0$ \\
 			~			&															~																			& ~ \\
-	$[PARENT_{BSS}]$	& $s~\vdash a_{1}~\rightarrow_{a}~v_{1} \over s~\vdash~(a_{1})~\rightarrow_{a}~v_{1}$													& ~ \\
+	$[PARENT_{BSS}]$	& $env_{v}, sto~\vdash a_{1}~\rightarrow_{a}~v_{1} \over env_{v}, sto~\vdash~(a_{1})~\rightarrow_{a}~v_{1}$													& ~ \\
 			~			&															~																			& ~ \\
-	$[NUM_{BSS}]$		& $s~\vdash~n~\rightarrow_{a}~v~ if ~\mathcal{N}\llbracket n \rrbracket~=~v$															& ~ \\
+	$[NUM_{BSS}]$		& $env_{v}, sto~\vdash~n~\rightarrow_{a}~v~ if ~\mathcal{N}\llbracket n \rrbracket~=~v$															& ~ \\
 			~			&															~																			& ~ \\
-	$[VAR_{BSS}]$		& $s~\vdash~x~\rightarrow_{a}~v~if~sx~=~v$														   									& ~ \\
+	$[VAR_{BSS}]$		& $env_{v}, sto~\vdash~x~\rightarrow_{a}~v~if~sx~=~v$														   									& ~ \\
 			~			&															~																			& ~ \\
 	\hline
 	\end{tabular}
@@ -83,9 +83,9 @@ In table \ref{tab:semantics_aritmethic} the arrow $\rightarrow_{a}$ is used. Thi
 	\caption{The semantics of arithmetic operations}
 \end{table}
 
-First is table \ref{tab:semantics_aritmethic}, which describes the arithmetic expressions - the more common ones are addition, subtraction, multiplication and division (PLUS(+), MINUS(-), MULT(*), DIV(/)). Their rules all look near identical: A statement, ``$s$'', with two expressions, $v_{1}$ and $v_{2}$, which both are arithmetic as seen by $\rightarrow_{a}$ can be added, subtracted, multiplied or divided with each other. This results in $v$, which is arithmetic. However, when taking a look upon DIV's side-note, take notice that it states that $v_{2}$ cannot be divided by zero, as it is not possible to divide any number by zero, so this side-note makes sure that it is not possible to do so. \\
+First is table \ref{tab:semantics_aritmethic}, which describes the arithmetic expressions - the more common ones are addition, subtraction, multiplication and division (PLUS(+), MINUS(-), MULT(*), DIV(/)). Their rules all look near identical: A statement, ``$s$'', with two expressions, $v_{1}$ and $v_{2}$, which both are arithmetic as seen by $\rightarrow_{a}$ can be added, subtracted, multiplied or divided. This results in $v$, which is a value. However, when taking a look upon DIV's side-note, take notice that it states that $v_{2}$ cannot be divided by zero, as it is not possible to divide any number by zero, so this side-note makes sure that it is not possible to do so. \\
 Furthermore, $v$ is the product of the operator used on $v_{1}$ and $v_{2}$. Both modulus and power of (MOD(\%), POW($\texttt{\^{}}$) are identical to these operations in procedure. \\
-SQRT, also known as square-root($\sqrt{}$) is a simple rule to allow any positive arithmetic expression, $v_{1}$ to be squared, where $v$ is $\sqrt{v_{1}}$. Like on the transition rule for division, there is an extra side-note, which indicates that the number that is to be square-rooted is either a zero or a positive number, as the source language does not going to allow imaginary numbers. \\
+SQRT, also known as square-root($\sqrt{}$) is a simple rule to allow any positive arithmetic expression, $v_{1}$ to be squared, where $v$ is $\sqrt{v_{1}}$. Like on the transition rule for division, there is an extra side condition, which indicates that the number that is to be square-rooted is either a zero or a positive number, as the source language does not going to allow imaginary numbers. \\
 
 The \textbf{PARENT}, or parentheses(()), rule states that any arithmetic expression can be parenthesized, allowing chained arithmetic calculations to be performed in the correct order. \\\textbf{VAR} describes, that in a state $s$, a value $v$ can be assigned to a variable $x$, allowing variable declaration.
 \\\textbf{NUM}, numerals also known as absolute value, allows within a statement $S$ to get the numerical value of a variable $v$. A numeric value is a the distance a number has from zero, for instance $|2|$ and $|-2|$ are both 2 units from 0.  \\
@@ -181,5 +181,5 @@ As with the PARENT rule in table \ref{tab:semantics_aritmethic} any boolean expr
 
 The table of statement semantics, \ref{tab:semantics_statements} holds rules affecting statements. \\
 ASS, assignments, describes that with a given expression and state ($a, s$), a variable $x$ can be assigned a value $v$. The SKIP rule states that within a state $s$, a skip can occur, leading to a state $s$. COMP, composition, allows compositional statements meaning that a series of statements can occur. IFTRUE and IFFALSE allows choosing an appropriate sub-statement based on boolean expression within a statement. WHILETRUE allows the statement to call itself again, making it recursive for as long as the expression is true. Whereas WHILEFALSE will do nothing for as long as the expression is false.\\ 
-All these rules, arithmetic, boolean and statements makes the base of the semantics of the source language.
+All of these rules, arithmetic, boolean and statements makes the base of the source language.
 
