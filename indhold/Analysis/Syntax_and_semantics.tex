@@ -56,26 +56,26 @@ In table \ref{tab:semantics_aritmethic} the arrow $\rightarrow_{a}$ is used. Thi
 	\hline
 	\emph{Name}			& \emph{Rule}																															& \emph{Notes} \\ \hline
 			~			&															~																			& ~ \\
-	$[PLUS_{BSS}]$		& $env_{v}, sto~\vdash~a_{1}~\rightarrow_{a}~v_{1}~~ env_{v}, sto~\vdash~a_{2}~\rightarrow_{a}~v_{2} \over env_{v}, sto~\vdash~a_{1}~+~a_{2}~\rightarrow_{a}~v$ 			& where $v = v_{1}+v_{2}$ \\
+	$[PLUS_{BSS}]$		& $env_{v},~sto~\vdash~a_{1}~\rightarrow_{a}~v_{1}~~ env_{v},~sto~\vdash~a_{2}~\rightarrow_{a}~v_{2} \over env_{v},~sto~\vdash~a_{1}~+~a_{2}~\rightarrow_{a}~v$ 			& where $v = v_{1}+v_{2}$ \\
 			~			&															~																			& ~ \\
-	$[MINUS_{BSS}]$		& $env_{v}, sto~\vdash~a_{1}~\rightarrow_{a}~v_{1}~~ env_{v}, sto \vdash a_{2}~\rightarrow_{a}~v_{2} \over env_{v}, sto~\vdash~a_{1}~-~a_{2}~\rightarrow_{a}~v$ 			& where $v = v_{1}-v_{2}$ \\
+	$[MINUS_{BSS}]$		& $env_{v},~sto~\vdash~a_{1}~\rightarrow_{a}~v_{1}~~ env_{v},~sto \vdash a_{2}~\rightarrow_{a}~v_{2} \over env_{v},~sto~\vdash~a_{1}~-~a_{2}~\rightarrow_{a}~v$ 			& where $v = v_{1}-v_{2}$ \\
 			~			&															~																			& ~ \\
-	$[MULT_{BSS}]$		& $env_{v}, sto~\vdash~a_{1}~\rightarrow_{a}~v_{1}~~env_{v}, sto~\vdash a_{2}~\rightarrow_{a}~v_{2} \over env_{v}, sto~\vdash~a_{1}~*~a_{2}~\rightarrow_{a}~v$ 			& where $v = v_{1}*v_{2}$ \\
+	$[MULT_{BSS}]$		& $env_{v},~sto~\vdash~a_{1}~\rightarrow_{a}~v_{1}~~env_{v},~sto~\vdash a_{2}~\rightarrow_{a}~v_{2} \over env_{v},~sto~\vdash~a_{1}~*~a_{2}~\rightarrow_{a}~v$ 			& where $v = v_{1}*v_{2}$ \\
 			~			&															~																			& ~ \\
-	$[DIV_{BSS}]$		& $env_{v}, sto~\vdash a_{1}~\rightarrow_{a}~v_{1}~~env_{v}, sto ~\vdash a_{2}~\rightarrow_{a}~v_{2} \over env_{v}, sto~\vdash~{a_{1}}~/~{a_{2}}~\rightarrow_{a}~v$ 		& where $v = \frac{v_{1}}{v_{2}}$ and $v_2 \neq 0$\\
+	$[DIV_{BSS}]$		& $env_{v},~sto~\vdash a_{1}~\rightarrow_{a}~v_{1}~~env_{v},~sto ~\vdash a_{2}~\rightarrow_{a}~v_{2} \over env_{v},~sto~\vdash~{a_{1}}~/~{a_{2}}~\rightarrow_{a}~v$ 		& where $v = \frac{v_{1}}{v_{2}}$ and $v_2 \neq 0$\\
 			~			&																																		& ~ \\
-	$[MOD_{BSS}]$		& $env_{v}, sto~\vdash a_{1}~\rightarrow_{a}~v_{1}~~env_{v}, sto~\vdash~a_{2}~\rightarrow_{a}~v_{2} \over env_{v}, sto~\vdash~a_{1}~\%~a_{2}~\rightarrow_{a}~v$			& where $v = v_{1} mod v_{2}$ \\
+	$[MOD_{BSS}]$		& $env_{v},~sto~\vdash a_{1}~\rightarrow_{a}~v_{1}~~env_{v},~sto~\vdash~a_{2}~\rightarrow_{a}~v_{2} \over env_{v},~sto~\vdash~a_{1}~\%~a_{2}~\rightarrow_{a}~v$			& where $v = v_{1} mod v_{2}$ \\
 			~			&															~																			& ~ \\
-	$[POW_{BSS}]$		& $env_{v}, sto~\vdash~a_{1}~\rightarrow_{a}~v_{1}~~env_{v}, sto~\vdash~a_{2}~
+	$[POW_{BSS}]$		& $env_{v},~sto~\vdash~a_{1}~\rightarrow_{a}~v_{1}~~env_{v},~sto~\vdash~a_{2}~
 	\rightarrow_{a}~v_{2} \over~env_{v}, sto~\vdash~a_{1}~\texttt{\^{}}~a_{2}~\rightarrow_{a}~v$	& where $v = v_{1}\texttt{\^{}}v_{2}$ \\
 			~			&															~																			& ~ \\
-	$[SQRT_{BSS}]$		& $env_{v}, sto~\vdash~a_{1}~\rightarrow_{a}~v_{1} \over env_{v}, sto~\vdash~sqrt(a_{1})~\rightarrow_{a}~v_{1}$												& where $v = \sqrt{v_{1}}$ and $v_1 >= 0$ \\
+	$[SQRT_{BSS}]$		& $env_{v},~sto~\vdash~a_{1}~\rightarrow_{a}~v_{1} \over env_{v},~sto~\vdash~sqrt(a_{1})~\rightarrow_{a}~v_{1}$												& where $v = \sqrt{v_{1}}$ and $v_1 >= 0$ \\
 			~			&															~																			& ~ \\
-	$[PARENT_{BSS}]$	& $env_{v}, sto~\vdash a_{1}~\rightarrow_{a}~v_{1} \over env_{v}, sto~\vdash~(a_{1})~\rightarrow_{a}~v_{1}$													& ~ \\
+	$[PARENT_{BSS}]$	& $env_{v},~sto~\vdash a_{1}~\rightarrow_{a}~v_{1} \over env_{v},~sto~\vdash~(a_{1})~\rightarrow_{a}~v_{1}$													& ~ \\
 			~			&															~																			& ~ \\
-	$[NUM_{BSS}]$		& $env_{v}, sto~\vdash~n~\rightarrow_{a}~v~ if ~\mathcal{N}\llbracket n \rrbracket~=~v$															& ~ \\
+	$[NUM_{BSS}]$		& $env_{v},~sto~\vdash~n~\rightarrow_{a}~v~ if ~\mathcal{N}\llbracket n \rrbracket~=~v$															& ~ \\
 			~			&															~																			& ~ \\
-	$[VAR_{BSS}]$		& $env_{v}, sto~\vdash~x~\rightarrow_{a}~v~if~sx~=~v$														   									& ~ \\
+	$[VAR_{BSS}]$		& $env_{v},~sto~\vdash~x~\rightarrow_{a}~v~if~sx~=~v$														   									& ~ \\
 			~			&															~																			& ~ \\
 	\hline
 	\end{tabular}
