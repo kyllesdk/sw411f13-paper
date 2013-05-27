@@ -1,8 +1,8 @@
 \subsection{Typechecking}
-To make sure the programmer does not mix the different data type variables when writing a program in PH typechecking used.
+To make sure the programmer does not mix different data type variables, such as boolean and int, typechecking is used.
 
-In listing \ref{list:type_bool} a typechecker visitor is used to check that a boolean variable is set to either ''1`` (true) or ''0`` (false). This is done with typechecking rather than the lexical analysis to make sure that any positive number does not evaluate to true, when using a boolean data type.
-\begin{lstlisting}[Caption=Verifies/falsifies whether a boolean variable is 0 or 1, label=list:type_bool]
+In listing \ref{list:type_bool}, a typechecker visitor is used to check that a boolean variable is set to either ''1`` (true) or ''0`` (false). This is done with typechecking, rather than the lexical analysis to make sure that any positive number does not evaluate to true, when using a boolean data type.
+\begin{lstlisting}[caption=Verifies/falsifies whether a boolean variable is 0 or 1, label=list:type_bool]
 
     public Object visit(ASTBooleanNumber node, Object data) {
     	String number = node.value.toString();
@@ -18,9 +18,9 @@ In listing \ref{list:type_bool} a typechecker visitor is used to check that a bo
     }
 \end{lstlisting}
 
-When using arithmetic expressions on floating point numbers and integers together it might result in issues. For instance when a floating point number is added to an integer it is likely to lose precision. On the other hand if an integer is added to a floating point number the precision will not change as they already have a higher precision. As seen in listing \ref{list:type_float} an error message is shown if the first child is of the integer type and the second child is of the float type. Additionally for if any variable is declared to a boolean data type an error message will appear, telling the programmer that a boolean variable is expected.
+When using arithmetic expressions on floating point numbers and integers together, it might result in issues. For instance, when a floating point number is added to an integer it is likely to lose precision. However, if an integer is added to a floating point number the precision will not change, as they already have a higher precision. As seen in listing \ref{list:type_float}, an error message is shown if the first child is of the integer type, and the second child is of the float type. If any variable is declared to a boolean data type an error message will appear, telling the programmer that a boolean variable is expected.
 
-\begin{lstlisting}[Caption=Checks if float is being added to an integer\, and if a non-boolean type is set to a boolean value, label=list:type_float]
+\begin{lstlisting}[caption=Checks if float is being added to an integer\, and if a non-boolean type is set to a boolean value, label=list:type_float]
 	public Object visit(ASTDeclaration node, Object data) {
 		PrintVisitor pv = new PrintVisitor();
 
