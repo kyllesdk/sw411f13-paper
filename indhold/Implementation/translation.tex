@@ -24,9 +24,12 @@ Visitors will scan through the code till it finds the appropriate statement or e
 
 \end{lstlisting}
 
-As seen in listing \ref{list:if}, a CodeGen visitor is taken in use to translate an if-statement in PH to the equivalent in Arduino. The changes consist of translating ''do``, ''end`` blocks to ''{`` and ''}`` braces. 
-\\If there are more than two children, the translator iterates through them until they are all checked. This ensures that in the event of an if statement containing more than one expression, all expressions are included in the translation process.  
-
+As seen in listing \ref{list:if}, a CodeGen visitor is taken in use to translate an if-statement in PH to the equivalent in Arduino. The changes depending on the code consist of translating, for example:\\
+\begin{itemize}
+\item ''do`` and ''end`` blocks are translated to ''{`` and ''}`` braces.
+\item operators, such as "EQUALS" are translated to "==". 
+\end{itemize}
+If there are more than two children, the translator iterates through them until they are all checked. This ensures that in the event of an if statement containing more than one expression, all expressions are included in the translation process.\\
 \begin{lstlisting}[caption=Example of an if-statement written in PH, label=list:phstmt]
 
 #include <LiquidCrystal.h>
