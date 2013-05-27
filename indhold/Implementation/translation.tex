@@ -24,4 +24,5 @@ Visitors will scan through the code till it finds the appropriate statement or e
 
 \end{lstlisting}
 
-As seen in listing \ref{list:if} a codegen visitor is taken in use to translate an if-statement in PH to the equivalent in Arduino. The changes consist of translating braces ''{``, ''}`` to ''do`` and ''end`` blocks. The children 
+As seen in listing \ref{list:if} a codegen visitor is taken in use to translate an if-statement in PH to the equivalent in Arduino. The changes consist of translating ''do``, ''end`` blocks to ''{`` and ''}`` braces. 
+If there are more than two children, the translator iterates through them until they are all checked. This ensures that in the event of an if statement containing more than one expression, all expressions are included in the translation process.  
