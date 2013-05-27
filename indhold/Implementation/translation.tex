@@ -25,4 +25,40 @@ Visitors will scan through the code till it finds the appropriate statement or e
 \end{lstlisting}
 
 As seen in listing \ref{list:if} a codegen visitor is taken in use to translate an if-statement in PH to the equivalent in Arduino. The changes consist of translating ''do``, ''end`` blocks to ''{`` and ''}`` braces. 
-If there are more than two children, the translator iterates through them until they are all checked. This ensures that in the event of an if statement containing more than one expression, all expressions are included in the translation process.  
+\\If there are more than two children, the translator iterates through them until they are all checked. This ensures that in the event of an if statement containing more than one expression, all expressions are included in the translation process.  
+
+\begin{lstlisting}[Caption=Example of an if-statement written in PH, label=list:ifph]
+#include <LiquidCrystal.h>
+
+void setup()do
+ int h = 14;
+end
+
+void loop()do
+ if(b EQUALS z)do
+  int x = 3;
+  string hello = "world";
+ end
+end
+\end{lstlisting}
+
+\begin{lstlisting}[Caption=Example of an if-statement in the Arduino language, translated by the compiler from PH, label=list:ifarduino]
+#include <LiquidCrystal.h>
+
+void setup(){
+ int h = 14;
+}
+
+void loop(){
+ if(b == z){
+  int x = 3;
+  string hello = "world";
+ }
+}
+\end{lstlisting}
+
+As seen in \ref{list:ifph}, an example of an if-statement containing more than one expression is written. When translated by the compiler the output is as seen in \ref{list:ifarduino}.
+
+
+
+
