@@ -36,8 +36,6 @@ void setup() begin
   // Print a message to the LCD.
   lcd.print("Foo Bar");
   count = 1;
-  Serial.begin(9600);
-
   delay(2000);
 end
 
@@ -45,29 +43,24 @@ void loop() begin
   lcd.clear();
   delay(200);
   //If count divided by 3 and 5 equals 0 write Foo Bar
-  if(count % 3 equals 0 && count % 5 equals 0)then
+  if(count % 3 equals 0 && count % 5 equals 0)do
       lcd.print("Foo Bar"); 
-      Serial.println("Foo Bar"); 
   end
   //If count divided by 3 equals 0 write Foo 
-  elseif(count % 3 equals 0)then
+  elseif(count % 3 equals 0)do
     lcd.print("Foo");
-    Serial.println("Foo"); 
   end
     //If count divided by 5 equals 0 write Bar 
-  elseif(count % 5 equals 0)then
+  elseif(count % 5 equals 0)do
     lcd.print("Bar");
-    Serial.println("Bar"); 
   end
-  else then
+  else do
   //All other times write the number
     lcd.print(count);
-    Serial.println(count); 
   end
-end
-
+  
   count = count + 1;
-  if(count > 100)then
+  if(count > 100)do
     count = 2;
   end
   // delay at the end of the full loop:
