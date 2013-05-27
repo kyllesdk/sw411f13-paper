@@ -1,6 +1,7 @@
 \section{Improvement}\label{discussion:improvements}
-In the current state of the programming language there are several aspects to still be improved on.
+By comparing the finished project with the MoSCoW analysis, every feature within the category ''must have`` has been achieved with the exception of the ability to define functions. Additionally, PH could be improved by adding more data types, and more functionality.\\
 
-Comparing the finished project with the MoSCoW model described in \ref{analysis:moscow}, every feature within the category of must have has been achieved with the exception of functions (Including parameters and return values). Of the less important features, instantiation, the ability to print along with advanced operators has been implemented. We did however not get around to implement other loops than while, even though a foreach loop was desired. \\
+An important improvement for the compiler, is the ability to compile directly from PH to machine code, without the need of an external Arduino language compiler. This is because the task of compiling from PH to machine code would be a lot simpler.\\
 
-The language does not currently respect reserved words in Arduino language which is something that should be solved as using these words will result in an error when compiling from Arduino to machine code. The language does not deal with the need for parenthesization in arithmetic expressions and leaves this job to the Arduino compiler. While this can be considered lazy, there is really no need to create this functionality redundantly. \\ \todo{Morten: Add alle jeres improvements. pls.}
+The language does not currently take reserved words in the Arduino language into consideration, which should be solved because these words will result in errors when compiling the Arduino language to machine code. \\ 
+\todo{Morten: Add alle jeres improvements. pls.}
