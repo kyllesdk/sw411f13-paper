@@ -2,6 +2,7 @@
 To make sure the programmer does not mix different data type variables, such as boolean and int, typechecking is used.
 
 In listing \ref{list:type_bool}, a typechecker visitor is used to check that a boolean variable is set to either ''1`` (true) or ''0`` (false). This is done with typechecking, rather than the lexical analysis to make sure that any positive number does not evaluate to true, when using a boolean data type.
+\pagebreak
 \begin{lstlisting}[caption=Verifies/falsifies whether a boolean variable is 0 or 1, label=list:type_bool]
 
     public Object visit(ASTBooleanNumber node, Object data) {

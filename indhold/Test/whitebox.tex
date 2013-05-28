@@ -142,9 +142,9 @@ $\bigotimes$\\
 \end{table}
 
 The last 3 test cases in table \ref{tab:type_test} are all meant to fail, to make sure the error messages do not display when there are no errors.
-
+\pagebreak
 \section{Functionality}
-To verify that the compiled program can actually run on Arduino, two test programs are used. These are the code examples from chapter \ref{analysis:syntax-examples} and the corresponding Arduino programs can be found in appendix \ref{app:code}\pagebreak
+To verify that the compiled program can actually run on Arduino, two test programs are used. These are the code examples from chapter \ref{analysis:syntax-examples} and the corresponding Arduino programs can be found in appendix \ref{app:code}
 \subsection*{Hello World}
 The first piece of code from example \ref{lst:syntax1} prints ''Hello, world'' and displays it for 2 seconds before continuing with the rest of the program.
 \begin{figure}[h]
@@ -227,7 +227,7 @@ end
 \end{lstlisting}
 \caption{Code example \ref{lst:syntax1} modified to allow for serial output}
 \end{figure}
-
+\pagebreak
 \subsection*{FooBar}
 The program from code example \ref{lst:syntax2} prints a message based on a number count between 1 and 100. It is a rather simple program, but does make use of some of the more advanced features of BAL. A snippet of the code running the counter can be seen in code example \ref{lst:foobar}
 \begin{lstlisting}[caption=Hello World with serial output,firstnumber=26, language={C++},label=lst:foobar]
@@ -246,7 +246,6 @@ end
 \end{lstlisting}
 
 The program running in the pictures below have been modified to show both the count and the message to make it easier to see that it is in fact working as intended.
-
 \begin{table}[h]
 \begin{tabular}{p{8,5cm}p{8,5cm}}
 \includegraphics[width=8cm]{billeder/test_foobar_1.jpg}
