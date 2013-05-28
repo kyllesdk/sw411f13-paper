@@ -1,9 +1,19 @@
 \input{indstillinger/preamble}
+\usepackage{eso-pic}
+\newcommand\BackgroundPic{
+\put(0,0){
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering
+\includegraphics[width=\paperwidth,height=\paperheight,
+keepaspectratio]{billeder/aau_cover.png}%
+\vfill
+}}}
 \begin{document}
-
+\AddToShipoutPicture*{\BackgroundPic}
 % Laver forsiden ud fra de indstillinger der er sat i preamblen.
 \include{formalia/forside}
-\include{readingguide} % Reading guide for the supervisor
+%\include{readingguide} % Reading guide for the supervisor
 \cleardoublepage
 
 \frontmatter
