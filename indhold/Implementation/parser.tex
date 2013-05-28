@@ -1,7 +1,7 @@
 \subsection{Parser}
-The parser is implemented to check if the input is legal according to the syntax of the source language. The parser implementation consists of a list of productions, which are defined in the grammar. The productions use the tokens generated in the scanner as an input for the parser. In this section a few of the productions from the parser will be described.
+The parser is implemented to check if the input is legal according to the syntax of BAL. The parser implementation consists of a list of productions, which are defined in the grammar. The productions use the tokens generated in the scanner as an input for the parser. In this section a few of the productions from the parser will be described.
 \\
-\\One of the features of the source language is basic arithmetic expressions. The production for these expressions has been implemented as seen in listing \ref{arit_listing}. 
+\\One of the features of BAL is basic arithmetic expressions. The production for these expressions has been implemented as seen in listing \ref{arit_listing}. 
 
 \begin{lstlisting}[caption=Implementation of the arithmetic expressions production, label=arit_listing]
 void Expression() #Expression : {Token t;}
@@ -21,10 +21,10 @@ void Expression() #Expression : {Token t;}
 	)
 }
 \end{lstlisting}
-Another feature is if statements. If statements have the option of using only the if statement, or following up with one or more elseif statements, and ending with an else statement. 
-\\If statements have been implemented as seen in listing \ref{if_listing}. The ability to use elseif statements zero or more times by is made possibly by definining it as a regular expression.
-\\In order to eliminate dangling else problems when writing nested if statements, every if, elseif, and else statement requires a "do", and "end" block. This feature also enhances the read and write ability. 
-\\As seen in listing \ref{if_listing}, an elseif and, or else statement can not be written without the use of an if statement first.  
+Another feature is if-statements. If-statements have the option of using only the if-statement, or following up with one or more elseif-statements, and ending with an else statement. 
+\\If-statements have been implemented as seen in listing \ref{if_listing}. The ability to use elseif-statements zero or more times by is made possibly by definining it as a regular expression.
+\\In order to eliminate dangling else problems when writing nested if-statements, every if, elseif, and else statement requires a "do", and "end" block. This feature also enhances the read and write ability. 
+\\As seen in listing \ref{if_listing}, an elseif and, or else statement can not be written without the use of an if-statement first.  
 
 \begin{lstlisting}[caption=Implementation of the if\, elseif\, and else statements, label=if_listing]
 void IfStatement() #If_stm : {Token t;}
@@ -42,12 +42,4 @@ void ElseStatement() #void : {Token t;}
 	(t = <ELSE> <DO> Statements() <END>) {jjtThis.value = t.image;} #Els_stm(1)
 }
 \end{lstlisting}
-
-\begin{lstlisting}[caption=Implementation of the while statement, label=while_listing]
-void WhileStatement() #void : {Token t;}
-{
-	(t = <WHILE> <LPAREN> BooleanExpression() <RPAREN> <DO> Statements() <END>) {jjtThis.value = t.image;} #WhileStatement(2)
-}
-\end{lstlisting}
-\todo{Matti: Is this neccessary?}
 

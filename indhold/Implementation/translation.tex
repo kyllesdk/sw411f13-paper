@@ -1,5 +1,5 @@
 \subsection{Translation}
-In this subsection the implementation of the translator is described. This will include examples of how translation from PH to the Arduino language is done through visitors.
+In this subsection the implementation of the translator is described. This will include examples of how translation from BAL to the Arduino language is done through visitors.
 Visitors will scan through the code till it finds the appropriate statement or expression to translate.
 
 \begin{lstlisting}[caption=Visitor for translation of an if-statement, label=list:if]
@@ -42,8 +42,8 @@ Visitors will scan through the code till it finds the appropriate statement or e
 	}
 \end{lstlisting}
 
-As seen in listing \ref{list:if} and  \ref{list:bool}, CodeGen visitors are taken in use to translate an if-statement in PH to the equivalent in Arduino. For an if-statement, if there are more than two children, the translator iterates through them until they are all checked. This ensures that in the event of an if statement containing more than one expression, all expressions are included in the translation process.\\
-\begin{lstlisting}[caption=Example of an if-statement written in PH, label=list:phstmt]
+As seen in listing \ref{list:if} and  \ref{list:bool}, CodeGen visitors are taken in use to translate an if-statement in BAL to the equivalent in Arduino. For an if-statement, if there are more than two children, the translator iterates through them until they are all checked. This ensures that in the event of an if statement containing more than one expression, all expressions are included in the translation process.\\
+\begin{lstlisting}[caption=Example of an if-statement written in BAL, label=list:phstmt]
 
 #include <LiquidCrystal.h>
 
@@ -59,7 +59,7 @@ void loop()do
 end
 \end{lstlisting}
 
-\begin{lstlisting}[caption=Example of an if-statement in the Arduino language translated by the compiler from PH, label=list:stmtardu]
+\begin{lstlisting}[caption=Example of an if-statement in the Arduino language translated by the compiler from BAL, label=list:stmtardu]
 
 #include <LiquidCrystal.h>
 
@@ -75,4 +75,4 @@ void loop(){
 }
 \end{lstlisting}
 
-As seen in \ref{list:phstmt}, an example of an if-statement containing more than one expression is written. When translated by the compiler the output is as seen in \ref{list:stmtardu}. The visitor for the if-statement translates the ''do`` and ''end`` blocks into ''{`` and ''}`` braces. And the boolean operator visitor will in this case translate the operator ''EQUALS`` into ''==``.
+As seen in listing \ref{list:phstmt}, an example of an if-statement containing more than one expression is written. When translated by the compiler the output is as seen in listing \ref{list:stmtardu}. The visitor for the if-statement translates the ''do`` and ''end`` blocks into ''{`` and ''}`` braces. And the boolean operator visitor will in this case translate the operator ''EQUALS`` into ''==``.
