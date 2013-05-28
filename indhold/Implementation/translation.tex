@@ -43,6 +43,7 @@ Visitors will scan through the code till it finds the appropriate statement or e
 \end{lstlisting}
 
 As seen in listing \ref{list:if} and  \ref{list:bool}, CodeGen visitors are taken in use to translate an if-statement in BAL to the equivalent in Arduino. For an if-statement, if there are more than two children, the translator iterates through them until they are all checked. This ensures that in the event of an if statement containing more than one expression, all expressions are included in the translation process.\\
+\pagebreak
 \begin{lstlisting}[caption=Example of an if-statement written in BAL, label=list:phstmt]
 
 #include <LiquidCrystal.h>
