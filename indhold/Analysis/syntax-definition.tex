@@ -1,5 +1,5 @@
 \chapter{Syntax and Semantics}\label{analysis:syntax-and-semantics}
-In this section the syntax and semantics of the source language is described. It contains a definition in the form of Extended Bachus-Naur Form and the transition rules of the language
+In this section the syntax and semantics of the source language is described. It contains a definition in the form of Extended Backus-Naur Form and the transition rules of the language
 
 \section{Syntax}
 When describing a programming language, the syntax of the language is given by the set of rules which defines the words (finite sequences of characters) that can be used for writing a program in that language. The syntax of the language is described using \textit{Backus-Naur Form} (BNF) which provides the context free grammar of the language.
@@ -7,7 +7,7 @@ In this report an extended version of BNF, \textit{Extended Backus-Naur Form} (E
 
 \section{Syntax definition}\label{sec:anlysis:syntax-definition}
 Following is the syntax definition written in EBNF which shows the seven syntactic categories followed by the defined rules. As an example of how to read these rules, let $a$ be an arithmetic expression. By looking at the rule for $a$, this expression could for example be $a_1 + a_2$ meaning it is expanded to be one arithmetic expression consisting in the addition of two other arithmetic expressions. These two expressions could then again be anything within the rules for $a$, for example the numerals 5 and 7. There are no rules for expanding a numeral, and as such the expression $a$ can be evaluated no further.
-\begin{lstlisting}[mathescape, captionpos=b, caption={Syntax formation rules}, label={lst:syntax-formation}]
+\begin{lstlisting}[mathescape, captionpos=b, caption=Syntax formation rules, label=lst:syntax-formation]
 $n$ $\in$ Num - Numerals
 $x$ $\in$ Var - Variables
 $a$ $\in$ Aexp - Arithmetic expressions
@@ -28,7 +28,7 @@ $Dv$ ::= $x$ = $a$; Dv
 \end{lstlisting}
 
 \subsection{Numerals}
-In our programming language there are two numeral systems called \textit{integers} and \textit{floats}. These types are needed to represent integers (for example -17, -239586, 0, 237, 9001). and decimal numbers (such as -12.3456, -30.009, 90.01 and 990.1259). Float and double are both used for decimal numbers with double being more precise than float at the cost of taking up more space. The numeral systems are however finite as the numerals can not exceed the size allocated to each float, integer and double. As such the limitations are:
+In BAL there are two numeral systems called \textit{integers} and \textit{floats}. These types are needed to represent integers (for example -17, -239586, 0, 237, 9001). and decimal numbers (such as -12.3456, -30.009, 90.01 and 990.1259). Float is used for decimal numbers. The numeral systems are however finite as the numerals can not exceed the size allocated to each float, integer and double. As such the limitations are:
 \begin{itemize}
 \item Integers: From $-2^{n-1}$ to $2^{n-1}-1$
 \item Floats: From $3.4E-38$ to $3.4E+38$
@@ -41,8 +41,7 @@ A variable in the language ranges over text strings, arithmetic expressions, boo
 %\todo{Distinction between variables and metavariables is needed, what is meta variables?}
 
 \subsection{Arithmetic expressions}
-The source language features arithmetic expressions. The transition rules for the expressions can be read in table \ref{tab:semantics_aritmethic}.
-The rules listed in listing \ref{lst:syntax-formation} states that well-formed arithmetic expressions in the source language can consist of:
+The source language features arithmetic expressions. The rules listed in listing \ref{lst:syntax-formation} states that well-formed arithmetic expressions in the source language can consist of:
 \begin{itemize}
 	\item x - Variable
 	\item n - Numeral
@@ -57,17 +56,17 @@ The rules listed in listing \ref{lst:syntax-formation} states that well-formed a
 \end{itemize}
 
 \subsection{Boolean expressions}
-The source language supports boolean expressions, which evaluate to \textit{true} or \textit{false}. The boolean transition rules are listed in table \ref{tab:semantics_boolean}.
+The source language supports boolean expressions, which evaluate to \textit{true} or \textit{false}.
 \begin{itemize}
 	\item Equals to ($a_1$ equals $a_2$) - $equals$ allows the programmer to equate two expressions, which will evaluates to \textit{true} if their evaluations match; if not it evaluates to \textit{false}.
 	\item Greater than ($a_1 > a_2$) - ``$>$'' checks if one value is greater than another value. If $a_1$ is greater than $a_2$ it evaluates to \textit{true}, else it evaluates to \textit{false}.
 	\item Less than ($a_1 < a_2$) - ``$<$'' checks if the value of the first expression is lesser than the value of the second one. If $a_1$ is less than $a_2$ it evaluates to \textit{true}, else \textit{false}.
-	\item Greater than or equal to ($a_1 >= a_2$) - ``$>=$'' checks if one value is greater then or equals another value. If $a_1$ is greater then or equals $a_2$ it evaluates to \textit{true}, else \textit{false}.
-	\item Less than or equal to ($a_1 <= a_2$) - ``$<=$'' checks if one value is less then or equals another value. If $a_1$ is less then or equals $a_2$ it evaluates to \textit{true}, else \textit{false}.
-	\item Different from ($a_1$ notequals $a_2$) - ``$notequals$'' checks if two values are different. If $a_1$ is different from $a_2$ it evaluates \textit{true}, else \textit{false}. 
-	\item Negation (not$b$) - ``$not$'' if $b$ is true it evaluates to false. If $b$ is false it evaluates \textit{true}.
-	\item Conjunction ($b_1$ and $b_2$) - ``$and$'' check if two boolean values are both \textit{true}. If both $b_1$ and $b_2$ are \textit{true} it evaluates \textit{true}, and it evaluates to false otherwise. 
-	\item Disjunction ($b_1$ or $b_2$) - ``$or$'' checks if one of the boolean values are \textit{true}. If either $b_1$ or $b_2$ are \textit{true} it evaluates \textit{true}, and it evaluates to false otherwise.
+	\item Greater than or equal to ($a_1 >= a_2$) - ``$>=$'' checks if one value is greater then or equals another value. If $a_1$ is greater then or equals $a_2$ it evaluates to \textit{true}, and it evaluates to \textit{false} otherwise.
+	\item Less than or equal to ($a_1 <= a_2$) - ``$<=$'' checks if one value is less then or equals another value. If $a_1$ is less then or equals $a_2$ it evaluates to \textit{true}, and it evaluates to \textit{false} otherwise.
+	\item Different from ($a_1$ notequals $a_2$) - ``$notequals$'' checks if two values are different. If $a_1$ is different from $a_2$ it evaluates \textit{true}, and it evaluates to \textit{false} otherwise. 
+	\item Negation (not$b$) - ``$not$'' if $b$ is true it evaluates to false. If $b$ is \textit{false} it evaluates \textit{true}.
+	\item Conjunction ($b_1$ and $b_2$) - ``$and$'' check if two boolean values are both \textit{true}. If both $b_1$ and $b_2$ are \textit{true} it evaluates \textit{true}, and it evaluates to \textit{false} otherwise. 
+	\item Disjunction ($b_1$ or $b_2$) - ``$or$'' checks if one of the boolean values are \textit{true}. If either $b_1$ or $b_2$ are \textit{true} it evaluates \textit{true}, and it evaluates to \textit{false} otherwise.
 	\item Parenthesis (($b$)) - Allows the boolean expressions to be insulated in parenthesis. The parenthesis will then evaluate to \textit{true} or \textit{false}.
 \end{itemize}
 \subsection{Statements}
@@ -78,8 +77,8 @@ $S$ ::= Dv | if $b$ do $S$ end $S_b$ | while $b$ do $S$ end | $S_1 ; S_2$
 	\item Variable declaration - The rule states that a variable declaration is composed by variable name on the lefthand side of the assignment character ``='', and then the value (of the arithmetic expression) on the righthand side is thereby assigned to the left side. The ``;'' character closes the variable declaration.
 	\item If-statement -  A conditional expression involving one boolean expression and two statements, or a statement and a substatement. If the boolean expression evaluates to true, the first statement is executed. If the boolean condition evaluates to false, then the program executes the second statement or the substatement.
 
-	\item While loop - It involves a boolean expression and the while loop will run if the boolean expression evaluates to true. As long as the boolean expression is true, the statements inside the loop is repeatedly executed over and over. When the boolean expression evaluates to false, the loop is exited.
-	\item Sequential Composition - To make programs run statements sequentially in the source language.
+	\item While loop - It involves a boolean expression and the while loop will run if the boolean expression evaluates to true. As long as the boolean expression is true, the statements inside the loop is repeatedly executed. When the boolean expression evaluates to false, the loop is exited.
+	\item Sequential Composition - To make programs execute statements sequentially in the source language.
 \end{itemize}
 
 \subsubsection{Substatements}
@@ -87,7 +86,7 @@ $S$ ::= Dv | if $b$ do $S$ end $S_b$ | while $b$ do $S$ end | $S_1 ; S_2$
 $S_b$ ::= {elseif $b$ do $S$ end} | else do $S$ end
 
 \begin{itemize}
-	\item Elseif - If an if-statement is executed the source language allows to follow up using an elseif statement. In the case an if-statement is not present, an elseif is not allowed to be used. Elseif follow the same rules as if-statements, and just like if-statements it has a boolean expression, which if it is true the statement is called. If the boolean expression is evaluated to false, the program executes the second statement or the substatement.
-	\item Else - If the boolean expression in an if-statement evaluates to false, an else statement can be reached which will execute the other statement. An if-statement is required though to be able to use the else-statement.
+	\item Elseif - If an if-statement is executed the source language allows to follow up using an elseif statement. In the case an if-statement is not present, an elseif is not allowed to be used. Elseif follow the same rules as if-statements, and just like if-statements it has a boolean expression, which if it is true the statement is executed. If the boolean expression is evaluated to false, the program executes the second statement or the substatement.
+	\item Else - If the boolean expression in an if-statement evaluates to false, an else statement can be reached which will execute the other statement. An if-statement is required to be able to use the else-statement.
 \end{itemize}
 
