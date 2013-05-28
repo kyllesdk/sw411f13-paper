@@ -79,8 +79,8 @@ In table \ref{tab:semantics_aritmethic} the arrow $\rightarrow_{a}$ is used. Thi
 			~			&															~																			& ~ \\
 	\hline
 	\end{tabular}
-	\label{tab:semantics_aritmethic}
 	\caption{The semantics of arithmetic operations}
+	\label{tab:semantics_aritmethic}
 \end{table}
 
 First is table \ref{tab:semantics_aritmethic}, which describes the arithmetic expressions - the more common ones are addition, subtraction, multiplication and division (PLUS(+), MINUS(-), MULT(*), DIV(/)). Their rules all look near identical: Within a variable environment $env_{v}$ with a store $sto$, two expressions, $v_{1}$ and $v_{2}$, which both are arithmetic as seen by $\rightarrow_{a}$ can be added, subtracted, multiplied or divided. This results in $v$, which is a value. However, when taking a look upon DIV's side-condition, take notice that it states that $v_{2}$ cannot be divided by zero, as it is not possible to divide any number by zero, so this side-note makes sure that it is not possible to do so. \\
@@ -175,8 +175,8 @@ As with the PARENT rule in table \ref{tab:semantics_aritmethic} any boolean expr
 	$[WHILEFALSE_{BSS}]$& $\langle while~b~do~S,s \rangle~\rightarrow~s~if~s~\vdash~b~\rightarrow_{b}~ff $														& ~ \\
 	\hline
 	\end{tabular}
-	\label{tab:semantics_statements}
 	\caption{The semantics of statements}
+	\label{tab:semantics_statements}
 \end{table}
 
 The table of statement semantics, \ref{tab:semantics_statements} holds rules affecting statements. \\
