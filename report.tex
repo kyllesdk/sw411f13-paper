@@ -1,13 +1,23 @@
 \input{indstillinger/preamble}
+\usepackage{eso-pic}
+\newcommand\BackgroundPic{
+\put(0,0){
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering
+\includegraphics[width=\paperwidth,height=\paperheight,
+keepaspectratio]{billeder/aau_cover.png}%
+\vfill
+}}}
 \begin{document}
-
+\AddToShipoutPicture*{\BackgroundPic}
 % Laver forsiden ud fra de indstillinger der er sat i preamblen.
-%\include{formalia/forside}
-\include{readingguide} % Reading guide for the supervisor
+\include{formalia/forside}
+%\include{readingguide} % Reading guide for the supervisor
 \cleardoublepage
 
 \frontmatter
-%\include{formalia/titelblad}
+\include{formalia/titelblad}
 \cleardoublepage
 
 % De vigtigste forskelle mellem \include og \input ligger i at
@@ -17,7 +27,7 @@
 
 % Se arbejdsblad-skabelon.tex for et eksempel herp?.
 
-%\include{formalia/forord}
+\include{formalia/forord}
 
 % For at sikre sideskift efter forord. Denne kommando b?r kun bruges i
 % absolutte undtagelsestilf?lde.
