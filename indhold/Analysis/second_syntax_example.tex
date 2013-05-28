@@ -24,48 +24,46 @@ If the count is at 9, it will print Foo, and if the count is at 15, it will prin
 // include the library code:
 #include <LiquidCrystal.h>
 
-// initialize the library with the numbers of the interface pins
-LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
-int count;
+// instantiate the library with the numbers of the interface pins
+instantiate LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 
-void setup() begin
-  pinMode(9, OUTPUT);
-  analogWrite(9, 12);
+void setup() do
+  call pinMode(9, OUTPUT);
+  call analogWrite(9, 12);
   // set up the LCD's number of columns and rows: 
-  lcd.begin(16, 2);
+  call lcd.begin(16, 2);
   // Print a message to the LCD.
-  lcd.print("Foo Bar");
-  count = 1;
-  delay(2000);
+  call lcd.print("Foo Bar");
+  int count = 1;
+  call delay(2000);
 end
 
-void loop() begin
-  lcd.clear();
-  delay(200);
+void loop() do
+  int count = 0;
+  call lcd.clear();
+  call delay(200);
   //If count divided by 3 and 5 equals 0 write Foo Bar
-  if(count % 3 equals 0 && count % 5 equals 0)do
-      lcd.print("Foo Bar"); 
+  if(count % 3 EQUALS 0 AND count % 5 EQUALS 0) do
+      call lcd.print("Foo Bar"); 
   end
   //If count divided by 3 equals 0 write Foo 
-  elseif(count % 3 equals 0)do
-    lcd.print("Foo");
+  elseif(count % 3 EQUALS 0) do
+    call lcd.print("Foo");
   end
     //If count divided by 5 equals 0 write Bar 
-  elseif(count % 5 equals 0)do
-    lcd.print("Bar");
+  elseif(count % 5 EQUALS 0) do
+    call lcd.print("Bar");
   end
   else do
   //All other times write the number
-    lcd.print(count);
+    call lcd.print(count);
   end
   
-  count = count + 1;
+  int count = count + 1;
   if(count > 100)do
-    count = 2;
+    var count = 2 + 3;
   end
   // delay at the end of the full loop:
-  delay(1000);
-
-
+  call delay(1000);
 end
 \end{lstlisting}
