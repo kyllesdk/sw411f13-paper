@@ -97,7 +97,7 @@ _errorMessage = "Trying to add Float to Integer, this result in loss of precisio
 {\begin{lstlisting}[numbers=none,frame=none,resetmargins=true]
 void loop() do
  float b =  .10 + 1.12312;
- int h = 10/1
+ int h = 10/1 //Missing ;
  string he = "hello";
 end
 \end{lstlisting}} &
@@ -149,10 +149,10 @@ To verify that the compiled program can actually run on Arduino, two test progra
 The first piece of code from example \ref{lst:syntax1} prints ''Hello, world'' and displays it for 2 seconds before continuing with the rest of the program.
 \begin{figure}[h]
 \begin{lstlisting}[caption=Hello World ,firstnumber=11, language={C++}, label=lst:snippet_1]
-  lcd.begin(8, 2);
+  call lcd.begin(8, 2);
   // Print a message to the LCD.
-  lcd.print("hello, world!");
-  delay(2000);
+  call lcd.print("hello, world!");
+  call delay(2000);
 \end{lstlisting}
 \caption{snippet from code example \ref{lst:syntax1}}
 \end{figure}
@@ -165,11 +165,16 @@ The first piece of code from example \ref{lst:syntax1} prints ''Hello, world'' a
 The code snippet below is the main loop in the program. It runs continuously and prints the amount of time Arduino has been turned on, measured in seconds. Although this is a rather simple program, it does prove that the basic functionality of the compiler is working as intended.
 \begin{figure}[h]
 \begin{lstlisting}[caption=Hello World ,firstnumber=17, language={C++},label=lst:snippet_2]
-void loop() begin
-  lcd.clear();
+void loop() do
+  call lcd.clear();
+
   // print the number of seconds since reset:
-  lcd.print(millis()/1000);
-  delay(1000);
+  int runTime = millis();
+  int time = runTime/1000;
+  call lcd.print(time);
+
+
+  call delay(1000);
 end
 \end{lstlisting}
 \caption{snippet from code example \ref{lst:syntax1}}
@@ -199,21 +204,25 @@ By adding a few lines of code to the Hello world code example \ref{lst:syntax1},
 
 \begin{figure}[h!]
 \begin{lstlisting}[caption=Hello World with serial output, language={C++},label=lst:serial]
-void setup() begin
-  Serial.begin(9600);
-  lcd.begin(8, 2);
+void setup() do
+  call Serial.begin(9600);
+  call lcd.begin(8, 2);
+
   // Print a message to the LCD.
-  lcd.print("hello, world!");
-  Serial.println("hello, world!");
-  delay(2000);
+  call lcd.print("hello, world!");
+  call Serial.println("hello, world!");
+  call delay(2000);
 end
-void loop() begin
-  lcd.clear();
+
+void loop() do
+  call lcd.clear();
+
   // print the number of seconds since reset:
-  int time = millis()/1000; 
-  lcd.print(time);
-  Serial.println(time);
-  delay(1000);
+  int runTime = millis();
+  int time = runTime/1000;
+  call lcd.print(time);
+  call Serial.println(time);
+  call delay(1000);
 end
 \end{lstlisting}
 \caption{Code example \ref{lst:syntax1} modified to allow for serial output}
@@ -222,17 +231,17 @@ end
 \subsection*{FooBar}
 The program from code example \ref{lst:syntax2} prints a message based on a number count between 1 and 100. It is a rather simple program, but does make use of some of the more advanced features of BAL. A snippet of the code running the counter can be seen in code example \ref{lst:foobar}
 \begin{lstlisting}[caption=Hello World with serial output,firstnumber=26, language={C++},label=lst:foobar]
-if(count % 3 equals 0 && count % 5 equals 0)do
-      lcd.print("Foo Bar"); 
+if(count % 3 EQUALS 0 AND count % 5 equals 0) do
+      call lcd.print("Foo Bar"); 
 end
-elseif(count % 3 equals 0)do
-    lcd.print("Foo");
+elseif(count % 3 EQUALS 0) do
+    call lcd.print("Foo");
 end
-elseif(count % 5 equals 0)do
-    lcd.print("Bar");
+elseif(count % 5 EQUALS 0) do
+    call lcd.print("Bar");
 end
 else do
-    lcd.print(count);
+    call lcd.print(count);
 end
 \end{lstlisting}
 
