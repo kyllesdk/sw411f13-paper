@@ -1,13 +1,14 @@
-This section will cover the testing phase of the projects, and describe how tests were performed. The focus of the tests is on the lexical analysis and the compiler.\todo{Morten:Med compiler, menes der så kodegenerering?}
+This section will cover the testing phase of the project, and describe how tests were performed. The focus of the tests is on the lexical analysis and the translation.
 
 \section{Testing Method}
-There are a wide range of methods available for testing software. They can however be broken into two main categories named white- and black box testing. Black box testing can be interpreted as the program being a black box with unkown content. What is known is that given some input to the box, an appropriate output is expected. In other terms the focus is not on how it works, rather that it just works. With white box testing however, the focus is as much on how the output is generated from the input.\\
+There are a wide range of methods available for testing software. They can however be broken into two main categories named white- and black box testing. Black box testing can be interpreted as the program being a black box with unknown content. What is known is that given some input to the box, an appropriate output is expected. In other terms the focus is not on how it works, rather that it just works. With white box testing however, the focus lies on on how the output is generated from the input.\\
 
 Both methods have their own advantages, briefly described below:
 \begin{itemize}
-\item[] \textbf{Black box} It is not necessary to have any knowledge of the code. To test the software, the tester only needs to know how to pass the input parameter and what to expect as output. This also makes it faster to run and evaluate the tests, since the MORTEN-ADDITION: technical details do not have to be accounted for.\todo{Morten: Der manglede en halv sætning her. :p }
-\item[] \textbf{White box} With white-box testing, testing the the code itself, it is possible to use these tests to optimize the code. It is however also more demanding, as the tests require knowledge of the code in order to be able to design the tests. 
+\item[] \textbf{Black box} It is not necessary to have any knowledge of the code. To test the software, the tester only needs to know how to pass the input parameter and what to expect as output. This also makes it faster to run and evaluate the tests, since the technical details do not have to be accounted for.
+\item[] \textbf{White box} makes it possible to create tests to optimize the code. It is however also more demanding, as the tests require knowledge of the code in order to be able to design the tests. 
 \end{itemize}
+Black box testing has been chosen in this project. As we want to check that the desired outcome is correct.
 
 \subsection*{Syntax}
 \begin{table}[thp]\scriptsize
@@ -39,18 +40,18 @@ lcd.print("Hello World");
 \hline
 {\begin{lstlisting}[numbers=none,frame=none,resetmargins=true]
 if(true)do
-	x = 1;
+  x = 1;
 end
 else do
-	x = 2;
+  x = 2;
 end 
 \end{lstlisting}} & 
 {\begin{lstlisting}[numbers=none,frame=none,resetmargins=true]
 if(true){
-	x = 1;
+  x = 1;
 }
 else {
-	x = 2;
+  x = 2;
 } 
 \end{lstlisting}} &
 \checkmark\\
@@ -62,12 +63,12 @@ else {
 
 The test case shown in table \ref{tab:test} is just an example of the cases run during the development of the compiler. More complex cases were tested, but have been omitted due to readability. Examples of these test cases are the complete code examples found in chapter \ref{sec:code_examples}, code example \ref{lst:syntax1} and \ref{lst:syntax2}\\
 
-The tests have been conducted repeatedly through the process every time a new feature or functionality has been implemented, to help make sure that the new version works as intended, and that it does not break other parts unintentionally.
+The tests have been conducted repeatedly throughout the process, every time a new feature or functionality has been implemented, to help make sure that the new version works as intended, and that it does not break other parts unintentionally.
 
 \subsection*{Error messages}
 If the compiler encounters any errors during compilation of a program, appropriate error messages are displayed to help guide the user in the right direction, when trying to locate the cause of errors.
 
-It is important to point out that for some of the test cases, the purpose of the test is to fail. This is in order to make sure that error messages are only shown when the error actually occurs. This means that if the test fail (No errors displayed), the program works as intended and the test is a success.\\
+It is important to point out that for some of the test cases, the purpose of the test is to fail. This is in order to make sure that error messages are only shown when the error actually occurs. This means that if the test fails (No errors displayed), the program works as intended and the test is a success.\\
 \begin{table}[thp]\scriptsize
 \raggedright
 \begin{tabular}{|l|m{10cm}|c|}
@@ -76,10 +77,10 @@ It is important to point out that for some of the test cases, the purpose of the
 \multicolumn{1}{c}{} \\
 \hline
 {\begin{lstlisting}[numbers=none,frame=none,resetmargins=true]
-boolean x = 1 + 3; 
+int x = [1] + 3; 
 \end{lstlisting}} &
 {\begin{lstlisting}[numbers=none,frame=none,resetmargins=true,language={}]
-_errorMessage = "A variable of type boolean has to have an integer (1,0) or identifier (true, false) as value.";
+_errorMessage = "Expected the variable to be of type boolean.";
 \end{lstlisting}} &
 \checkmark\\
 \hline
@@ -106,10 +107,10 @@ Exception in thread "main" ParseException: Encountered " "string" "string "" at 
 \checkmark\\
 \hline
 {\begin{lstlisting}[numbers=none,frame=none,resetmargins=true]
-boolean x = 1; 
+boolean x = [1]; 
 \end{lstlisting}} &
 {\begin{lstlisting}[numbers=none,frame=none,resetmargins=true,language={}]
-_errorMessage = "A variable of type boolean has to have an integer (1,0) or identifier (true, false) as value.";
+_errorMessage = "Expected the variable to be of type boolean.";
 \end{lstlisting}} &
 $\bigotimes$\\
 \hline
@@ -143,7 +144,7 @@ $\bigotimes$\\
 The last 3 test cases in table \ref{tab:type_test} are all meant to fail, to make sure the error messages do not display when there are no errors.
 
 \section{Functionality}
-To verify that the compiled program can actually run on Arduino, two test programs are used to test the compiled program. These are the code examples from chapter \ref{analysis:syntax-examples} and the corresponding Arduino programs can be found in appendix \ref{app:code}\pagebreak
+To verify that the compiled program can actually run on Arduino, two test programs are used. These are the code examples from chapter \ref{analysis:syntax-examples} and the corresponding Arduino programs can be found in appendix \ref{app:code}\pagebreak
 \subsection*{Hello World}
 The first piece of code from example \ref{lst:syntax1} prints ''Hello, world'' and displays it for 2 seconds before continuing with the rest of the program.
 \begin{figure}[h]
@@ -161,7 +162,7 @@ The first piece of code from example \ref{lst:syntax1} prints ''Hello, world'' a
 \caption{picture of the execution of code snippet \ref{lst:snippet_1}}
 \end{figure}
 
-The code snippet below is the main loop in the program. It runs continuously for as long as the Arduino is powered on and prints the uptime measured in seconds. Although this is a rather simple program, it does prove that the basic functionality of the compiler is working as intended.
+The code snippet below is the main loop in the program. It runs continuously and prints the amount of time Arduino has been turned on, measured in seconds. Although this is a rather simple program, it does prove that the basic functionality of the compiler is working as intended.
 \begin{figure}[h]
 \begin{lstlisting}[caption=Hello World ,firstnumber=17, language={C++},label=lst:snippet_2]
 void loop() do
@@ -199,7 +200,7 @@ During the tests a persistant error occured multiple times. While running a prog
 \label{fig:serial}
 \end{figure}
 
-By adding a few lines of code to the Hello world code example \ref{lst:syntax1}, the addition of lines 2, 6, 12 and 14, in code example \ref{lst:serial} makes it possible to view the data printed to the LCD display, as seen in figure \ref{fig:serial}. This has made it possible to verify that the problem is not with the data itself. An attempt was made to write the programs directly for Arduino, not using the compiler for PH, but the same error still occurred. This increases the likelihood that the problem is caused by the hardware rather than the software. This could theoretically be due to limitations of the hardware but is very unlikely since the examples used are copies of official Arduino guides. It is more likely that the error is due to faulty hardware, whether that be the Arduino board or the LCD display. Unfortunately it was not possible to test the theory as we did not have access to replacement hardware.
+By adding a few lines of code to the Hello world code example \ref{lst:syntax1}, the addition of lines 2, 6, 12 and 14, in code example \ref{lst:serial} makes it possible to view the data printed to the LCD display, as seen in figure \ref{fig:serial}. This has made it possible to verify that the problem is not with the data itself. Programs were written directly in the Arduino language to check if the compiler failed, but the same error still occurred. This increases the likelihood that the problem is caused by the hardware, rather than the software. This could theoretically be due to limitations of the hardware, but is very unlikely, since the examples used are copies of official Arduino guides. It is more likely that the error is due to faulty hardware, whether that be the Arduino board or the LCD display. Unfortunately it was not possible to test the theory as we did not have access to replacement hardware.
 
 \begin{figure}[h!]
 \begin{lstlisting}[caption=Hello World with serial output, language={C++},label=lst:serial]
@@ -228,7 +229,7 @@ end
 \end{figure}
 
 \subsection*{FooBar}
-The program from code example \ref{lst:syntax2} prints a message based on a number count between 1 and 100. It is a rather simple program, but does make use of some of the more advanced features of PH. A snippet of the code running the counter can be seen in code example \ref{lst:foobar}
+The program from code example \ref{lst:syntax2} prints a message based on a number count between 1 and 100. It is a rather simple program, but does make use of some of the more advanced features of BAL. A snippet of the code running the counter can be seen in code example \ref{lst:foobar}
 \begin{lstlisting}[caption=Hello World with serial output,firstnumber=26, language={C++},label=lst:foobar]
 if(count % 3 EQUALS 0 AND count % 5 equals 0) do
       call lcd.print("Foo Bar"); 
