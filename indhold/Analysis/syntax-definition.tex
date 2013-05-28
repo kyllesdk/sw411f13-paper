@@ -5,7 +5,7 @@ In this section the syntax and semantics of the source language is described. It
 When describing a programming language, the syntax of the language is given by the set of rules which defines the words (finite sequences of characters) that can be used for writing a program in that language. The syntax of the language is described using \textit{Backus-Naur Form} (BNF) which provides the context free grammar of the language.
 In this report an extended version of BNF, \textit{Extended Backus-Naur Form} (EBNF), is used. The advantage of using EBNF is to describe the set of rules in a more compact form, and the ability to describe regular expressions in the context free grammar. EBNF does not enhance the descriptive power of BNF, it only increases the readability and the write-ability.
 
-\section{Syntax definition}\label{sec:anlysis:syntax-definition}
+\section{Syntax Definition}\label{sec:anlysis:syntax-definition}
 Following is the syntax definition written in EBNF which shows the seven syntactic categories followed by the defined rules. As an example of how to read these rules, let $a$ be an arithmetic expression. By looking at the rule for $a$, this expression could for example be $a_1 + a_2$ meaning it is expanded to be one arithmetic expression consisting in the addition of two other arithmetic expressions. These two expressions could then again be anything within the rules for $a$, for example the numerals 5 and 7. There are no rules for expanding a numeral, and as such the expression $a$ can be evaluated no further.
 \begin{lstlisting}[mathescape, captionpos=b, caption=Syntax formation rules, label=lst:syntax-formation]
 $n$ $\in$ Num - Numerals
@@ -40,7 +40,7 @@ A variable in the language ranges over text strings, arithmetic expressions, boo
 %\subsection{Metavariables}
 %\todo{Distinction between variables and metavariables is needed, what is meta variables?}
 
-\subsection{Arithmetic expressions}
+\subsection{Arithmetic Expressions}
 The source language features arithmetic expressions. The rules listed in listing \ref{lst:syntax-formation} states that well-formed arithmetic expressions in the source language can consist of:
 \begin{itemize}
 	\item x - Variable
@@ -55,7 +55,7 @@ The source language features arithmetic expressions. The rules listed in listing
 	\item Parenthesis "($a$)" - Specifies that an expression can be surrounded by parenthesis.
 \end{itemize}
 
-\subsection{Boolean expressions}
+\subsection{Boolean Expressions}
 The source language supports boolean expressions, which evaluate to \textit{true} or \textit{false}.
 \begin{itemize}
 	\item Equals to ($a_1$ equals $a_2$) - $equals$ allows the programmer to equate two expressions, which will evaluates to \textit{true} if their evaluations match; if not it evaluates to \textit{false}.

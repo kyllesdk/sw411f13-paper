@@ -1,4 +1,4 @@
-\section{Lexical analysis}
+\section{Lexical Analysis}
 \subsection{Scanner}
 This section contains a description of the implementation of the scanner in the compiler. The scanner generates a token stream by reading the input one character at a time.\\
 \\The implementation of the scanner contains a list of token identifiers. Token identifiers recognize when a token is found in the process of scanning the input. Token identifiers for the reserved words and literals in the source language can be seen in listing \ref{list:token}. For example, when "setup()" is scanned, it is saved as a SETUP token. The token will then be used in the parser task of the lexical analysis. 
